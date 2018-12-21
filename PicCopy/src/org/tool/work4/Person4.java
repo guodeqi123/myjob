@@ -1,11 +1,11 @@
 package org.tool.work4;
 
 public class Person4 {
-	//  test commit
+	//  test commit11111
 	
 	
-	public static String GENDER_MALE = "��";
-	public static String GENDER_FEMALE = "Ů";
+	public static String GENDER_MALE = "ÄÐ";
+	public static String GENDER_FEMALE = "Å®";
 	
 	private String rowNum;
 	String name= null; 
