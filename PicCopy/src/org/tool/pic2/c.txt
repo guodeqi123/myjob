@@ -1,0 +1,165 @@
+PIC NOT EXIST ::PersonBean [seq=125, name=司洋华, idcard=412801198910031143, 考试地点=河南经贸职业技术学院新校区, 考场=5, 准考证号=100505, gender=女, site=5, pic=司洋华1143.jpg]
+PIC NOT EXIST ::PersonBean [seq=181, name=许怀志, idcard=412727198211267235, 考试地点=河南经贸职业技术学院新校区, 考场=7, 准考证号=100701, gender=男, site=1, pic=许怀志7235.jpg]
+PIC NOT EXIST ::PersonBean [seq=273, name=刘琼琼, idcard=410482198908061102, 考试地点=河南经贸职业技术学院新校区, 考场=10, 准考证号=101003, gender=女, site=3, pic=刘琼琼1102.jpg]
+PIC NOT EXIST ::PersonBean [seq=320, name=张越, idcard=410728199004020044, 考试地点=河南经贸职业技术学院新校区, 考场=11, 准考证号=101120, gender=女, site=20, pic=张越0044x.jpg]
+PIC NOT EXIST ::PersonBean [seq=420, name=杨祖兴, idcard=411522198903156612, 考试地点=河南经贸职业技术学院新校区, 考场=14, 准考证号=101430, gender=男, site=30, pic=杨祖兴6612.jpg]
+PIC NOT EXIST ::PersonBean [seq=444, name=白晓辉, idcard=411329198906043115, 考试地点=河南经贸职业技术学院新校区, 考场=15, 准考证号=101524, gender=男, site=24, pic=白晓辉3115.jpg]
+PIC NOT EXIST ::PersonBean [seq=476, name=郝婧邑, idcard=410825199212017647, 考试地点=河南经贸职业技术学院新校区, 考场=16, 准考证号=101626, gender=女, site=26, pic=郝婧邑7647.jpg]
+PIC NOT EXIST ::PersonBean [seq=573, name=梁世峰, idcard=41092819850310007X, 考试地点=河南经贸职业技术学院新校区, 考场=20, 准考证号=102003, gender=男, site=3, pic=梁世锋007x.jpg]
+PIC NOT EXIST ::PersonBean [seq=732, name=曾妍妍, idcard=412727198810306144, 考试地点=河南经贸职业技术学院新校区, 考场=25, 准考证号=102512, gender=女, site=12, pic=曾妍妍6144.jpg]
+PIC NOT EXIST ::PersonBean [seq=746, name=郅亚男, idcard=410225198711070023, 考试地点=河南经贸职业技术学院新校区, 考场=25, 准考证号=102526, gender=女, site=26, pic=郅亚男0023.jpg]
+PIC NOT EXIST ::PersonBean [seq=889, name=白璐, idcard=411421198809080162, 考试地点=河南经贸职业技术学院新校区, 考场=30, 准考证号=103019, gender=女, site=19, pic=白璐0162.jpg]
+PIC NOT EXIST ::PersonBean [seq=957, name=张 洲, idcard=412725198712255416, 考试地点=河南经贸职业技术学院新校区, 考场=32, 准考证号=103227, gender=男, site=27, pic=张洲5416.jpg]
+PIC NOT EXIST ::PersonBean [seq=1102, name=李蔚聪, idcard=41132919911128004X, 考试地点=河南经贸职业技术学院新校区, 考场=37, 准考证号=103722, gender=女, site=22, pic=李蔚聪004x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1176, name=王婷婷, idcard=412821199103160029, 考试地点=河南经贸职业技术学院新校区, 考场=40, 准考证号=104006, gender=女, site=6, pic=王婷婷0029.jpg]
+PIC NOT EXIST ::PersonBean [seq=1258, name=程锦, idcard=41152619871026732X, 考试地点=河南经贸职业技术学院新校区, 考场=42, 准考证号=104228, gender=女, site=28, pic=程锦732x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1404, name=王海艳, idcard=410926198208202820, 考试地点=河南经贸职业技术学院新校区, 考场=47, 准考证号=104724, gender=女, site=24, pic=王海艳2820.jpg]
+PIC NOT EXIST ::PersonBean [seq=1440, name=梁伟锋, idcard=410183198702026571, 考试地点=河南经贸职业技术学院新校区, 考场=48, 准考证号=104830, gender=男, site=30, pic=梁伟锋6571.jpg]
+PIC NOT EXIST ::PersonBean [seq=1733, name=王炎, idcard=410823199110160300, 考试地点=河南经贸职业技术学院新校区, 考场=58, 准考证号=105823, gender=女, site=23, pic=王炎0300.jpg]
+PIC NOT EXIST ::PersonBean [seq=1775, name=侯蒙, idcard=410223198906150071, 考试地点=河南经贸职业技术学院新校区, 考场=60, 准考证号=106005, gender=男, site=5, pic=侯蒙0071.jpg]
+PIC NOT EXIST ::PersonBean [seq=1783, name=关彦林, idcard=411222198712035010, 考试地点=河南经贸职业技术学院新校区, 考场=60, 准考证号=106013, gender=男, site=13, pic=关彦林5010.jpg]
+PIC NOT EXIST ::PersonBean [seq=2017, name=穆晓净, idcard=410482199002225961, 考试地点=河南经贸职业技术学院新校区, 考场=68, 准考证号=106807, gender=女, site=7, pic=穆晓静5961.jpg]
+PIC NOT EXIST ::PersonBean [seq=2028, name=王安妮, idcard=41138119931010452X, 考试地点=河南经贸职业技术学院新校区, 考场=68, 准考证号=106818, gender=女, site=18, pic=王安妮452x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2076, name=孙红丽, idcard=410222198409064088, 考试地点=河南经贸职业技术学院新校区, 考场=70, 准考证号=107006, gender=女, site=6, pic=孙红丽4088_.jpg]
+PIC NOT EXIST ::PersonBean [seq=2123, name=刘晶, idcard=412823198708258027, 考试地点=河南经贸职业技术学院新校区, 考场=71, 准考证号=107123, gender=女, site=23, pic=刘晶.jpg]
+PIC NOT EXIST ::PersonBean [seq=2286, name=穆向莉, idcard=410329198204161546, 考试地点=河南经贸职业技术学院新校区, 考场=77, 准考证号=107706, gender=女, site=6, pic=穆向莉1546.jpg]
+PIC NOT EXIST ::PersonBean [seq=2417, name=冯亚军, idcard=411325199006100443, 考试地点=河南经贸职业技术学院新校区, 考场=81, 准考证号=108117, gender=女, site=17, pic=冯亚军0443.jpg]
+PIC NOT EXIST ::PersonBean [seq=2435, name=孙佳佳, idcard=41078219830523500X, 考试地点=河南经贸职业技术学院新校区, 考场=82, 准考证号=108205, gender=女, site=5, pic=孙佳佳5002x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2442, name=袁英杰, idcard=411327198104150055, 考试地点=河南经贸职业技术学院新校区, 考场=82, 准考证号=108212, gender=男, site=12, pic=袁英杰0055.jpg]
+PIC NOT EXIST ::PersonBean [seq=2571, name=缪琪, idcard=410411198901205841, 考试地点=河南经贸职业技术学院新校区, 考场=86, 准考证号=108621, gender=女, site=21, pic=缪琪5841.jpg]
+PIC NOT EXIST ::PersonBean [seq=2697, name=秦国臣, idcard=41062119881003207X, 考试地点=河南经贸职业技术学院新校区, 考场=90, 准考证号=109027, gender=男, site=27, pic=秦国臣207x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2751, name=翟献宏, idcard=413028198211228956, 考试地点=河南经贸职业技术学院新校区, 考场=92, 准考证号=109221, gender=男, site=21, pic=翟献宏8956.jpg]
+PIC NOT EXIST ::PersonBean [seq=2793, name=刘  岩, idcard=410926199111234994, 考试地点=河南经贸职业技术学院新校区, 考场=94, 准考证号=109403, gender=男, site=3, pic=刘岩4994.jpg]
+PIC NOT EXIST ::PersonBean [seq=2811, name=于鹏, idcard=410402198308305597, 考试地点=河南经贸职业技术学院新校区, 考场=94, 准考证号=109421, gender=男, site=21, pic=于鹏5597.jpg]
+PIC NOT EXIST ::PersonBean [seq=2840, name=金银银, idcard=411325199110062360, 考试地点=河南经贸职业技术学院新校区, 考场=95, 准考证号=109520, gender=女, site=20, pic=金银银2360.jpg]
+PIC NOT EXIST ::PersonBean [seq=2925, name=闫艳, idcard=411330198405121520, 考试地点=河南经贸职业技术学院新校区, 考场=98, 准考证号=109815, gender=女, site=15, pic=闫艳1520.jpg]
+PIC NOT EXIST ::PersonBean [seq=2940, name=桂朋召, idcard=410482198612175530, 考试地点=河南经贸职业技术学院新校区, 考场=98, 准考证号=109830, gender=男, site=30, pic=桂鹏召5530.jpg]
+PIC NOT EXIST ::PersonBean [seq=3014, name=樊煜珮, idcard=410901199010314023, 考试地点=河南经贸职业技术学院新校区, 考场=101, 准考证号=110114, gender=女, site=14, pic=樊煜珮4023.jpg]
+PIC NOT EXIST ::PersonBean [seq=3051, name=徐超, idcard=410202197909270531, 考试地点=河南经贸职业技术学院新校区, 考场=102, 准考证号=110221, gender=男, site=21, pic=徐超0531.jpg]
+PIC NOT EXIST ::PersonBean [seq=3215, name=毛佩珊, idcard=410728199203210529, 考试地点=河南经贸职业技术学院新校区, 考场=108, 准考证号=110805, gender=女, site=5, pic=毛佩珊0529.jpg]
+PIC NOT EXIST ::PersonBean [seq=3290, name=温颖洁, idcard=410224198810020025, 考试地点=河南经贸职业技术学院新校区, 考场=110, 准考证号=111020, gender=女, site=20, pic=温颖洁0025.jpg]
+PIC NOT EXIST ::PersonBean [seq=3307, name=杨清潮, idcard=411423199006167077, 考试地点=河南经贸职业技术学院新校区, 考场=111, 准考证号=111107, gender=男, site=7, pic=杨清潮7077.jpg]
+PIC NOT EXIST ::PersonBean [seq=3416, name=顾锐, idcard=411322198803252075, 考试地点=河南经贸职业技术学院新校区, 考场=114, 准考证号=111426, gender=男, site=26, pic=顾锐2075.jpg]
+PIC NOT EXIST ::PersonBean [seq=3591, name=甘小丽, idcard=41290119710609200X, 考试地点=河南经贸职业技术学院新校区, 考场=120, 准考证号=112021, gender=女, site=21, pic=甘小丽200x.jpg]
+PIC NOT EXIST ::PersonBean [seq=3678, name=全姍, idcard=411323198810046321, 考试地点=河南经贸职业技术学院新校区, 考场=123, 准考证号=112318, gender=女, site=18, pic=全姍6321.jpg]
+
+Error Count :: 44  FM ERR :: 73  PIC REMAIN ::44
+
+Still ::: D:\GG\2\prod\省联社照片New\09濮阳（144）\范县（31）\刘严4994.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\温颖杰 0025.png
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\金银银2360.jpg.jpg
+Still ::: D:\GG\2\prod\省联社照片New\12三门峡（117）\陕州（25）\关彦林0501.jpg
+Still ::: D:\GG\2\prod\省联社照片New\04平顶山（253）\宝丰（25）\桂朋召5530.jpg
+Still ::: D:\GG\2\prod\省联社照片New\11周口（137）\7-淮阳县联社（15）\徐怀志7235.jpg
+Still ::: D:\GG\2\prod\省联社照片New\09濮阳（144）\濮阳县（20）\梁世峰007X.jpg
+Still ::: D:\GG\2\prod\省联社照片New\17驻马店（180）\刘晶8027.jpg
+Still ::: D:\GG\2\prod\省联社照片New\11周口（137）\9-项城农商行（23）\曾研研 6144.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\徐超 0513.jpg
+Still ::: D:\GG\2\prod\省联社照片New\审计部（8）\梁伟锋5671.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\闫燕1520.jpg
+Still ::: D:\GG\2\prod\省联社照片New\06鹤壁（108）\淇县联社（24）\程峰0018.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\郅亚楠0023.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\白露 0162.png
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\白晓辉.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\甘晓丽200X.jpg
+Still ::: D:\GG\2\prod\省联社照片New\03洛阳（198）\洛阳农商银行39人\刘琼琼6110.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\袁杰0055.jpg
+Still ::: D:\GG\2\prod\省联社照片New\15信阳（211）\程锦723X.jpg
+Still ::: D:\GG\2\prod\省联社照片New\04平顶山（253）\市郊（21）\于鹏5579.jpg
+Still ::: D:\GG\2\prod\省联社照片New\11漯河（148）\舞阳（15）\舞阳联社2018审计资格考试资料\舞阳联社审计考试人员照片\顾锐新2075.jpg
+Still ::: D:\GG\2\prod\省联社照片New\09濮阳（144）\范县（31）\王海燕2820.jpg
+Still ::: D:\GG\2\prod\省联社照片New\03洛阳（198）\汝阳农商银行14人\穆晓净5961.jpg
+Still ::: D:\GG\2\prod\省联社照片New\14商丘（207）\宁陵（21）\杨清朝7077.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\冯亚军.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\杨助兴6612.JPG
+Still ::: D:\GG\2\prod\省联社照片New\03洛阳（198）\伊川农商银行16人\穆向丽1546.jpg
+Still ::: D:\GG\2\prod\省联社照片New\03洛阳（198）\汝阳农商银行14人\翟现宏8956.jpg
+Still ::: D:\GG\2\prod\省联社照片New\07新乡（346）\新乡县联社（41）\孙佳佳 500X.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\孙红丽4088.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\全珊6321.jpg
+Still ::: D:\GG\2\prod\省联社照片New\17驻马店（180）\王婷0029.jpg
+Still ::: D:\GG\2\prod\省联社照片New\02开封（181）\候蒙0071.jpg
+Still ::: D:\GG\2\prod\省联社照片New\08焦作（306）\06孟州（25）\郝婧色7647.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\王安妮425x.jpg
+Still ::: D:\GG\2\prod\省联社照片New\06鹤壁（108）\淇县联社（24）\李玲4622.jpg
+Still ::: D:\GG\2\prod\省联社照片New\08焦作（306）\10马村（16）\王炎0030.jpg
+Still ::: D:\GG\2\prod\省联社照片New\17驻马店（180）\司洋华1443.jpg
+Still ::: D:\GG\2\prod\省联社照片New\13南阳（484）\李蔚聪.jpg
+Still ::: D:\GG\2\prod\省联社照片New\03洛阳（198）\洛阳农商银行39人\缪琪0584.jpg
+Still ::: D:\GG\2\prod\省联社照片New\11周口（137）\5-鹿邑农商行（14）\张州5416.jpg
+Still ::: D:\GG\2\prod\省联社照片New\09濮阳（144）\南乐（25）\樊煜佩 4023.jpg
+Still ::: D:\GG\2\prod\省联社照片New\06鹤壁（108）\鹤壁农商银行（56）\审计考试照片\秦国臣203X.jpg
+
+
+
+-----------------------
+zip2
+IDCARD ERR ::: PersonBean [seq=183, name=郭航涛, idcard=41052619898080033, 考试地点=河南经贸职业技术学院新校区, 考场=7, 准考证号=100703, gender=男, site=3, pic=郭航涛0033]
+
+zip25
+IDCARD ERR ::: PersonBean [seq=2413, name=徐一洹, idcard=41042119880384532, 考试地点=河南经贸职业技术学院新校区, 考场=81, 准考证号=108113, gender=男, site=13, pic=徐一洹4532]
+
+zip29
+IDCARD ERR ::: PersonBean [seq=2802, name=张晓芳, idcard=41048198610157543, 考试地点=河南经贸职业技术学院新校区, 考场=94, 准考证号=109412, gender=女, site=12, pic=张晓芳7543]
+
+3772 | 3774
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新密（38）\蔡佳楠3767.JPG TO PATH ::: D:/GG/2/prod/tmpDir/蔡佳楠3767.JPG PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\11周口（137）\5-鹿邑农商行（14）\完颜孙宇8296.jpg TO PATH ::: D:/GG/2/prod/tmpDir/完颜孙宇8296.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市郊（92）\付要锋 2343.jpg TO PATH ::: D:/GG/2/prod/tmpDir/付要锋 2343.jpg PRESS SIZE 11KB
+Press PIC : D:\GG\2\prod\省联社照片New\06鹤壁（108）\鹤壁农商银行（56）\审计考试照片\孙洋 423X.jpg TO PATH ::: D:/GG/2/prod/tmpDir/孙洋 423X.jpg PRESS SIZE 7KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市区（54）\马凤杰0666.jpg TO PATH ::: D:/GG/2/prod/tmpDir/马凤杰0666.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\刘合洲1014.jpg TO PATH ::: D:/GG/2/prod/tmpDir/刘合洲1014.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\马红522X.jpg TO PATH ::: D:/GG/2/prod/tmpDir/马红522X.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\庞中三1535.JPG TO PATH ::: D:/GG/2/prod/tmpDir/庞中三1535.JPG PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\程文魁2212.jpg TO PATH ::: D:/GG/2/prod/tmpDir/程文魁2212.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新密（38）\王明霞3762.JPG TO PATH ::: D:/GG/2/prod/tmpDir/王明霞3762.JPG PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\11漯河（148）\召陵（36）\召陵-电子版照片\83.张珂佳9566.jpg TO PATH ::: D:/GG/2/prod/tmpDir/83.张珂佳9566.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\郭磊0331.jpg TO PATH ::: D:/GG/2/prod/tmpDir/郭磊0331.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\黄晓庆9343.jpg TO PATH ::: D:/GG/2/prod/tmpDir/黄晓庆9343.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\17驻马店（180）\蒋雅0048.jpg TO PATH ::: D:/GG/2/prod/tmpDir/蒋雅0048.jpg PRESS SIZE 11KB
+Press PIC : D:\GG\2\prod\省联社照片New\02开封（181）\秦方舒9828.JPG TO PATH ::: D:/GG/2/prod/tmpDir/秦方舒9828.JPG PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市郊（92）\何素莹 7526.jpg TO PATH ::: D:/GG/2/prod/tmpDir/何素莹 7526.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\07新乡（346）\平原农商行（33）\赵楠楠 2229.jpg TO PATH ::: D:/GG/2/prod/tmpDir/赵楠楠 2229.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市郊（92）\刘飞 151X.jpg TO PATH ::: D:/GG/2/prod/tmpDir/刘飞 151X.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\09濮阳（144）\台前（18）\程广亮2235.JPG TO PATH ::: D:/GG/2/prod/tmpDir/程广亮2235.JPG PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\贾冰清6348.jpg TO PATH ::: D:/GG/2/prod/tmpDir/贾冰清6348.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\09濮阳（144）\台前（18）\曹   瑞8624.JPG TO PATH ::: D:/GG/2/prod/tmpDir/曹   瑞8624.JPG PRESS SIZE 12KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市区（54）\程宇1027.jpg TO PATH ::: D:/GG/2/prod/tmpDir/程宇1027.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\吴凯希002X.jpg TO PATH ::: D:/GG/2/prod/tmpDir/吴凯希002X.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\04平顶山（253）\叶县（31）\宋旭阳0075.jpg TO PATH ::: D:/GG/2/prod/tmpDir/宋旭阳0075.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\张晶晶1161.jpg TO PATH ::: D:/GG/2/prod/tmpDir/张晶晶1161.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\吴富英1541.JPG TO PATH ::: D:/GG/2/prod/tmpDir/吴富英1541.JPG PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\06鹤壁（108）\鹤壁农商银行（56）\审计考试照片\张明娅7524.jpg TO PATH ::: D:/GG/2/prod/tmpDir/张明娅7524.jpg PRESS SIZE 13KB
+Press PIC : D:\GG\2\prod\省联社照片New\第一审计室（7）\王倩倩 0047.jpg TO PATH ::: D:/GG/2/prod/tmpDir/王倩倩 0047.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\03洛阳（198）\孟津农商银行17人\单玉鸽2069 .jpg TO PATH ::: D:/GG/2/prod/tmpDir/单玉鸽2069 .jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\第四审计室（4）\岳振宇0112.jpg TO PATH ::: D:/GG/2/prod/tmpDir/岳振宇0112.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\03洛阳（198）\伊川农商银行16人\李翠琴2086.jpg TO PATH ::: D:/GG/2/prod/tmpDir/李翠琴2086.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\梁蕊3527.jpg TO PATH ::: D:/GG/2/prod/tmpDir/梁蕊3527.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\09濮阳（144）\濮阳农商行（31）\刘莉莉0524.jpg TO PATH ::: D:/GG/2/prod/tmpDir/刘莉莉0524.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市郊（92）\郑亚明 2522.jpg TO PATH ::: D:/GG/2/prod/tmpDir/郑亚明 2522.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\11漯河（148）\召陵（36）\召陵-电子版照片\84.孙可 0257.jpg TO PATH ::: D:/GG/2/prod/tmpDir/84.孙可 0257.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\06鹤壁（108）\鹤壁农商银行（56）\审计考试照片\张文文0045.jpg TO PATH ::: D:/GG/2/prod/tmpDir/张文文0045.jpg PRESS SIZE 11KB
+Press PIC : D:\GG\2\prod\省联社照片New\10许昌 (174)\长葛农商银行审计考试照片（37人）\王亚军8425.jpg TO PATH ::: D:/GG/2/prod/tmpDir/王亚军8425.jpg PRESS SIZE 13KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\李官明2734.jpg TO PATH ::: D:/GG/2/prod/tmpDir/李官明2734.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\郑州市区（54）\侯慧敏3023.jpg TO PATH ::: D:/GG/2/prod/tmpDir/侯慧敏3023.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\07新乡（346）\辉县农商行（41）\陈洁5433.jpg TO PATH ::: D:/GG/2/prod/tmpDir/陈洁5433.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\03洛阳（198）\孟津农商银行17人\任旭辉9879.jpg TO PATH ::: D:/GG/2/prod/tmpDir/任旭辉9879.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\10许昌 (174)\长葛农商银行审计考试照片（37人）\耿玲菊9068.jpg TO PATH ::: D:/GG/2/prod/tmpDir/耿玲菊9068.jpg PRESS SIZE 14KB
+Press PIC : D:\GG\2\prod\省联社照片New\08焦作（306）\09中站（22）\耿超5023.jpg TO PATH ::: D:/GG/2/prod/tmpDir/耿超5023.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\11周口（137）\9-项城农商行（23）\宋耀朋 8416.JPG TO PATH ::: D:/GG/2/prod/tmpDir/宋耀朋 8416.JPG PRESS SIZE 11KB
+Press PIC : D:\GG\2\prod\省联社照片New\03洛阳（198）\孟津农商银行17人\孙荣基9893.jpg TO PATH ::: D:/GG/2/prod/tmpDir/孙荣基9893.jpg PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\01郑州（310）\新郑（51）\杨彬0015.jpg TO PATH ::: D:/GG/2/prod/tmpDir/杨彬0015.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\05安阳（160）\李泽云5081.jpg TO PATH ::: D:/GG/2/prod/tmpDir/李泽云5081.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\10许昌 (174)\长葛农商银行审计考试照片（37人）\刘小婕7287.jpg TO PATH ::: D:/GG/2/prod/tmpDir/刘小婕7287.jpg PRESS SIZE 13KB
+Press PIC : D:\GG\2\prod\省联社照片New\13南阳（484）\杜桥2852.jpg TO PATH ::: D:/GG/2/prod/tmpDir/杜桥2852.jpg PRESS SIZE 8KB
+Press PIC : D:\GG\2\prod\省联社照片New\07新乡（346）\新乡县联社（41）\杜明慧 2561.JPG TO PATH ::: D:/GG/2/prod/tmpDir/杜明慧 2561.JPG PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\03洛阳（198）\洛阳农商银行39人\娄艳阁0625.JPG TO PATH ::: D:/GG/2/prod/tmpDir/娄艳阁0625.JPG PRESS SIZE 10KB
+Press PIC : D:\GG\2\prod\省联社照片New\第三审计室（6）\殷俊0549.jpg TO PATH ::: D:/GG/2/prod/tmpDir/殷俊0549.jpg PRESS SIZE 9KB
+Press PIC : D:\GG\2\prod\省联社照片New\10许昌 (174)\长葛农商银行审计考试照片（37人）\岳帅9018.jpg TO PATH ::: D:/GG/2/prod/tmpDir/岳帅9018.jpg PRESS SIZE 12KB
+Error Count :: 0  FM ERR :: 75  PIC REMAIN ::2
+Press Pic :: 53
+Still ::: D:\GG\2\prod\省联社照片New\06鹤壁（108）\淇县联社（24）\程峰0018.jpg
+Still ::: D:\GG\2\prod\省联社照片New\06鹤壁（108）\淇县联社（24）\李玲4622.jpg
+
+
+

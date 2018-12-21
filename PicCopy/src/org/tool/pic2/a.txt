@@ -1,0 +1,183 @@
+ [seq=50, name=毛  爽, idcard=412721199612260348, 考试地点=河南0220, gender=女, site=20, pic=毛爽0348.jpg]  ---
+ [seq=125, name=司洋华, idcard=412801198910031143, 考试地点=河00505, gender=女, site=5, pic=司洋华1143.jpg]  司洋华1443.jpg
+ [seq=181, name=许怀志, idcard=412727198211267235, 考试地点=河00701, gender=男, site=1, pic=许怀志7235.jpg] 徐怀志7235.jpg
+ [seq=273, name=刘琼琼, idcard=410482198908061102, 考试地点=河101003, gender=女, site=3, pic=刘琼琼1102.jpg]  maybe 刘琼琼6110.jpg
+ [seq=420, name=杨祖兴, idcard=411522198903156612, 考试地点=河101430, gender=男, site=30, pic=杨祖兴6612.jpg]  杨助兴6612.JPG
+ [seq=444, name=白晓辉, idcard=411329198906043115, 考试地点=河101524, gender=男, site=24, pic=白晓辉3115.jpg]D:\GG\2\prod\照片汇总\13南阳（484）\白晓辉.jpg
+ [seq=476, name=郝婧邑, idcard=410825199212017647, 考试地点=河101626, gender=女, site=26, pic=郝婧邑7647.jpg] 郝婧色7647.jpg
+ [seq=484, name=孟小雯, idcard=410328199208112045, 考试地点=河101704, gender=女, site=4, pic=孟小雯2045.jpg]  ---
+ [seq=573, name=梁世峰, idcard=41092819850310007X, 考试地点=河102003, gender=男, site=3, pic=梁世锋007x.jpg]梁世峰007X.jpg
+ [seq=732, name=曾妍妍, idcard=412727198810306144, 考试地点=河102512, gender=女, site=12, pic=曾妍妍6144.jpg]曾研研 6144.jpg
+ [seq=746, name=郅亚男, idcard=410225198711070023, 考试地点=河102526, gender=女, site=26, pic=郅亚男0023.jpg]郅亚楠0023.jpg
+ [seq=889, name=白璐, idcard=411421198809080162, 考试地点=河南3019, gender=女, site=19, pic=白璐0162.jpg] 白露 0162.png
+ [seq=957, name=张 洲, idcard=412725198712255416, 考试地点=河南03227, gender=男, site=27, pic=张洲5416.jpg]张州5416.jpg
+ [seq=998, name=王团, idcard=410183198801093032, 考试地点=河南3408, gender=男, site=8, pic=王团3032.jpg] ---
+ [seq=1102, name=李蔚聪, idcard=41132919911128004X, 考试地点=河=103722, gender=女, site=22, pic=李蔚聪004x.jpg]李蔚聪.jpg
+ [seq=1176, name=王婷婷, idcard=412821199103160029, 考试地点=河=104006, gender=女, site=6, pic=王婷婷0029.jpg]  maybe王婷0029.jpg
+ [seq=1258, name=程锦, idcard=41152619871026732X, 考试地点=河南04228, gender=女, site=28, pic=程锦732x.jpg]   程锦723X.jpg
+ [seq=1283, name=凌剑, idcard=411323199202033855, 考试地点=河南04323, gender=男, site=23, pic=凌剑3855.jpg]  ---
+ [seq=1404, name=王海艳, idcard=410926198208202820, 考试地点=河=104724, gender=女, site=24, pic=王海艳2820.jpg]  王海燕2820.jpg
+ [seq=1440, name=梁伟锋, idcard=410183198702026571, 考试地点=河=104830, gender=男, site=30, pic=梁伟锋6571.jpg] 梁伟锋5671.jpg
+ [seq=1496, name=秦奎, idcard=411222198901183514, 考试地点=河南05026, gender=男, site=26, pic=秦奎3514.jpg] ---
+ [seq=1539, name=尚春杨, idcard=41042219910404281X, 考试地点=河=105209, gender=男, site=9, pic=尚春杨281x.jpg] ---
+ [seq=1708, name=安然, idcard=410725199310179783, 考试地点=河南05728, gender=女, site=28, pic=安然9783.jpg] ---
+ [seq=1733, name=王炎, idcard=410823199110160300, 考试地点=河南05823, gender=女, site=23, pic=王炎0300.jpg] 王炎0030.jpg
+ [seq=1737, name=褚家袖, idcard=41272619880824163X, 考试地点=河=105827, gender=男, site=27, pic=褚家袖163x.jpg]  ---
+ [seq=1741, name=翟磊苹, idcard=410526198611255365, 考试地点=河=105901, gender=女, site=1, pic=翟磊苹5365.jpg] ---
+ [seq=1775, name=侯蒙, idcard=410223198906150071, 考试地点=河南06005, gender=男, site=5, pic=侯蒙0071.jpg]   候蒙0071.jpg
+ [seq=1783, name=关彦林, idcard=411222198712035010, 考试地点=河=106013, gender=男, site=13, pic=关彦林5010.jpg]  关彦林0501.jpg
+ [seq=1861, name=李庆飞, idcard=410522198908012035, 考试地点=河=106301, gender=男, site=1, pic=李庆飞2035.jpg] ---
+ [seq=1927, name=徐磊, idcard=41072519880118083X, 考试地点=河南06507, gender=男, site=7, pic=徐磊083x.jpg]  ---
+ [seq=1971, name=李  伟, idcard=412821198508011051, 考试地点=河=106621, gender=男, site=21, pic=李伟1051.jpg]  ---
+ [seq=2017, name=穆晓净, idcard=410482199002225961, 考试地点=河=106807, gender=女, site=7, pic=穆晓静5961.jpg] 穆晓净5961.jpg
+ [seq=2028, name=王安妮, idcard=41138119931010452X, 考试地点=河=106818, gender=女, site=18, pic=王安妮452x.jpg] 王安妮425x.jpg
+ [seq=2076, name=孙红丽, idcard=410222198409064088, 考试地点=河=107006, gender=女, site=6, pic=孙红丽4088_.jpg]  孙红丽4088.jpg
+ [seq=2123, name=刘晶, idcard=412823198708258027, 考试地点=河南07123, gender=女, site=23, pic=刘晶.jpg]  刘晶8027.jpg
+ [seq=2197, name=郝宗磊, idcard=410704198509190019, 考试地点=河=107407, gender=男, site=7, pic=郝宗磊0019.jpg] --- 
+ [seq=2286, name=穆向莉, idcard=410329198204161546, 考试地点=河=107706, gender=女, site=6, pic=穆向莉1546.jpg]  穆向丽1546.jpg
+ [seq=2294, name=谢婷婷, idcard=410901198708251525, 考试地点=河=107714, gender=女, site=14, pic=.jpg]  --- 
+ [seq=2417, name=冯亚军, idcard=411325199006100443, 考试地点=河=108117, gender=女, site=17, pic=冯亚军0443.jpg] D:\GG\2\prod\照片汇总\13南阳（484）\冯亚军.jpg
+ [seq=2422, name=肖继章, idcard=41282919810810003X, 考试地点=河=108122, gender=男, site=22, pic=肖继章003x.jpg] ---
+ [seq=2435, name=孙佳佳, idcard=41078219830523500X, 考试地点=河=108205, gender=女, site=5, pic=孙佳佳5002x.jpg] 孙佳佳 500X.jpg
+ [seq=2442, name=袁英杰, idcard=411327198104150055, 考试地点=河=108212, gender=男, site=12, pic=袁英杰0055.jpg] D:\GG\2\prod\照片汇总\13南阳（484）\袁杰0055.jpg
+ [seq=2571, name=缪琪, idcard=410411198901205841, 考试地点=河南08621, gender=女, site=21, pic=缪琪5841.jpg] 缪琪0584.jpg
+ [seq=2697, name=秦国臣, idcard=41062119881003207X, 考试地点=河=109027, gender=男, site=27, pic=秦国臣207x.jpg]  秦国臣203X.jpg
+ [seq=2751, name=翟献宏, idcard=413028198211228956, 考试地点=河=109221, gender=男, site=21, pic=翟献宏8956.jpg]  翟现宏8956.jpg
+ [seq=2793, name=刘  岩, idcard=410926199111234994, 考试地点=河=109403, gender=男, site=3, pic=刘岩4994.jpg]  刘严4994.jpg
+ [seq=2811, name=于鹏, idcard=410402198308305597, 考试地点=河南09421, gender=男, site=21, pic=于鹏5597.jpg]  于鹏5579.jpg
+ [seq=2925, name=闫艳, idcard=411330198405121520, 考试地点=河南09815, gender=女, site=15, pic=闫艳1520.jpg]  闫燕1520.jpg
+ [seq=2940, name=桂朋召, idcard=410482198612175530, 考试地点=河=109830, gender=男, site=30, pic=桂鹏召5530.jpg] 桂朋召5530.jpg
+ [seq=3014, name=樊煜珮, idcard=410901199010314023, 考试地点=河=110114, gender=女, site=14, pic=樊煜珮4023.jpg] 樊煜佩 4023.jpg
+ [seq=3051, name=徐超, idcard=410202197909270531, 考试地点=河南110221, gender=男, site=21, pic=徐超0531.jpg]  徐超 0513.jpg
+ [seq=3290, name=温颖洁, idcard=410224198810020025, 考试地点=河=111020, gender=女, site=20, pic=温颖洁0025.jpg] 温颖杰 0025.png
+ [seq=3307, name=杨清潮, idcard=411423199006167077, 考试地点=河=111107, gender=男, site=7, pic=杨清潮7077.jpg]  杨清朝7077.jpg
+ [seq=3416, name=顾锐, idcard=411322198803252075, 考试地点=河南111426, gender=男, site=26, pic=顾锐2075.jpg] maybe 顾锐新2075.jpg 
+ [seq=3591, name=甘小丽, idcard=41290119710609200X, 考试地点=河=112021, gender=女, site=21, pic=甘小丽200x.jpg] 甘晓丽200X.jpg
+ [seq=3678, name=全姍, idcard=411323198810046321, 考试地点=河南112318, gender=女, site=18, pic=全姍6321.jpg]   全珊6321.jpg
+
+ 
+ 3772 | 3765
+
+ Error Count :: 78  FM ERR :: 69
+ ------------------------------------------------------
+3772 | 3769
+Error Count :: 56  FM ERR :: 73
+--------------------------------------
+3772 | 3769
+Error Count :: 56  FM ERR :: 73  PIC REMAIN ::53
+
+
+
+Still ::: D:\GG\2\prod\照片汇总\09濮阳（144）\范县（31）\刘严4994.jpg     ++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\07新乡（346）\凤泉区联社（12）\徐磊0019.jpg
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\温颖杰 0025.png  +++++++++++
+Still ::: D:\GG\2\prod\照片汇总\05安阳（160）\翟磊苹002.jpg
+Still ::: D:\GG\2\prod\照片汇总\12三门峡（117）\陕州（25）\关彦林0501.jpg   ++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\04平顶山（253）\宝丰（25）\桂朋召5530.jpg  +++++++++++
+Still ::: D:\GG\2\prod\照片汇总\11周口（137）\7-淮阳县联社（15）\徐怀志7235.jpg  ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\09濮阳（144）\濮阳县（20）\梁世峰007X.jpg   ++++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\17驻马店（180）\刘晶8027.jpg  ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\11周口（137）\9-项城农商行（23）\曾研研 6144.jpg  +++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\徐超 0513.jpg ++++
+Still ::: D:\GG\2\prod\照片汇总\审计部（8）\梁伟锋5671.jpg   ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\凌剑9644.jpg
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\闫燕1520.jpg ++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\06鹤壁（108）\淇县联社（24）\程峰0018.jpg
+Still ::: D:\GG\2\prod\照片汇总\11周口（137）\6-郸城县联社（23）\褚家袖1662.jpg
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\郅亚楠0023.jpg   +++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\白露 0162.png   +++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\09濮阳（144）\濮阳农商行（31）\谢婷婷1525.jpg
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\洛宁农商银行14人\孟小雯-045.jpg
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\白晓辉.jpg   ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\07新乡（346）\凤泉区联社（12）\郝宗磊083X.jpg
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\甘晓丽200X.jpg +++++
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\洛阳农商银行39人\刘琼琼6110.jpg   ++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\袁杰0055.jpg    +++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\15信阳（211）\程锦723X.jpg  ++++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\04平顶山（253）\市郊（21）\于鹏5579.jpg  ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\11漯河（148）\舞阳（15）\舞阳联社2018审计资格考试资料\舞阳联社审计考试人员照片\顾锐新2075.jpg +++++
+Still ::: D:\GG\2\prod\照片汇总\09濮阳（144）\范县（31）\王海燕2820.jpg   ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\汝阳农商银行14人\穆晓净5961.jpg   ++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\14商丘（207）\宁陵（21）\杨清朝7077.jpg   ++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\冯亚军.jpg   ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\杨助兴6612.JPG  ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\伊川农商银行16人\穆向丽1546.jpg  +++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\汝阳农商银行14人\翟现宏8956.jpg ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\07新乡（346）\新乡县联社（41）\孙佳佳 500X.jpg    +++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\孙红丽4088.jpg  ++++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\全珊6321.jpg   ++++++ 
+Still ::: D:\GG\2\prod\照片汇总\17驻马店（180）\王婷0029.jpg   ++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\07新乡（346）\原阳农商行（26）\安然 9391.jpg
+Still ::: D:\GG\2\prod\照片汇总\02开封（181）\候蒙0071.jpg  ++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\12三门峡（117）\陕州（25）\秦奎3517.jpg
+Still ::: D:\GG\2\prod\照片汇总\08焦作（306）\06孟州（25）\郝婧色7647.jpg  +++++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\王安妮425x.jpg +++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\06鹤壁（108）\淇县联社（24）\李玲4622.jpg
+Still ::: D:\GG\2\prod\照片汇总\08焦作（306）\10马村（16）\王炎0030.jpg   +++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\17驻马店（180）\司洋华1443.jpg  +++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\04平顶山（253）\市郊（21）\王团0115.jpg
+Still ::: D:\GG\2\prod\照片汇总\13南阳（484）\李蔚聪.jpg  +++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\03洛阳（198）\洛阳农商银行39人\缪琪0584.jpg  ++++++++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\11周口（137）\5-鹿邑农商行（14）\张州5416.jpg   +++++++++++++
+Still ::: D:\GG\2\prod\照片汇总\09濮阳（144）\南乐（25）\樊煜佩 4023.jpg  ++++++++++
+Still ::: D:\GG\2\prod\照片汇总\06鹤壁（108）\鹤壁农商银行（56）\审计考试照片\秦国臣203X.jpg  ++++++++++++
+
+ 
+ PIC NOT EXIST ::PersonBean [seq=50, name=毛  爽, idcard=412721199612260348, 考试地点=河南经贸职业技术学院新校区, 考场=2, 准考证号=100220, gender=女, site=20, pic=毛爽0348.jpg]
+PIC NOT EXIST ::PersonBean [seq=125, name=司洋华, idcard=412801198910031143, 考试地点=河南经贸职业技术学院新校区, 考场=5, 准考证号=100505, gender=女, site=5, pic=司洋华1143.jpg]
+PIC NOT EXIST ::PersonBean [seq=181, name=许怀志, idcard=412727198211267235, 考试地点=河南经贸职业技术学院新校区, 考场=7, 准考证号=100701, gender=男, site=1, pic=许怀志7235.jpg]
+PIC NOT EXIST ::PersonBean [seq=273, name=刘琼琼, idcard=410482198908061102, 考试地点=河南经贸职业技术学院新校区, 考场=10, 准考证号=101003, gender=女, site=3, pic=刘琼琼1102.jpg]
+PIC NOT EXIST ::PersonBean [seq=420, name=杨祖兴, idcard=411522198903156612, 考试地点=河南经贸职业技术学院新校区, 考场=14, 准考证号=101430, gender=男, site=30, pic=杨祖兴6612.jpg]
+PIC NOT EXIST ::PersonBean [seq=444, name=白晓辉, idcard=411329198906043115, 考试地点=河南经贸职业技术学院新校区, 考场=15, 准考证号=101524, gender=男, site=24, pic=白晓辉3115.jpg]
+PIC NOT EXIST ::PersonBean [seq=476, name=郝婧邑, idcard=410825199212017647, 考试地点=河南经贸职业技术学院新校区, 考场=16, 准考证号=101626, gender=女, site=26, pic=郝婧邑7647.jpg]
+PIC NOT EXIST ::PersonBean [seq=484, name=孟小雯, idcard=410328199208112045, 考试地点=河南经贸职业技术学院新校区, 考场=17, 准考证号=101704, gender=女, site=4, pic=孟小雯2045.jpg]
+PIC NOT EXIST ::PersonBean [seq=573, name=梁世峰, idcard=41092819850310007X, 考试地点=河南经贸职业技术学院新校区, 考场=20, 准考证号=102003, gender=男, site=3, pic=梁世锋007x.jpg]
+PIC NOT EXIST ::PersonBean [seq=732, name=曾妍妍, idcard=412727198810306144, 考试地点=河南经贸职业技术学院新校区, 考场=25, 准考证号=102512, gender=女, site=12, pic=曾妍妍6144.jpg]
+PIC NOT EXIST ::PersonBean [seq=746, name=郅亚男, idcard=410225198711070023, 考试地点=河南经贸职业技术学院新校区, 考场=25, 准考证号=102526, gender=女, site=26, pic=郅亚男0023.jpg]
+PIC NOT EXIST ::PersonBean [seq=889, name=白璐, idcard=411421198809080162, 考试地点=河南经贸职业技术学院新校区, 考场=30, 准考证号=103019, gender=女, site=19, pic=白璐0162.jpg]
+PIC NOT EXIST ::PersonBean [seq=957, name=张 洲, idcard=412725198712255416, 考试地点=河南经贸职业技术学院新校区, 考场=32, 准考证号=103227, gender=男, site=27, pic=张洲5416.jpg]
+PIC NOT EXIST ::PersonBean [seq=998, name=王团, idcard=410183198801093032, 考试地点=河南经贸职业技术学院新校区, 考场=34, 准考证号=103408, gender=男, site=8, pic=王团3032.jpg]
+PIC NOT EXIST ::PersonBean [seq=1102, name=李蔚聪, idcard=41132919911128004X, 考试地点=河南经贸职业技术学院新校区, 考场=37, 准考证号=103722, gender=女, site=22, pic=李蔚聪004x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1176, name=王婷婷, idcard=412821199103160029, 考试地点=河南经贸职业技术学院新校区, 考场=40, 准考证号=104006, gender=女, site=6, pic=王婷婷0029.jpg]
+PIC NOT EXIST ::PersonBean [seq=1258, name=程锦, idcard=41152619871026732X, 考试地点=河南经贸职业技术学院新校区, 考场=42, 准考证号=104228, gender=女, site=28, pic=程锦732x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1283, name=凌剑, idcard=411323199202033855, 考试地点=河南经贸职业技术学院新校区, 考场=43, 准考证号=104323, gender=男, site=23, pic=凌剑3855.jpg]
+PIC NOT EXIST ::PersonBean [seq=1404, name=王海艳, idcard=410926198208202820, 考试地点=河南经贸职业技术学院新校区, 考场=47, 准考证号=104724, gender=女, site=24, pic=王海艳2820.jpg]
+PIC NOT EXIST ::PersonBean [seq=1440, name=梁伟锋, idcard=410183198702026571, 考试地点=河南经贸职业技术学院新校区, 考场=48, 准考证号=104830, gender=男, site=30, pic=梁伟锋6571.jpg]
+PIC NOT EXIST ::PersonBean [seq=1496, name=秦奎, idcard=411222198901183514, 考试地点=河南经贸职业技术学院新校区, 考场=50, 准考证号=105026, gender=男, site=26, pic=秦奎3514.jpg]
+PIC NOT EXIST ::PersonBean [seq=1539, name=尚春杨, idcard=41042219910404281X, 考试地点=河南经贸职业技术学院新校区, 考场=52, 准考证号=105209, gender=男, site=9, pic=尚春杨281x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1708, name=安然, idcard=410725199310179783, 考试地点=河南经贸职业技术学院新校区, 考场=57, 准考证号=105728, gender=女, site=28, pic=安然9783.jpg]
+PIC NOT EXIST ::PersonBean [seq=1733, name=王炎, idcard=410823199110160300, 考试地点=河南经贸职业技术学院新校区, 考场=58, 准考证号=105823, gender=女, site=23, pic=王炎0300.jpg]
+PIC NOT EXIST ::PersonBean [seq=1737, name=褚家袖, idcard=41272619880824163X, 考试地点=河南经贸职业技术学院新校区, 考场=58, 准考证号=105827, gender=男, site=27, pic=褚家袖163x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1741, name=翟磊苹, idcard=410526198611255365, 考试地点=河南经贸职业技术学院新校区, 考场=59, 准考证号=105901, gender=女, site=1, pic=翟磊苹5365.jpg]
+PIC NOT EXIST ::PersonBean [seq=1775, name=侯蒙, idcard=410223198906150071, 考试地点=河南经贸职业技术学院新校区, 考场=60, 准考证号=106005, gender=男, site=5, pic=侯蒙0071.jpg]
+PIC NOT EXIST ::PersonBean [seq=1783, name=关彦林, idcard=411222198712035010, 考试地点=河南经贸职业技术学院新校区, 考场=60, 准考证号=106013, gender=男, site=13, pic=关彦林5010.jpg]
+PIC NOT EXIST ::PersonBean [seq=1861, name=李庆飞, idcard=410522198908012035, 考试地点=河南经贸职业技术学院新校区, 考场=63, 准考证号=106301, gender=男, site=1, pic=李庆飞2035.jpg]
+PIC NOT EXIST ::PersonBean [seq=1927, name=徐磊, idcard=41072519880118083X, 考试地点=河南经贸职业技术学院新校区, 考场=65, 准考证号=106507, gender=男, site=7, pic=徐磊083x.jpg]
+PIC NOT EXIST ::PersonBean [seq=1971, name=李  伟, idcard=412821198508011051, 考试地点=河南经贸职业技术学院新校区, 考场=66, 准考证号=106621, gender=男, site=21, pic=李伟1051.jpg]
+PIC NOT EXIST ::PersonBean [seq=2017, name=穆晓净, idcard=410482199002225961, 考试地点=河南经贸职业技术学院新校区, 考场=68, 准考证号=106807, gender=女, site=7, pic=穆晓静5961.jpg]
+PIC NOT EXIST ::PersonBean [seq=2028, name=王安妮, idcard=41138119931010452X, 考试地点=河南经贸职业技术学院新校区, 考场=68, 准考证号=106818, gender=女, site=18, pic=王安妮452x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2076, name=孙红丽, idcard=410222198409064088, 考试地点=河南经贸职业技术学院新校区, 考场=70, 准考证号=107006, gender=女, site=6, pic=孙红丽4088_.jpg]
+PIC NOT EXIST ::PersonBean [seq=2123, name=刘晶, idcard=412823198708258027, 考试地点=河南经贸职业技术学院新校区, 考场=71, 准考证号=107123, gender=女, site=23, pic=刘晶.jpg]
+PIC NOT EXIST ::PersonBean [seq=2197, name=郝宗磊, idcard=410704198509190019, 考试地点=河南经贸职业技术学院新校区, 考场=74, 准考证号=107407, gender=男, site=7, pic=郝宗磊0019.jpg]
+PIC NOT EXIST ::PersonBean [seq=2286, name=穆向莉, idcard=410329198204161546, 考试地点=河南经贸职业技术学院新校区, 考场=77, 准考证号=107706, gender=女, site=6, pic=穆向莉1546.jpg]
+PIC NOT EXIST ::PersonBean [seq=2294, name=谢婷婷, idcard=410901198708251525, 考试地点=河南经贸职业技术学院新校区, 考场=77, 准考证号=107714, gender=女, site=14, pic=.jpg]
+PIC NOT EXIST ::PersonBean [seq=2417, name=冯亚军, idcard=411325199006100443, 考试地点=河南经贸职业技术学院新校区, 考场=81, 准考证号=108117, gender=女, site=17, pic=冯亚军0443.jpg]
+PIC NOT EXIST ::PersonBean [seq=2422, name=肖继章, idcard=41282919810810003X, 考试地点=河南经贸职业技术学院新校区, 考场=81, 准考证号=108122, gender=男, site=22, pic=肖继章003x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2435, name=孙佳佳, idcard=41078219830523500X, 考试地点=河南经贸职业技术学院新校区, 考场=82, 准考证号=108205, gender=女, site=5, pic=孙佳佳5002x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2442, name=袁英杰, idcard=411327198104150055, 考试地点=河南经贸职业技术学院新校区, 考场=82, 准考证号=108212, gender=男, site=12, pic=袁英杰0055.jpg]
+PIC NOT EXIST ::PersonBean [seq=2571, name=缪琪, idcard=410411198901205841, 考试地点=河南经贸职业技术学院新校区, 考场=86, 准考证号=108621, gender=女, site=21, pic=缪琪5841.jpg]
+PIC NOT EXIST ::PersonBean [seq=2697, name=秦国臣, idcard=41062119881003207X, 考试地点=河南经贸职业技术学院新校区, 考场=90, 准考证号=109027, gender=男, site=27, pic=秦国臣207x.jpg]
+PIC NOT EXIST ::PersonBean [seq=2751, name=翟献宏, idcard=413028198211228956, 考试地点=河南经贸职业技术学院新校区, 考场=92, 准考证号=109221, gender=男, site=21, pic=翟献宏8956.jpg]
+PIC NOT EXIST ::PersonBean [seq=2793, name=刘  岩, idcard=410926199111234994, 考试地点=河南经贸职业技术学院新校区, 考场=94, 准考证号=109403, gender=男, site=3, pic=刘岩4994.jpg]
+PIC NOT EXIST ::PersonBean [seq=2811, name=于鹏, idcard=410402198308305597, 考试地点=河南经贸职业技术学院新校区, 考场=94, 准考证号=109421, gender=男, site=21, pic=于鹏5597.jpg]
+PIC NOT EXIST ::PersonBean [seq=2925, name=闫艳, idcard=411330198405121520, 考试地点=河南经贸职业技术学院新校区, 考场=98, 准考证号=109815, gender=女, site=15, pic=闫艳1520.jpg]
+PIC NOT EXIST ::PersonBean [seq=2940, name=桂朋召, idcard=410482198612175530, 考试地点=河南经贸职业技术学院新校区, 考场=98, 准考证号=109830, gender=男, site=30, pic=桂鹏召5530.jpg]
+PIC NOT EXIST ::PersonBean [seq=3014, name=樊煜珮, idcard=410901199010314023, 考试地点=河南经贸职业技术学院新校区, 考场=101, 准考证号=110114, gender=女, site=14, pic=樊煜珮4023.jpg]
+PIC NOT EXIST ::PersonBean [seq=3051, name=徐超, idcard=410202197909270531, 考试地点=河南经贸职业技术学院新校区, 考场=102, 准考证号=110221, gender=男, site=21, pic=徐超0531.jpg]
+PIC NOT EXIST ::PersonBean [seq=3290, name=温颖洁, idcard=410224198810020025, 考试地点=河南经贸职业技术学院新校区, 考场=110, 准考证号=111020, gender=女, site=20, pic=温颖洁0025.jpg]
+PIC NOT EXIST ::PersonBean [seq=3307, name=杨清潮, idcard=411423199006167077, 考试地点=河南经贸职业技术学院新校区, 考场=111, 准考证号=111107, gender=男, site=7, pic=杨清潮7077.jpg]
+PIC NOT EXIST ::PersonBean [seq=3416, name=顾锐, idcard=411322198803252075, 考试地点=河南经贸职业技术学院新校区, 考场=114, 准考证号=111426, gender=男, site=26, pic=顾锐2075.jpg]
+PIC NOT EXIST ::PersonBean [seq=3591, name=甘小丽, idcard=41290119710609200X, 考试地点=河南经贸职业技术学院新校区, 考场=120, 准考证号=112021, gender=女, site=21, pic=甘小丽200x.jpg]
+PIC NOT EXIST ::PersonBean [seq=3678, name=全姍, idcard=411323198810046321, 考试地点=河南经贸职业技术学院新校区, 考场=123, 准考证号=112318, gender=女, site=18, pic=全姍6321.jpg]
+ 
+ 
