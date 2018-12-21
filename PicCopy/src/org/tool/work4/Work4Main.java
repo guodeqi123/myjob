@@ -33,7 +33,6 @@ public class Work4Main {
 		HSSFWorkbook hssfWorkbook = new HSSFWorkbook(is);
 		HSSFSheet sheetAt0 = hssfWorkbook.getSheetAt(0);
 		
-		// 第0行为列名称行
 		HSSFRow columnRow = sheetAt0.getRow(0);
 		int columns = columnRow.getPhysicalNumberOfCells();
 		System.out.println(    "Person count :: " + sheetAt0.getLastRowNum() + " Cols count ::  " +columns    );
@@ -108,13 +107,12 @@ public class Work4Main {
 		
 		XWPFDocument document = new XWPFDocument(  new FileInputStream( tmpPath )   );
 		
-		// 获取所有表格
 		List<XWPFTable> tables = document.getTables();
-		String name="："+per.getName();
-		String gender="："+per.getGender();
-		String idCard = "："+per.getIdCard();
-		String organization ="："+per.getOrganization();
-		String examNum = "："+per.getExamRoomNum()+"考场"+per.getPosNum()+"号";
+		String name=per.getName();
+		String gender=per.getGender();
+		String idCard = per.getIdCard();
+		String organization =per.getOrganization();
+		String examNum = per.getExamRoomNum()+"考场"+per.getPosNum()+"号";
 		
 		XWPFTable table0 = tables.get(0);
 		
@@ -150,16 +148,12 @@ public class Work4Main {
 	
 	public static void testReadWord() throws Exception{
 		XWPFDocument document = new XWPFDocument(  new FileInputStream( tmpPath )   );
-		// 获取所有表格
 		List<XWPFTable> tables = document.getTables();
 		for (XWPFTable table : tables) {
-		    // 获取表格的行
 		    List<XWPFTableRow> rows = table.getRows();
 		    for (XWPFTableRow row : rows) {
-		        // 获取表格的每个单元格
 		        List<XWPFTableCell> tableCells = row.getTableCells();
 		        for (XWPFTableCell cell : tableCells) {
-		             // 获取单元格的内容
 		             String text = cell.getText();
 		             
 		             System.out.println(  text  );

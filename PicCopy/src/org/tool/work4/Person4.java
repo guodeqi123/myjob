@@ -2,16 +2,16 @@ package org.tool.work4;
 
 public class Person4 {
 	//  test commit
-	//aaa
 	
-	public static String GENDER_MALE = "ÄÐ";
-	public static String GENDER_FEMALE = "Å®";
+	
+	public static String GENDER_MALE = "��";
+	public static String GENDER_FEMALE = "Ů";
 	
 	private String rowNum;
-	String name= null; // "£º"+"Guodeqi";
-	String gender= null; // "£º"+"ÄÐ";
-	String idCard = null; //"£º"+"123456789";
-	String organization = null;//"£º"+"XXX¹«Ë¾";
+	String name= null; 
+	String gender= null; 
+	String idCard = null; 
+	String organization = null;
 	String examRoomNum = null; 
 	String posNum = null; 
 	
