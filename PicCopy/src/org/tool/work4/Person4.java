@@ -2,11 +2,11 @@ package org.tool.work4;
 
 public class Person4 {
 	//  test commit11111
-	//22
+	//22  3 
 	
 	
-	public static String GENDER_MALE = "男";
-	public static String GENDER_FEMALE = "女";
+	public static String GENDER_MALE = "male";
+	public static String GENDER_FEMALE = "female";
 	
 	private String rowNum;
 	String name= null; 
