@@ -4,8 +4,8 @@ public class Person4 {
 	//  test commit11111
 	
 	
-	public static String GENDER_MALE = "ÄÐ";
-	public static String GENDER_FEMALE = "Å®";
+	public static String GENDER_MALE = "ç”·";
+	public static String GENDER_FEMALE = "å¥³";
 	
 	private String rowNum;
 	String name= null; 
