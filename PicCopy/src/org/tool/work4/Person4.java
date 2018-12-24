@@ -6,6 +6,7 @@ public class Person4 {
 	// 44
 	//55
 	
+	//66
 	public static String GENDER_MALE = "male";
 	public static String GENDER_FEMALE = "female";
 	
