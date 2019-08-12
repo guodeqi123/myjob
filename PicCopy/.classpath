@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_17"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_10"/>
 	<classpathentry kind="lib" path="lib/poi2/commons-codec-1.5.jar"/>
 	<classpathentry kind="lib" path="lib/poi2/commons-logging-1.1.jar"/>
 	<classpathentry kind="lib" path="lib/poi2/dom4j-1.6.1.jar"/>
@@ -16,5 +16,9 @@
 	<classpathentry kind="lib" path="lib/ant.jar"/>
 	<classpathentry kind="lib" path="lib/commons-io-2.5.jar"/>
 	<classpathentry kind="lib" path="lib/fastjson-1.2.31.jar"/>
+	<classpathentry kind="lib" path="lib/access/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/access/hsqldb.jar"/>
+	<classpathentry kind="lib" path="lib/access/jackcess-2.1.11.jar"/>
+	<classpathentry kind="lib" path="lib/access/ucanaccess-4.0.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

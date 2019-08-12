@@ -11,11 +11,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.Set;
 
 import org.apache.poi.POIXMLDocument;
@@ -49,19 +51,19 @@ public class WordToExcel {
 	public static String optionSEP3 = "£®";
 	public static LinkedHashMap<String, Integer> MAINSEQ = new LinkedHashMap<String, Integer>();
 	
+	public static String filePath = "D:/GG/src.doc";
+	public static String answerPath = "answer.properties";
+	
 	public static void main(String[] args) throws Exception {
-		String path1 = "D:/GG/src1.docx";
-		String path2 = "D:/GG/src2.doc";
-		String[] aa1 = new String[]{   path1, "scroe1.properties"};
-		String[] aa2 = new String[]{   path2, "scroe2.properties"};
+//		String path1 = "D:/GG/src1.docx";
+//		String path2 = "D:/GG/src2.doc";
+//		String[] aa1 = new String[]{   path1, "scroe1.properties"};
+//		String[] aa2 = new String[]{   path2, "scroe2.properties"};
+//		loadTxtFromDoc(filePath );
 		
-		String[] toUse = aa2;
-//		wordToExcel( toUse[0] ,toUse[1] );
+
+		wordToExcel( filePath ,"");
 		
-		loadTxtFromDoc(aa1[0]);
-//		System.out.println( " ============================================== "  );
-//		System.out.println( " ============================================== "  );
-//		loadTxtFromDoc(aa2[0]);
 	}
 	
 	public static String loadTxtFromDoc(String wordPath  ) throws IOException, XmlException, OpenXML4JException{
@@ -130,6 +132,9 @@ public class WordToExcel {
 				}
 				
 				if( trimLine.startsWith(counter+titleSEP) ){
+					if( counter == 11 ){
+						System.out.println();
+					}
 					QuestionBean bean = new QuestionBean( counter );
 					bean.setBigTitle(currentBigTitle);
 					int indexOf = trimLine.indexOf(titleSEP);
@@ -159,19 +164,35 @@ public class WordToExcel {
 						}
 						
 						String toUseSep = "-";
-						if( detail.startsWith(firstOption+optionSEP1) ){
+						if( detailTrim.startsWith(firstOption+optionSEP1) ){
 							toUseSep = optionSEP1;
-						}else if( detail.startsWith(firstOption+optionSEP2) ){
+						}else if( detailTrim.startsWith(firstOption+optionSEP2) ){
 							toUseSep = optionSEP2;
-						} else if( detail.startsWith(firstOption+optionSEP3) ){
+						} else if( detailTrim.startsWith(firstOption+optionSEP3) ){
 							toUseSep = optionSEP3;
 						}
 						if( toUseSep.equals("-") ){
 							continue;
 						}
 						String key = firstOption + toUseSep;
-						bean.addOption(firstOption, detailTrim.substring( key.length()));
-						firstOption = abcdIter.next();
+//						bean.addOption(firstOption, detailTrim.substring( key.length()));
+//						firstOption = abcdIter.next();
+						
+						int lastIndex = 0;
+						String nextOpt = abcdIter.next();
+						String nextKey = nextOpt +toUseSep;
+						while(  detailTrim.contains( nextKey  )   ){
+							int indexOf2 = detailTrim.indexOf(nextKey);
+							bean.addOption(firstOption, detailTrim.substring( lastIndex +key.length() , indexOf2 )  );
+							
+							firstOption = nextOpt;
+							nextOpt = abcdIter.next();
+							nextKey = nextOpt+toUseSep;
+							
+							lastIndex = indexOf2;
+						}
+						bean.addOption(firstOption, detailTrim.substring( lastIndex + nextKey.length() )  );
+						firstOption = nextOpt;
 						
 					}
 					
@@ -184,9 +205,9 @@ public class WordToExcel {
 				
 			}
 			
-			ScoreArray.getScroe("conf/" + scroeFile, questions);
+//			ScoreArray.getScroe("conf/" + scroeFile, questions);
 			printBean(questions , true);
-			createExcel2(questions );
+//			createExcel2(questions );
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -207,9 +228,43 @@ public class WordToExcel {
 		
 		System.out.println( "ALL QUES===============================" );
 		System.out.println( qs.size()  + "  ×ÜÌâÄ¿" );
+		Set<QuestionBean> set = new HashSet<QuestionBean>();
 		for( QuestionBean b : qs ){
 			System.out.println( b );
+			set.add(b);
 		}
+		
+		InputStream ras = WordToExcel.class.getResourceAsStream(answerPath);
+		Properties pro = new Properties();
+		try {
+			pro.load(ras);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String answer = "";
+		
+		System.out.println( "RANDOM PRINT ===============================" );
+		int counter = 1;
+		for( QuestionBean b : set  ){
+			
+			StringBuilder sb = new StringBuilder();
+			Set<Entry<String,String>> entrySet = b.getOptions().entrySet();
+			for(  Entry<String,String> en : entrySet ){
+				String key = en.getKey();
+				String value = en.getValue();
+				sb.append( key.trim() + "." + value.trim() +"    ");
+			}
+			
+			System.out.println( counter ++ + "¡¢"+b.getStem().trim() );
+			System.out.println(sb.toString());
+			System.out.println( "========= src num:::" + b.getSeqNum()  );
+			System.out.println(   );
+			
+			answer = answer + " , "+pro.getProperty(b.getSeqNum()+"");
+		}
+		
+		System.out.println(  answer  );
+		
 	}
 	
 	public static final String A ="A";
