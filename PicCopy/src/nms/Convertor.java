@@ -245,7 +245,7 @@ public class Convertor {
 	
 	private void writeErrorPns(List<String[]> errPns) {
 		String toFile = path + srcFileName+"_errorPN"+getDateStr()+".xlsx";
-		String[] title= { "SN"  ," ‰»ÎPN" , "DB PN" };
+		String[] title= { "ø‚Œª "  , "SN"  ," ‰»ÎPN" , "DB PN" };
 		
 		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet("sheet1");
@@ -269,6 +269,8 @@ public class Convertor {
 			cell2.setCellValue(  strs[1] );
 			cell2 = row2.createCell(2);
 			cell2.setCellValue(  strs[2] );
+			cell2 = row2.createCell(3);
+			cell2.setCellValue(  strs[3] );
 		}
 		writeToFile(toFile, wb);
 		

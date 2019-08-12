@@ -20,7 +20,7 @@ public class KWObj {
 	
 	private int count = 0;
 	
-	private List<String[]> errPns = new ArrayList<String[]>();// sn ,  inputpn , dbpn 
+	private List<String[]> errPns = new ArrayList<String[]>();//kw  sn ,  inputpn , dbpn 
 	
 	public KWObj( String kwNum ){
 		this.kwNum = kwNum;
@@ -98,7 +98,7 @@ public class KWObj {
 			}
 			String tmpdbPn = AccessDBParser.getMStrBySN(tmpSn);
 			if( tmpdbPn!=null && !tmpdbPn.equals(tmpPn)   ){
-				String[] aaa = new String[]{ tmpSn , tmpPn , tmpdbPn  };
+				String[] aaa = new String[]{  kwNum, tmpSn , tmpPn , tmpdbPn  };
 				errPns.add(aaa);
 			}
 			
