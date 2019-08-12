@@ -120,7 +120,14 @@ public class KWObj {
 		}
 		
 	}
-	
+
+	public List<String[]> getErrPns() {
+		return errPns;
+	}
+
+	public void setErrPns(List<String[]> errPns) {
+		this.errPns = errPns;
+	}
 	
 	
 }

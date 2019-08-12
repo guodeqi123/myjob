@@ -30,28 +30,51 @@ public class AccessDBParser {
 //		}
 		
 		
-		loadSnToMid(  snTables[0]  ) ;
+//		loadSnToMid(  snTables[0]  ) ;
+//		System.out.println( SNToMID.size()  );
 		
-		System.out.println( SNToMID.size()  );
 		
-		
+//		String[] aa1 = new String[]{ "004250" , "02473" , "02476" };
+//		String[] aa2 = new String[]{ "20044" , "010101" , "010108" };
+//		String[] aa3 = new String[]{ "200460" , "10101" , "10108" };
+//		String[] aa4 = new String[]{ "00212" , "246647" , "246649" };
+//		String[] aa5 = new String[]{ "200110" , "00336" , "00340" };
+//		String[] aa = aa5;
+//		List<String> list = parseSn( aa[0 ]  ,  aa[1 ] ,  aa[2 ] )	;
+//		for(   String ss : list ){
+//			System.out.println(ss);
+//		}
 		
 	}
 	
 	public static void doInit(){
 		
-//		loadMidToMNo();
-//		for(  int i=0; i<snTables.length ;i++  ){
-//			loadSnToMid( snTables[i] );
-//		}
+		try {
+			loadMidToMNo();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+		for(  int i=0; i<snTables.length ;i++  ){
+			try {
+				loadSnToMid( snTables[i] );
+			} catch (Exception e) {
+				e.printStackTrace();
+			}  
+		}
 		System.out.println("DB SN 个数:"+ SNToMID.size()  );
 		
 	}
 	
 	public static String getMStrBySN(String sn ){
-		
-		
-		return  null;
+		String mid = SNToMID.get(sn);
+		if( mid==null ){
+			return null;
+		}
+		String string = MIDToStr.get(mid);
+		if( string==null ){
+			return null;
+		}
+		return  string;
 	}
 	
 	
@@ -75,7 +98,7 @@ public class AccessDBParser {
 			if(  snPrefix==null || snStart==null ||  snEnd==null  ){
 				continue;
 			}
-			System.out.println(  rowID + " , "  +mID + " , " + snPrefix+ " , " + snStart   +  " , " + snEnd);
+//			System.out.println(  rowID + " , "  +mID + " , " + snPrefix+ " , " + snStart   +  " , " + snEnd);
 			List<String> tmpSns = parseSn( snPrefix ,  snStart  ,snEnd );
 			for(String ttt :  tmpSns ){
 				SNToMID.put( ttt, mID );
@@ -83,7 +106,7 @@ public class AccessDBParser {
 			count ++ ;
 		}
 
-		System.out.println( "加载行 :" + count  );
+		System.out.println( tname + " 加载  SN 管理 行 :" + count  );
 		con.close();
 		
 	}
@@ -93,10 +116,24 @@ public class AccessDBParser {
 		if( snStart.equals(snEnd) ){
 			ret.add(snPrefix +snStart );
 		}else{
-			
-			
-			
-			
+			int length = snStart.length();
+			int length2 = snEnd.length();
+			if( length != length2 ){
+				return ret;
+			}
+			int sss = Integer.parseInt(snStart);
+			int eee = Integer.parseInt(snEnd);
+			for(  int i=sss; i<=eee ;i++  ){
+				String suffix = i +"";
+				int sLength = suffix.length();
+				int zeroCount = length - sLength;
+				String zzz = "";
+				for(   int z = 0 ; z<zeroCount ;z++  ){
+					zzz += "0";
+				}
+				String oneSn = snPrefix + zzz + suffix;
+				ret.add(oneSn);
+			}
 		}
 		return ret;
 	}
@@ -125,7 +162,7 @@ public class AccessDBParser {
 //			String value = en.getValue();
 //			System.out.println(  key +" , " +value   );
 //		}
-		System.out.println( MIDToStr.size()   );
+		System.out.println("物料编码个数 :"+ MIDToStr.size()   );
 		
 		con.close();
 	}
