@@ -117,9 +117,11 @@ public class QrCodeParser {
 							}
 						}else if( sss.startsWith( "MAC" + colon1) || sss.startsWith( "MAC"  + colon2 )  ) {
 							
+						} else if( sss.startsWith( "H/W" + colon1) || sss.startsWith( "H/W"  + colon2 )   ){
+							
 						}else{
 							int length = sss.length();
-							if( length>=5 && length<=15 ){ 
+							if( length>=5 && length<=35 ){ 
 								snList.add( sss.trim() );
 							} else {
 								

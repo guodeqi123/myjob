@@ -22,6 +22,11 @@ public class KWObj {
 	
 	private List<String[]> errPns = new ArrayList<String[]>();//kw  sn ,  inputpn , dbpn 
 	
+	public static int pnnullCounter = 0;
+	
+	public KWObj( ){}
+	
+	
 	public KWObj( String kwNum ){
 		this.kwNum = kwNum;
 	}
@@ -100,6 +105,9 @@ public class KWObj {
 			if( tmpdbPn!=null && !tmpdbPn.equals(tmpPn)   ){
 				String[] aaa = new String[]{  kwNum, tmpSn , tmpPn , tmpdbPn  };
 				errPns.add(aaa);
+			}
+			if( tmpdbPn ==null  ){
+				pnnullCounter++;
 			}
 			
 		}

@@ -30,24 +30,36 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Convertor {
 	
 
-	public static String path  = "D:/ForBdcom/toRes/";
+//	public static String path  = "D:/ForBdcom/toRes/";
 //	public static String srcPath1  = "D:/ForBdcom/aaa.xls";
-	public static String srcPath2  = path + "atest0809.xlsx";
-	public static String testsrcPath  = srcPath2 ;
+//	public static String srcPath2  = path + "atest0809.xlsx";
+//	public static String testsrcPath  = srcPath2 ;
 	
-	public static void main(String[] args) throws InvalidFormatException, IOException {
+	public static void main(String[] args) throws Exception {
 		
 		AccessDBParser.doInit();
 		
-		Convertor ccc = new Convertor(testsrcPath);
+		String f1 = "D:/ForBdcom/0812/a.xlsx";
+		doParse(f1);
+		System.out.println(  KWObj.pnnullCounter  );
+//		String f2 = "D:/ForBdcom/0812/b.xlsx";
+//		doParse(f2);
 		
+//		String f3 = "D:/ForBdcom/0812/c.xls";
+//		doParse(f3);
+		
+	}
+	
+	public static void doParse( String file  ) throws Exception{
+		
+		Convertor ccc = new Convertor(file);
 		Map<String, List<KWObj> > ret = ccc.parseExcel2( );
 		List<KWObj> kwErr = ret.get("error");
 		List<KWObj> kwAllSuccess = ret.get("success");
 		List<String[]> errPns = ccc.writeSuccess2( kwAllSuccess );
 		ccc.writeErrorPns(errPns);
 		ccc.writeError2(kwErr);
-
+		
 	}
  
 
@@ -61,11 +73,14 @@ public class Convertor {
 	
 	private String srcFileName;
 	
+	private String path = null;
+	
 	public Convertor(String sss ){
 		this.srcFilePath = sss;
 		File file = new File(srcFilePath);
 		this.srcFileName = file.getName().substring( 0 , file.getName().lastIndexOf(".") );
-//		System.out.println(  srcFileName  ); 
+		path = file.getParentFile().getAbsolutePath().replace("\\", "/") + "/";
+		System.out.println(  "文件名" +srcFileName +" ,路径: " +  path ); 
 	}
 	
 	public Map<String, List<KWObj> > parseExcel2() throws InvalidFormatException, IOException {
@@ -95,11 +110,15 @@ public class Convertor {
 
 		
 		Row row = null;
-		int rownum = sheet.getPhysicalNumberOfRows();
+//		int rownum = sheet.getPhysicalNumberOfRows();
+		int rownum = sheet.getLastRowNum();
 		row = sheet.getRow(0);
 		
 		KWObj ckwObj = null;
 		String cUsePN = "";
+		
+		String debugKw = "-1";
+		
 		 for (int i = startRow; i<=rownum; i++ ) {
 			 row = sheet.getRow(i);
 			 if( row ==null ){
@@ -119,6 +138,9 @@ public class Convertor {
 			 boolean isKWEmpty = StringUtils.isEmpty(kwStr);
 			 if(   !isKWEmpty   ){
 				 System.out.println(  "进入下一个库位" + kwStr  + " ,  行号：" + (i +1 ) );
+				 if( debugKw.equals(kwStr) ){
+					 System.out.println();
+				 }
 				 //进入下一个库位, 重置PN
 				 cUsePN = ""; 
 				 if(  ckwObj == null){
@@ -138,6 +160,9 @@ public class Convertor {
 			 boolean isPNEmpty = StringUtils.isEmpty(pnStr);
 			 if(   !isPNEmpty   ){
 				 cUsePN = pnStr;
+				 if( cUsePN.startsWith("PN:" )  ||cUsePN.startsWith("PN"+"：" )   ){
+					 cUsePN = cUsePN.substring(3);
+				 }
 			 }
 			 if(  !StringUtils.isEmpty(countStr)  ){
 				 int count = (int) Double.parseDouble(countStr);
@@ -146,6 +171,9 @@ public class Convertor {
 			 RowData rowData = new RowData( );
 			 rowData.setMaterialNum(cUsePN);
 			 rowData.setSnsStr(snStr);
+			 if( debugKw.equals(ckwObj.getKwNum()) ){
+				 System.out.println( "DEBUG SN ::" + snStr    );
+			 }
 			 ckwObj.addRow(rowData);
 		 }
 		 
