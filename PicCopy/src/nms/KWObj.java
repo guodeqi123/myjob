@@ -123,7 +123,7 @@ public class KWObj {
 		}
 		
 		if(  count != size  ){
-			msg = "个数不准确，实际个数:"+ (listSize)  + " , 人工输入个数:" + count ;
+			msg = "库位个数不准确，实际总个数:"+ (listSize)  + " , 人工输入个数之和:" + count ;
 			throw new Exception(msg);
 		}
 		
