@@ -119,7 +119,7 @@ public class QrCodeParser {
 							
 						}else{
 							int length = sss.length();
-							if( length>=9 && length<=15 ){ 
+							if( length>=5 && length<=15 ){ 
 								snList.add( sss.trim() );
 							} else {
 								
