@@ -99,6 +99,9 @@ public class OutFileParser {
 				 String pnStr = Convertor.getCellValue(cellPn);
 				 String snStr = Convertor.getCellValue(cellSn);
 				 String countStr = Convertor.getCellValue(cellCn);
+				 if( "-1".equals(numStr) ){
+					 System.out.println(  );
+				 }
 				 if(StringUtils.isEmpty(snStr) ){
 					 continue;
 				 }
@@ -131,7 +134,7 @@ public class OutFileParser {
 						 int c = Integer.parseInt(countStr);
 						 int size = tmpList.size();
 						 if( size!=c ){
-							 System.out.println(  "出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " + parse.get(0) );
+							 System.out.println(  sheetName + " , 出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " + parse.get(0) );
 						 }
 						 tmpList.clear();
 					} catch (Exception e) {
@@ -147,8 +150,9 @@ public class OutFileParser {
 	
 	
 	public static void main(String[] args) {
-		String ff = "D:/ForBdcom/0813/out.xlsx";
-		OutFileParser outparser = new OutFileParser( ff );
+		String ff0812 = "D:/ForBdcom/0812/out.xlsx";
+		String ff0813 = "D:/ForBdcom/0813/out0813.xlsx";
+		OutFileParser outparser = new OutFileParser( ff0813 );
 		List<InOutObj> pOut = outparser.parseOut();
 		
 //		for(   InOutObj aa  : pOut ){

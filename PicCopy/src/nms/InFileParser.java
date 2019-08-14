@@ -122,10 +122,14 @@ public class InFileParser {
 					try {
 						int parseInt = Integer.parseInt(count);
 						if(  parseInt!= oneKW.size()){
-							System.out.println( "数量不准确 "+   kwStr + " , 统计数据 ："+ oneKW.size()  );
+							System.out.println( sheetName + " 数量不准确 "+   kwStr + " , 统计数据 ："+ oneKW.size()  );
 						}
 					} catch ( Exception e) {
-						e.printStackTrace();
+						if( e instanceof NumberFormatException ) {
+							System.err.println( sheetName + " 数量不准确::"+   kwStr + " , 统计数据 ："+ oneKW.size()  );
+						}else{
+							e.printStackTrace();
+						}
 					}
 					oneKW.clear();
 				}
@@ -135,13 +139,15 @@ public class InFileParser {
 	}
 	
 	public static void main(String[] args) {
-		String ff = "D:/ForBdcom/0813/in.xlsx";
-		InFileParser inFileParser = new InFileParser( ff );
+		String ff0812 = "D:/ForBdcom/0812/in.xlsx";
+		String ff0813 = "D:/ForBdcom/0813/in0813.xlsx";
+		
+		InFileParser inFileParser = new InFileParser( ff0813 );
 		List<InOutObj> parseIn = inFileParser.parseIn();
 		
-		for(   InOutObj aa  : parseIn ){
-			System.out.println(  "======" + aa.getPn() +" , "+ aa.getSn()+" , " + aa.getKw() +" , "+ aa.getDateStr() );
-		}
+//		for(   InOutObj aa  : parseIn ){
+//			System.out.println(  "======" + aa.getPn() +" , "+ aa.getSn()+" , " + aa.getKw() +" , "+ aa.getDateStr() );
+//		}
 		
 		System.out.println(    parseIn.size() );
 		

@@ -39,14 +39,13 @@ public class Convertor {
 		
 		AccessDBParser.doInit();
 		
-		String f1 = "D:/ForBdcom/0812/a.xlsx";
+		String f1 = "D:/ForBdcom/0813/0813A1.xlsx";
 		doParse(f1);
-		System.out.println(  KWObj.pnnullCounter  );
-//		String f2 = "D:/ForBdcom/0812/b.xlsx";
-//		doParse(f2);
+		String f2 = "D:/ForBdcom/0813/0813B1.xlsx";
+		doParse(f2);
 		
-//		String f3 = "D:/ForBdcom/0812/c.xls";
-//		doParse(f3);
+		System.out.println(  KWObj.pnnullCounter  );
+
 		
 	}
 	
@@ -165,6 +164,12 @@ public class Convertor {
 				 }
 			 }
 			 if(  !StringUtils.isEmpty(countStr)  ){
+				 if(  countStr.contains(":") ){
+					 countStr = countStr.split(":")[0];
+				 }
+				 if(  countStr.contains("£º") ){
+					 countStr = countStr.split("£º")[0];
+				 }
 				 int count = (int) Double.parseDouble(countStr);
 				 ckwObj.addCount(count);
 			 }

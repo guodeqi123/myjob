@@ -99,6 +99,7 @@ public class QrCodeParser {
 				String[] split = str.split(" ");
 				int sLen = split.length ;
 				for(  String sss : split ){
+					sss = sss.toUpperCase();
 					if(  isBlank(sss) ){
 						//为空白字符不处理
 					}else{

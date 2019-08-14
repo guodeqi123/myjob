@@ -26,7 +26,7 @@ public class GetCopLogs {
 	
 	public static Map<String, String> descToLevel = new HashMap<String, String>();
 	
-	public static  String tmpPath = "D:/ForCop/log.docx";
+	public static  String tmpPath = "D:/ForCop/0813.docx";
 	
 	public static final String csvSep = "¡£";
 
