@@ -26,7 +26,7 @@ public class GetCopLogs {
 	
 	public static Map<String, String> descToLevel = new HashMap<String, String>();
 	
-	public static  String tmpPath = "D:/ForCop/0813.docx";
+	public static  String tmpPath = "D:/ForCop/0815.docx";
 	
 	public static final String csvSep = "¡£";
 
@@ -128,7 +128,8 @@ public class GetCopLogs {
 		String lowerCase = lc.level.toLowerCase();
 		String levelNum = descToLevel.get(lowerCase);
 		
-		sql = " INSERT INTO `syslog_category` VALUES ('"+ (counterId++) +"', '"+ levelNum +"', '"+lc.module+"', '"+lc.event+"', '"+lc.desc+"', '"+lc.reason+"', 'NoSuggest', '1', '1', '1', null, null, null); ";
+//		sql = " INSERT INTO `syslog_category` VALUES ('"+ (counterId++) +"', '"+ levelNum +"', '"+lc.module+"', '"+lc.event+"', '"+lc.desc+"', '"+lc.reason+"', 'NoSuggest', '1', '1', '1', null, null, null); ";
+		sql = " INSERT INTO `syslog_category` VALUES ('"+ (counterId++) +"', '"+ levelNum +"', '"+lc.module+"', '"+lc.event+"', 'No Desc', 'No Reason', 'NoSuggest', '1', '1', '1', null, null, null); ";
 		
 		return sql;
 	}
