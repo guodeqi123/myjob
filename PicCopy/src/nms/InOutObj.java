@@ -48,5 +48,12 @@ public class InOutObj {
 		this.num = num;
 	}
 	
+	public RowData toRowData(){
+		RowData rd = new RowData();
+		rd.setSnsStr(sn);
+		rd.setPosNum(kw);
+		rd.setMaterialNum(pn);
+		return rd;
+	}
 	
 }

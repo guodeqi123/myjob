@@ -39,10 +39,20 @@ public class Convertor {
 		
 		AccessDBParser.doInit();
 		
-		String f1 = "D:/ForBdcom/0813/0813A1.xlsx";
-		doParse(f1);
-		String f2 = "D:/ForBdcom/0813/0813B1.xlsx";
-		doParse(f2);
+//		String ff0812A = "D:/ForBdcom/0812/a.xlsx";
+//		String ff0812B = "D:/ForBdcom/0812/b.xlsx";
+//		
+//		String ff0813A = "D:/ForBdcom/0813/0813A1.xlsx";
+//		String ff0813B = "D:/ForBdcom/0813/0813B1.xlsx";
+//		
+//		String ff0814A = "D:/ForBdcom/0814/0814A.xlsx";
+//		String ff0814B = "D:/ForBdcom/0814/0814B.xlsx";
+		
+		String ff0815A = "D:/ForBdcom/0815/0815A.xlsx";
+		String ff0815B = "D:/ForBdcom/0815/0815B.xlsx";
+		
+		doParse(ff0815A);
+		doParse(ff0815B);
 		
 		System.out.println(  KWObj.pnnullCounter  );
 
@@ -121,7 +131,7 @@ public class Convertor {
 		 for (int i = startRow; i<=rownum; i++ ) {
 			 row = sheet.getRow(i);
 			 if( row ==null ){
-				 System.out.println( "行为空  " + i   + " 总行数 " + rownum );
+//				 System.out.println( "行为空  " + i   + " 总行数 " + rownum );
 				 continue;
 			 }
 			 Cell cellKW = row.getCell( kwCol );
@@ -144,6 +154,7 @@ public class Convertor {
 				 cUsePN = ""; 
 				 if(  ckwObj == null){
 					 ckwObj = new KWObj(kwStr);
+					 ckwObj.setSheetRowNum(i+1);
 				 } else {
 					try {
 						ckwObj.checkSelf();
@@ -154,11 +165,12 @@ public class Convertor {
 						kwErr.add(ckwObj);
 					}
 					ckwObj = new KWObj(kwStr);
+					 ckwObj.setSheetRowNum(i+1);
 				 }
 			 }
 			 boolean isPNEmpty = StringUtils.isEmpty(pnStr);
 			 if(   !isPNEmpty   ){
-				 cUsePN = pnStr;
+				 cUsePN = pnStr.toUpperCase();
 				 if( cUsePN.startsWith("PN:" )  ||cUsePN.startsWith("PN"+"：" )   ){
 					 cUsePN = cUsePN.substring(3);
 				 }
@@ -170,7 +182,10 @@ public class Convertor {
 				 if(  countStr.contains("：") ){
 					 countStr = countStr.split("：")[0];
 				 }
-				 int count = (int) Double.parseDouble(countStr);
+				 if(  countStr.contains("/") ){
+					 countStr = countStr.split("/")[0];
+				 }
+				 int count = (int) Double.parseDouble(countStr.trim());
 				 ckwObj.addCount(count);
 			 }
 			 RowData rowData = new RowData( );
@@ -268,7 +283,7 @@ public class Convertor {
 			Row row2 = sheet.createRow( counter3++ );
 			Cell cell2 = null;
 			cell2 = row2.createCell(0);
-			cell2.setCellValue( kwObj.getKwNum() );
+			cell2.setCellValue( kwObj.getKwNum()  + "，"+ kwObj.getSheetRowNum() +"行" );
 			cell2 = row2.createCell(1);
 			cell2.setCellValue(  kwObj.getMsg());
 		}

@@ -141,6 +141,8 @@ public class InFileParser {
 	public static void main(String[] args) {
 		String ff0812 = "D:/ForBdcom/0812/in.xlsx";
 		String ff0813 = "D:/ForBdcom/0813/in0813.xlsx";
+		String ff0814 = "D:/ForBdcom/0814/0814in.xlsx";
+		String ff0815 = "D:/ForBdcom/0815/0815in.xlsx";
 		
 		InFileParser inFileParser = new InFileParser( ff0813 );
 		List<InOutObj> parseIn = inFileParser.parseIn();

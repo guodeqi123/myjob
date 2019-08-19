@@ -101,7 +101,10 @@ public class AccessDBParser {
 //			System.out.println(  rowID + " , "  +mID + " , " + snPrefix+ " , " + snStart   +  " , " + snEnd);
 			List<String> tmpSns = parseSn( snPrefix ,  snStart  ,snEnd );
 			for(String ttt :  tmpSns ){
-				SNToMID.put( ttt, mID );
+				if( ttt==null ||mID==null  ){
+					continue;
+				}
+				SNToMID.put( ttt.toUpperCase() , mID.toUpperCase() );
 			}
 			count ++ ;
 		}
@@ -153,7 +156,10 @@ public class AccessDBParser {
 		while( rs.next() ) {
 			String mid = rs.getString(1);
 			String mdesc = rs.getString(2);
-			MIDToStr.put(mid, mdesc);
+			if( mid==null ||mdesc==null  ){
+				continue;
+			}
+			MIDToStr.put(mid.toUpperCase(), mdesc.toUpperCase());
 		}
 		
 //		Set<Entry<String,String>> entrySet = midToStr.entrySet();

@@ -24,6 +24,8 @@ public class KWObj {
 	
 	public static int pnnullCounter = 0;
 	
+	private int sheetRowNum = 0;
+	
 	public KWObj( ){}
 	
 	
@@ -136,6 +138,15 @@ public class KWObj {
 	public void setErrPns(List<String[]> errPns) {
 		this.errPns = errPns;
 	}
+
+	public int getSheetRowNum() {
+		return sheetRowNum;
+	}
+
+	public void setSheetRowNum(int sheetRowNum) {
+		this.sheetRowNum = sheetRowNum;
+	}
+	
 	
 	
 }
