@@ -22,6 +22,9 @@ public class RowData {
 	
 	private String msg = "";
 	
+	
+	private int statcount=0;  //解析财务盘库使用
+	
 	public RowData(){}
 	
 	
@@ -137,6 +140,26 @@ public class RowData {
 
 	public void setMsg(String msg) {
 		this.msg = msg;
+	}
+
+
+	public Set<String> getSnListSet() {
+		return snListSet;
+	}
+
+
+	public void setSnListSet(Set<String> snListSet) {
+		this.snListSet = snListSet;
+	}
+
+
+	public int getStatcount() {
+		return statcount;
+	}
+
+
+	public void setStatcount(int statcount) {
+		this.statcount = statcount;
 	}
 
 	

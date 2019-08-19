@@ -2,6 +2,7 @@ package nms;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -65,7 +66,7 @@ public class Convertor {
 		Map<String, List<KWObj> > ret = ccc.parseExcel2( );
 		List<KWObj> kwErr = ret.get("error");
 		List<KWObj> kwAllSuccess = ret.get("success");
-		List<String[]> errPns = ccc.writeSuccess2( kwAllSuccess );
+		List<String[]> errPns = ccc.writeSuccess2( kwAllSuccess  , true);
 		ccc.writeErrorPns(errPns);
 		ccc.writeError2(kwErr);
 		
@@ -92,24 +93,29 @@ public class Convertor {
 		System.out.println(  "文件名" +srcFileName +" ,路径: " +  path ); 
 	}
 	
-	public Map<String, List<KWObj> > parseExcel2() throws InvalidFormatException, IOException {
-		File file = new File(srcFilePath);
-		InputStream input = new FileInputStream(file);
-		String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
-		Workbook wb = null;
-		Sheet sheet = null;
-		// 根据后缀判断excel 2003 or 2007+
-		if ("xls".equals(fileExt)) {
-			wb = (HSSFWorkbook) WorkbookFactory.create(input);
-		} else {
-			wb = new XSSFWorkbook(input);
-		}
-		// 获取excel sheet总数
-		int sheetNumbers = wb.getNumberOfSheets();
+	public Map<String, List<KWObj> > parseExcel2()  {
+		try {
+			File file = new File(srcFilePath);
+			InputStream input = new FileInputStream(file);
+			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
+			Workbook wb = null;
+			Sheet sheet = null;
+			// 根据后缀判断excel 2003 or 2007+
+			if ("xls".equals(fileExt)) {
+				wb = (HSSFWorkbook) WorkbookFactory.create(input);
+			} else {
+				wb = new XSSFWorkbook(input);
+			}
+			// 获取excel sheet总数
+			int sheetNumbers = wb.getNumberOfSheets();
 
-		sheet = wb.getSheetAt(0);
+			sheet = wb.getSheetAt(0);
 
-		return getRows2(sheet);
+			return getRows2(sheet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+		return null;
 	}
 	
 	private Map<String, List<KWObj> > getRows2(Sheet sheet) {
@@ -201,6 +207,9 @@ public class Convertor {
 			ckwObj.checkSelf();
 			kwAllSuccess.add(ckwObj);
 		} catch (Exception e) {
+			if( e instanceof RuntimeException ){
+				kwAllSuccess.add(ckwObj);
+			}
 			ckwObj.setMsg(e.getMessage());
 			kwErr.add(ckwObj);
 		}
@@ -210,7 +219,7 @@ public class Convertor {
 		return ret;
 	}
 	
-	private List<String[]> writeSuccess2(List<KWObj> kwAllSuccess) {
+	public List<String[]> writeSuccess2(List<KWObj> kwAllSuccess, boolean isWriteFile) {
 		
 		List<String[]> ret = new ArrayList<String[]>();
 		
@@ -257,7 +266,10 @@ public class Convertor {
 			
 		}
 		
-		writeToFile(toFile, wb);
+		if( isWriteFile ){
+			 
+			writeToFile(toFile, wb);
+		}
 		
 		return ret;
 	}
