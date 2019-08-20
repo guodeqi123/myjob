@@ -134,7 +134,7 @@ public class OutFileParser {
 						 int c = Integer.parseInt(countStr);
 						 int size = tmpList.size();
 						 if( size!=c ){
-							 System.out.println(  sheetName + " , 出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " + parse.get(0) );
+							 System.out.println(  sheetName  +" , 行："+(i+1)+ " , 出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " + parse.get(0) );
 						 }
 						 tmpList.clear();
 					} catch (Exception e) {
@@ -153,9 +153,10 @@ public class OutFileParser {
 //		String ff0812 = "D:/ForBdcom/0812_PP/0812out.xlsx";
 //		String ff0813 = "D:/ForBdcom/0813_PP/0813out.xlsx";
 //		String ff0814 = "D:/ForBdcom/0814_PP/0814out.xlsx";
-		String ff0815 = "D:/ForBdcom/0815_PP/0815out.xlsx";
+//		String ff0815 = "D:/ForBdcom/0815_PP/0815out.xlsx";
+		String ff0819 = "D:/ForBdcom/0819_PP/0819out.xlsx"; //17915
 		
-		OutFileParser outparser = new OutFileParser( ff0815 );
+		OutFileParser outparser = new OutFileParser( ff0819 );
 		List<InOutObj> pOut = outparser.parseOut();
 		
 //		for(   InOutObj aa  : pOut ){

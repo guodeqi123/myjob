@@ -114,19 +114,21 @@ public class InFileParser {
 						split = kwStr.split(c2);
 					}
 					String cUseKW = split[0];
-					String count = split[1];
 					for(InOutObj ttt :   oneKW ){
 						ttt.setKw(cUseKW);
 					}
 					ret.addAll(oneKW);
 					try {
+						String count = split[1];
 						int parseInt = Integer.parseInt(count);
 						if(  parseInt!= oneKW.size()){
-							System.out.println( sheetName + " 数量不准确 "+   kwStr + " , 统计数据 ："+ oneKW.size()  );
+							System.out.println( sheetName +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确 "+   kwStr + " , 统计数据 ="+ oneKW.size()  );
 						}
 					} catch ( Exception e) {
 						if( e instanceof NumberFormatException ) {
-							System.err.println( sheetName + " 数量不准确::"+   kwStr + " , 统计数据 ："+ oneKW.size()  );
+							System.err.println( sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr + " , 统计数据 ="+ oneKW.size()  );
+						}else if( e instanceof ArrayIndexOutOfBoundsException ){
+							System.err.println( sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr   );
 						}else{
 							e.printStackTrace();
 						}
@@ -139,12 +141,13 @@ public class InFileParser {
 	}
 	
 	public static void main(String[] args) {
-		String ff0812 = "D:/ForBdcom/0812_PP/0812in.xlsx";
-		String ff0813 = "D:/ForBdcom/0813_PP/0813in.xlsx";
-		String ff0814 = "D:/ForBdcom/0814_PP/0814in.xlsx";
-		String ff0815 = "D:/ForBdcom/0815_PP/0815in.xlsx";
+//		String ff0812 = "D:/ForBdcom/0812_PP/0812in.xlsx";
+//		String ff0813 = "D:/ForBdcom/0813_PP/0813in.xlsx";
+//		String ff0814 = "D:/ForBdcom/0814_PP/0814in.xlsx";
+//		String ff0815 = "D:/ForBdcom/0815_PP/0815in.xlsx";
+		String ff0819 = "D:/ForBdcom/0819_PP/0819in.xlsx";//18426
 		
-		InFileParser inFileParser = new InFileParser( ff0813 );
+		InFileParser inFileParser = new InFileParser( ff0819 );
 		List<InOutObj> parseIn = inFileParser.parseIn();
 		
 //		for(   InOutObj aa  : parseIn ){
