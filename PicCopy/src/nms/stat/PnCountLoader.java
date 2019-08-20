@@ -26,9 +26,9 @@ public class PnCountLoader {
 	public static String fDir = "D:/ForBdcom/财务盘库统计/";
 	public static String[][] fileAndXy =new String[][] {
 		//sheet num , startrow , pncol , countcol
-//		{ fDir+"303186库仓库预盘.xlsx" , "0,1,2,5" , "1,1,0,4", "2,1,1,4",  }, 
+		{ fDir+"303186库仓库预盘.xlsx" , "0,1,2,5" , "1,1,0,4", "2,1,1,4",  }, 
 		
-		{ fDir+"303186盘点汇总.xlsx" , "0,3,1,4" , "1,3,0,1",  },
+//		{ fDir+"303186盘点汇总.xlsx" , "0,3,1,4" , "1,3,0,1",  },
 //		{ fDir+"30库简包板卡现存量查询.xlsx" , "0,1,1,4" , "1,1,1,4",},
 	};
 	
@@ -51,7 +51,7 @@ public class PnCountLoader {
 			List<RowData> parse = excelFileObj.parse();
 			for(  RowData rd :parse  ){
 				
-				String pn = rd.getMaterialNum();
+				String pn = rd.getMaterialNum().trim().toUpperCase();
 				int  cc = rd.getStatcount();
 			
 				Integer integer = pnToCount.get(pn);

@@ -1,6 +1,12 @@
 package nms;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -51,19 +57,22 @@ public class StatAll {
 				if(  fileExist(fin) ){
 					InFileParser inFileParser = new InFileParser( fin );
 					List<InOutObj> parseIn = inFileParser.parseIn();
+					allIn.addAll(parseIn);
 				}
 				if(  fileExist(fout) ){
 					OutFileParser outFileParser = new OutFileParser( fout );
 					List<InOutObj> parseOut = outFileParser.parseOut();
+					allOut.addAll(parseOut);
 				}
 			}
-			
-			compareAll();
-			
-			System.out.println(); 
 		}
 		
+		compareAll();
+		
 	}
+	
+	public static List<InOutObj>  allIn = new ArrayList<InOutObj>();
+	public static List<InOutObj>  allOut = new ArrayList<InOutObj>();
 	
 	private static boolean fileExist(String fa) {
 		return new File(fa).exists();
@@ -74,27 +83,58 @@ public class StatAll {
 		PnCountLoader.load();
 		Map<String, Integer> pnToCount1 = PnCountLoader.pnToCount;
 		
+		for(  InOutObj oneIn : allIn ){
+			String sn = oneIn.getSn();
+			String pn = oneIn.getPn();
+			Integer integer = pnToCount2.get(pn);
+			if( integer ==null    ){
+				pnToCount2.put(pn, 1);
+			}else{
+				pnToCount2.put(pn, integer+1);
+			}
+		}
+		for( InOutObj oneOut : allOut ){
+			String sn = oneOut.getSn();
+			String pn1 = snTOPn.get(sn);
+//			String pn2 = oneOut.getPn();
+			if(  pn1==null ){
+//				appendErr( "####出库SN 无法找到对应 PN , "  + sn + "出库单号:"+oneOut.getNum()  ,  2 );
+			}
+			Integer integer = pnToCount2.get(pn1);
+			if( integer ==null || integer<1  ){
+//				appendErr( "####出库SN 对应 PN数量不足 "  + sn + "出库单号:"+oneOut.getNum()  ,  2 );
+			}else{
+				pnToCount2.put(pn1, integer-1);
+			}
+		}
+		
 		Set<Entry<String,Integer>> entrySet = pnToCount2.entrySet();
 		for( Entry<String,Integer> en: entrySet   ){
-			String key = en.getKey();
+			String key = en.getKey().trim().toUpperCase();
 			Integer v1 = en.getValue();
 			
 			Integer v2 = pnToCount1.get(key);
 			if( v2==null ){
-				System.out.println(   "！！！财务反馈数据没有找到相关物料编码统计：" + key + v1);
-			}else {
-				int a = v1-v2;
+				appendErr(   "！财务反馈数据没有找到相关物料编码统计：" + key + v1  , 1 );
+			}else if( v1<v2   ){
+				int a = v2-v1;
 				int abs = Math.abs(a);
 				if(  abs<20  ){
-					System.out.println(   "！！！！！！物料编码个数存在隐患：" + key + ", 数量：" + v1 + " , 财务核算数量:" + v2);
+					appendErr(   "！！！！！！物料编码个数存在隐患：" + key + ", 数量：" + v1 + " , 财务核算数量:" + v2 , 2 );
+				}
+			}else{
+				int a = v2-v1;
+				int abs = Math.abs(a);
+				if( abs>0 && abs<20  ){
+					appendErr(   "！！！物料编码个数存在隐患,财务核算数量较少：" + key + ", 数量：" + v1 + " , 财务核算数量:" + v2 ,3 );
 				}
 			}
 		}
-		
-		
+		writeResult();
 	}
 
 	public static Map<String, Integer> pnToCount2 = new HashMap<String, Integer>();
+	public static Map<String, String> snTOPn = new HashMap<String, String>();
 	
 	public static void gatherAll( List<KWObj> kwAllSuccess ){
 		int kwCount = kwAllSuccess.size();
@@ -106,6 +146,9 @@ public class StatAll {
 				RowData rowData = datas.get(i);
 				String kw = rowData.getPosNum();
 				String pn = rowData.getMaterialNum();
+				String snsStr = rowData.getSnsStr();
+				
+				snTOPn.put(snsStr, pn);
 				
 				Integer integer = pnToCount2.get(pn);
 				if( integer ==null    ){
@@ -119,7 +162,72 @@ public class StatAll {
 		}
 	}
 	
+	public static List<String> rowsNo = new ArrayList<String>();
+	public static List<String> rowsLess = new ArrayList<String>();
+	public static List<String> rowsMore = new ArrayList<String>();
 	
+	public static void appendErr(String err , int  type ){
+		if( type == 1 ){
+			rowsNo.add(err);
+		}else if( type ==2 ){
+			rowsLess.add(err);
+		}else{
+			rowsMore.add( err) ;
+		}
+	}
+	
+	@SuppressWarnings("resource")
+	public static void writeResult( ){
+		File file = new File("res/a.txt");
+		try {
+			if( file.exists() ){
+				System.out.println(  "YYYYYYY"  );
+			}else{
+				System.out.println(  "NNNNNN"  );
+				file.createNewFile();
+			}
+			FileOutputStream fos = new FileOutputStream(file);
+			BufferedWriter br = new BufferedWriter(new OutputStreamWriter(fos));
+			
+			for(String sss : rowsLess   ){
+				try {
+					br.write(sss+"\r\n");
+					System.out.println(  sss  ); 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			for(String sss : rowsMore   ){
+				try {
+					br.write(sss+"\r\n");
+					System.out.println(  sss  ); 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			for(String sss : rowsNo   ){
+				try {
+					br.write(sss+"\r\n");
+					System.out.println(  sss  ); 
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
+			
+			br.flush();
+			br.close();
+			fos.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+
+		
+	}
 	
 	
 }
