@@ -150,10 +150,10 @@ public class OutFileParser {
 	
 	
 	public static void main(String[] args) {
-//		String ff0812 = "D:/ForBdcom/0812/out.xlsx";
-//		String ff0813 = "D:/ForBdcom/0813/out0813.xlsx";
-//		String ff0814 = "D:/ForBdcom/0814/0814out.xlsx";
-		String ff0815 = "D:/ForBdcom/0815/0815out.xlsx";
+//		String ff0812 = "D:/ForBdcom/0812_PP/0812out.xlsx";
+//		String ff0813 = "D:/ForBdcom/0813_PP/0813out.xlsx";
+//		String ff0814 = "D:/ForBdcom/0814_PP/0814out.xlsx";
+		String ff0815 = "D:/ForBdcom/0815_PP/0815out.xlsx";
 		
 		OutFileParser outparser = new OutFileParser( ff0815 );
 		List<InOutObj> pOut = outparser.parseOut();

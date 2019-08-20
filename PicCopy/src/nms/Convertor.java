@@ -40,20 +40,23 @@ public class Convertor {
 		
 		AccessDBParser.doInit();
 		
-//		String ff0812A = "D:/ForBdcom/0812/a.xlsx";
-//		String ff0812B = "D:/ForBdcom/0812/b.xlsx";
+//		String ff0812A = "D:/ForBdcom/0812_PP/0812A.xlsx";
+//		String ff0812B = "D:/ForBdcom/0812_PP/0812B.xlsx";
 //		
-//		String ff0813A = "D:/ForBdcom/0813/0813A1.xlsx";
-//		String ff0813B = "D:/ForBdcom/0813/0813B1.xlsx";
+//		String ff0813A = "D:/ForBdcom/0813_PP/0813A1.xlsx";
+//		String ff0813B = "D:/ForBdcom/0813_PP/0813B1.xlsx";
 //		
-//		String ff0814A = "D:/ForBdcom/0814/0814A.xlsx";
-//		String ff0814B = "D:/ForBdcom/0814/0814B.xlsx";
+//		String ff0814A = "D:/ForBdcom/0814_PP/0814A.xlsx";
+//		String ff0814B = "D:/ForBdcom/0814_PP/0814B.xlsx";
 		
-		String ff0815A = "D:/ForBdcom/0815/0815A.xlsx";
-		String ff0815B = "D:/ForBdcom/0815/0815B.xlsx";
+//		String ff0815A = "D:/ForBdcom/0815_PP/0815A.xlsx";
+//		String ff0815B = "D:/ForBdcom/0815_PP/0815B.xlsx";
 		
-		doParse(ff0815A);
-		doParse(ff0815B);
+		String ff0819A = "D:/ForBdcom/0819_PP/0819A.xlsx";
+		String ff0819B = "D:/ForBdcom/0819_PP/0819B.xlsx";
+		
+		doParse(ff0819A);
+		doParse(ff0819B);
 		
 		System.out.println(  KWObj.pnnullCounter  );
 
@@ -152,7 +155,7 @@ public class Convertor {
 			 
 			 boolean isKWEmpty = StringUtils.isEmpty(kwStr);
 			 if(   !isKWEmpty   ){
-				 System.out.println(  "进入下一个库位" + kwStr  + " ,  行号：" + (i +1 ) );
+//				 System.out.println(  "进入下一个库位" + kwStr  + " ,  行号：" + (i +1 ) );
 				 if( debugKw.equals(kwStr) ){
 					 System.out.println();
 				 }
@@ -191,7 +194,13 @@ public class Convertor {
 				 if(  countStr.contains("/") ){
 					 countStr = countStr.split("/")[0];
 				 }
-				 int count = (int) Double.parseDouble(countStr.trim());
+				 int count = 0;
+				try {
+					count = (int) Double.parseDouble(countStr.trim());
+				} catch (NumberFormatException e) {
+					System.err.println(  srcFileName + " , "   + ckwObj.getKwNum() + " , " +(i+1));
+					e.printStackTrace();
+				}
 				 ckwObj.addCount(count);
 			 }
 			 RowData rowData = new RowData( );

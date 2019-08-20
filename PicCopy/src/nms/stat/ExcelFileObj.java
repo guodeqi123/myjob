@@ -99,10 +99,11 @@ public class ExcelFileObj {
 					e.setStatcount( (int)Double.parseDouble(count) );
 					retList.add(e);
 				} catch (Exception e) {
-					System.err.println( sheetName + " , rownum ::" + (i+1) );
+					
 					if( e instanceof IllegalStateException ){
-						
+						System.err.println( "单元格数据错误::"+ sheetName + " , rownum ::" + (i+1) );
 					}else{
+						System.err.println( "解析有误"+ sheetName + " , rownum ::" + (i+1) );
 						e.printStackTrace();
 					}
 				}
