@@ -134,7 +134,7 @@ public class OutFileParser {
 						 int c = Integer.parseInt(countStr);
 						 int size = tmpList.size();
 						 if( size!=c ){
-							 System.out.println(  sheetName  +" , 行："+(i+1)+ " , 出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " + parse.get(0) );
+							 System.err.println("出库===:::" +  sheetName  +" , 行："+(i+1)+ " , 出库数量不匹配 :" +  cUseNum +" , "+ cUsePn + " ,统计个数 " + size  +" ，填写个数： "+ c  + " , csn : " /*+ parse.get(0)*/ );
 						 }
 						 tmpList.clear();
 					} catch (Exception e) {

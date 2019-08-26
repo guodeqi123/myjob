@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 
+import nms.newstat.GatherAll;
 import nms.seqparser.AccessDBParser;
 import nms.seqparser.QrCodeParser;
 
@@ -38,7 +39,7 @@ public class KWObj {
 	}
 
 	public void setKwNum(String kwNum) {
-		this.kwNum = kwNum;
+		this.kwNum = kwNum.toUpperCase().trim();
 	}
 
 	public List<RowData> getRowSnList() {
@@ -79,6 +80,7 @@ public class KWObj {
 			RowData rowData = new RowData(kwNum, pn, tmpSN);
 			rowSnList.add(rowData);
 		}
+		
 	}
 
 	public void checkSelf() throws Exception {
@@ -121,7 +123,7 @@ public class KWObj {
 				rps += str+  " , ";
 			}
 			msg = "存在重复序列号,重复个数:"+ (listSize-setSize)  +" ,  序列号:"+rps;
-			throw new Exception(msg);
+			throw new RuntimeException(msg);
 		}
 		
 		if(  count != size  ){

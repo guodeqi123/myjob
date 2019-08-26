@@ -22,6 +22,9 @@ public class RowData {
 	
 	private String msg = "";
 	
+	private String fName ;
+	private String sheetname;
+	
 	
 	private int statcount=0;  //解析财务盘库使用
 	
@@ -44,6 +47,23 @@ public class RowData {
 	}
 
 
+//	@Override
+//	public boolean equals(Object obj) {
+//		 
+//		if(  obj instanceof RowData  ){
+//			RowData toCompare = (RowData) obj;
+//			
+//			String sheetname2 = toCompare.getSheetname();
+//			String materialNum2 = toCompare.getMaterialNum();
+//			String posNum2 = toCompare.getPosNum();
+//			String snsStr2 = toCompare.getSnsStr();
+//			if(     posNum2.equals(posNum) &&  snsStr2.equals(snsStr2)  ){
+//				return true;
+//			}
+//		}
+//		return false;
+//	}
+	
 	public boolean parseSNsToList(   ){
 	
 		try {
@@ -160,6 +180,25 @@ public class RowData {
 
 	public void setStatcount(int statcount) {
 		this.statcount = statcount;
+	}
+
+
+	public String getfName() {
+		return fName;
+	}
+
+	public void setfName(String fName) {
+		this.fName = fName;
+	}
+
+
+	public String getSheetname() {
+		return sheetname;
+	}
+
+
+	public void setSheetname(String sheetname) {
+		this.sheetname = sheetname;
 	}
 
 	

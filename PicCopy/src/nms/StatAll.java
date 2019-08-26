@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -67,9 +68,70 @@ public class StatAll {
 			}
 		}
 		
-		compareAll();
+		writeKWStat();
+//		statCount();
+		
+//		compareAll();
 		
 	}
+	
+	
+	
+	private static void writeKWStat() {
+		Set<Entry<String,RowData>> entrySet = snToObj.entrySet();
+		Map<String, Integer> kwCount = new HashMap<String, Integer>();
+		for(   Entry<String,RowData> en : entrySet ){
+			String key = en.getKey();
+			RowData value = en.getValue();
+			String kw = value.getPosNum();
+			Integer integer = kwCount.get(kw);
+			if( integer == null  ){
+				kwCount.put(kw, 1);
+			}else{
+				kwCount.put(kw, 1+integer);
+			}
+		}
+		
+		System.out.println("1==========================");
+		System.out.println("2==========================");
+		System.out.println("3==========================");
+		System.out.println("4==========================");
+		System.out.println("5==========================");
+		Set<Entry<String,Integer>> es = kwCount.entrySet();
+		for(  Entry<String,Integer> en :es  ){
+			String key = en.getKey();
+			Integer value = en.getValue();
+			System.out.println(  key +","+value   );
+		}
+		
+		
+	}
+
+
+
+	public static void statCount() {
+		System.out.println( " !!!!!!!!!!!!!!总计SN ：" +snToObj.size()   );
+		
+		Map<String, InOutObj> inMap = new HashMap<String, InOutObj>(); 
+		for( InOutObj in : allIn  ){
+			snToObj.put(in.getSn(), in.toRowData() );
+			inMap.put(in.getSn(), in);
+		}
+		Map<String, InOutObj> outMap = new HashMap<String, InOutObj>(); 
+		for( InOutObj out : allOut  ){
+			snToObj.remove(out.getSn());
+			outMap.put(out.getSn(), out);
+		}
+		
+		System.out.println( " !!!!!!!!!!!!!!总计入库 ：" +inMap.size()   );
+		System.out.println( " !!!!!!!!!!!!!!总计出库：" +outMap.size()   );
+		System.out.println( " !!!!!!!!!!!!!!总计SN(结合出入库) ：" +snToObj.size()   );
+		
+	}
+
+
+
+	public static Map<String, RowData>  snToObj = new HashMap();
 	
 	public static List<InOutObj>  allIn = new ArrayList<InOutObj>();
 	public static List<InOutObj>  allOut = new ArrayList<InOutObj>();
@@ -80,8 +142,8 @@ public class StatAll {
 
 	private static void compareAll() {
 		
-		PnCountLoader.load();
-		Map<String, Integer> pnToCount1 = PnCountLoader.pnToCount;
+		PnCountLoader.load(PnCountLoader.u8SrcFileInfo);
+		Map<String, Integer> pnToCount1 = PnCountLoader.u8pnToCount;
 		
 		for(  InOutObj oneIn : allIn ){
 			String sn = oneIn.getSn();
@@ -149,6 +211,7 @@ public class StatAll {
 				String snsStr = rowData.getSnsStr();
 				
 				snTOPn.put(snsStr, pn);
+				snToObj.put(snsStr, rowData);
 				
 				Integer integer = pnToCount2.get(pn);
 				if( integer ==null    ){

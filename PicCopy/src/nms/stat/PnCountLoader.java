@@ -10,6 +10,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import nms.RowData;
+import nms.newstat.LoadPnInfos;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
@@ -21,32 +22,54 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class PnCountLoader {
 	
 	
-	public static Map<String, Integer> pnToCount = new HashMap<String, Integer>();
+	public static Map<String, Integer> u8pnToCount = new HashMap<String, Integer>();
+	public static Map<String, Integer> storepnToCount = new HashMap<String, Integer>();
 	
-	public static String fDir = "D:/ForBdcom/财务盘库统计/";
-	public static String[][] fileAndXy =new String[][] {
+	public static String fDir = "D:/ForBdcom/U8DATA/";
+	public static String[][] u8SrcFileInfo =new String[][] {
 		//sheet num , startrow , pncol , countcol
-		{ fDir+"303186库仓库预盘.xlsx" , "0,1,2,5" , "1,1,0,4", "2,1,1,4",  }, 
+		{ fDir+"30.XLSX" , "0,1,4,11"  }, 
+		{ fDir+"31.XLSX" , "0,1,4,11"  }, 
+		{ fDir+"86.XLSX" , "0,1,4,11"   }, 
 		
-//		{ fDir+"303186盘点汇总.xlsx" , "0,3,1,4" , "1,3,0,1",  },
-//		{ fDir+"30库简包板卡现存量查询.xlsx" , "0,1,1,4" , "1,1,1,4",},
+	};
+	
+	public static String fDir2 = "D:/ForBdcom/U8DATA/";
+	public static String[][] srcFileInfo =new String[][] {
+		//sheet num , startrow , pncol , countcol
+		{ fDir2+"store.xlsx" , "0,0,2,5"  }, 
 	};
 	
 	public static void main(String[] args) {
+		//加载启用SN 管理的PN
+		LoadPnInfos.loadPNStatus(LoadPnInfos.fpath);
+		Set<String> pns =  LoadPnInfos.pnInSNManage;
+//		PnCountLoader.u8pnToCount = load( PnCountLoader.u8SrcFileInfo );
 		
-		load();
 		
-		Set<Entry<String,Integer>> entrySet = pnToCount.entrySet();
+		PnCountLoader.storepnToCount = load( PnCountLoader.srcFileInfo );
+		
+		int sum = 0; 
+		Set<Entry<String,Integer>> entrySet = storepnToCount.entrySet();
 		for(Entry<String,Integer> en : entrySet   ){
-			System.out.println( en.getKey() + "   ,   " + en.getValue()   );
+			Integer value = en.getValue();
+			String upperCase = en.getKey().toUpperCase();
+			if( pns.contains( upperCase ) ){
+				sum += value;
+			}
+			System.out.println( upperCase + "   ,   " +   value );
 		}
 		
+		System.out.println(  "总数：" + sum  );
 		
 	}
 	
 	
-	public static void load(){
-		for( String[] a :   fileAndXy ){
+	public static Map<String, Integer> load(String[][] fileInfos){
+		
+		Map<String, Integer> pnToCount = new HashMap<String, Integer>();
+		
+		for( String[] a :   fileInfos ){
 			ExcelFileObj excelFileObj = new ExcelFileObj(a);
 			List<RowData> parse = excelFileObj.parse();
 			for(  RowData rd :parse  ){
@@ -62,6 +85,8 @@ public class PnCountLoader {
 				}
 			}
 		}
+		
+		return pnToCount;
 	}
 	
 	

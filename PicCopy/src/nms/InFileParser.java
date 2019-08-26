@@ -122,13 +122,13 @@ public class InFileParser {
 						String count = split[1];
 						int parseInt = Integer.parseInt(count);
 						if(  parseInt!= oneKW.size()){
-							System.out.println( sheetName +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确 "+   kwStr + " , 统计数据 ="+ oneKW.size()  );
+							System.err.println( "入库!!!:::" +sheetName +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确 "+   kwStr + " , 统计数据 ="+ oneKW.size()  );
 						}
 					} catch ( Exception e) {
 						if( e instanceof NumberFormatException ) {
-							System.err.println( sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr + " , 统计数据 ="+ oneKW.size()  );
+							System.err.println("入库!!!:::" + sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr + " , 统计数据 ="+ oneKW.size()  );
 						}else if( e instanceof ArrayIndexOutOfBoundsException ){
-							System.err.println( sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr   );
+							System.err.println("入库!!!:::" + sheetName   +" , 行："+(i+1)+" , 物料编码" + cUsePn + " 数量不准确=="+   kwStr   );
 						}else{
 							e.printStackTrace();
 						}

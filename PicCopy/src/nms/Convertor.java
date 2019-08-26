@@ -52,11 +52,16 @@ public class Convertor {
 //		String ff0815A = "D:/ForBdcom/0815_PP/0815A.xlsx";
 //		String ff0815B = "D:/ForBdcom/0815_PP/0815B.xlsx";
 		
-		String ff0819A = "D:/ForBdcom/0819_PP/0819A.xlsx";
-		String ff0819B = "D:/ForBdcom/0819_PP/0819B.xlsx";
+//		String ff0819A = "D:/ForBdcom/0819_PP/0819A.xlsx";
+//		String ff0819B = "D:/ForBdcom/0819_PP/0819B.xlsx";
 		
-		doParse(ff0819A);
-		doParse(ff0819B);
+		String ff0820A = "D:/ForBdcom/0820_PP/0820A.xlsx";
+		String ff0821A = "D:/ForBdcom/0821_PP/0821A.xlsx";
+		String ff0822A = "D:/ForBdcom/0822_PP/0822A.xlsx";
+		
+		doParse(ff0820A);
+		doParse(ff0821A);
+		doParse(ff0822A);
 		
 		System.out.println(  KWObj.pnnullCounter  );
 
@@ -304,7 +309,7 @@ public class Convertor {
 			Row row2 = sheet.createRow( counter3++ );
 			Cell cell2 = null;
 			cell2 = row2.createCell(0);
-			cell2.setCellValue( kwObj.getKwNum()  + "£¬"+ kwObj.getSheetRowNum() +"ÐÐ" );
+			cell2.setCellValue( kwObj.getKwNum()  /*+ "£¬"+ kwObj.getSheetRowNum() +"ÐÐ"*/ );
 			cell2 = row2.createCell(1);
 			cell2.setCellValue(  kwObj.getMsg());
 		}

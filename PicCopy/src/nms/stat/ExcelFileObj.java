@@ -33,7 +33,7 @@ public class ExcelFileObj {
 		
 		File file = new File(filePath);
 		
-		System.out.println( file.exists() );
+//		System.out.println( file.exists() );
 		
 		this.fname = file.getName().substring( 0 , file.getName().lastIndexOf(".") );
 		fSuffix = file.getName().substring( file.getName().lastIndexOf(".") + 1);
@@ -87,8 +87,11 @@ public class ExcelFileObj {
 					 Cell cellCount = row.getCell( countCol );
 					 String pnStr = Convertor.getCellValue(cellPn  );
 					 String count = Convertor.getCellValue(cellCount );
+					 if( StringUtils.isEmpty( count )  ){
+						  count = "0";
+					 }
 					 if( StringUtils.isEmpty(pnStr) ){
-						 System.out.println( sheetName + " , rownum ::" + (i+1) + " pn is null");
+						 System.out.println( "加载U8 与 自盘数：："+ filePath +" , "+sheetName + " , rownum ::" + (i+1) + " pn is null");
 						 continue;
 					 }
 					 if( StringUtils.isEmpty(pnStr)  || StringUtils.isEmpty(count) ) {

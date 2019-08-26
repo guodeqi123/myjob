@@ -120,6 +120,10 @@ public class QrCodeParser {
 							
 						} else if( sss.startsWith( "H/W" + colon1) || sss.startsWith( "H/W"  + colon2 )   ){
 							
+						}else if( sss.startsWith( "MFRP" + colon1) || sss.startsWith( "MFRP"  + colon2 )   ){
+
+						}else if( sss.startsWith( "MFRP") ){
+						
 						}else{
 							int length = sss.length();
 							if( length>=5 && length<=35 ){ 
