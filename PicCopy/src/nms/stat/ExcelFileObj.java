@@ -90,6 +90,12 @@ public class ExcelFileObj {
 					 if( StringUtils.isEmpty( count )  ){
 						  count = "0";
 					 }
+					 if(  "I".equals(count) ){
+						 count = "1";
+					 }
+					 if(  "12O".equals(count) ){
+						 count = "120";
+					 }
 					 if( StringUtils.isEmpty(pnStr) ){
 						 System.out.println( "加载U8 与 自盘数：："+ filePath +" , "+sheetName + " , rownum ::" + (i+1) + " pn is null");
 						 continue;

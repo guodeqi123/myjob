@@ -23,20 +23,20 @@ public class LoadPnInfos {
 	
 	public static Set<String> pnInSNManage = new HashSet<String>();
 	
-	public static String fpath = "D:/ForBdcom/U8DATA/物料档案.xlsx";
+	public static String fpath = "D:/ForBdcom/0stat1/物料档案0823.xlsx";
 	
 	public static void main(String[] args) {
 		
-		loadPNStatus(fpath);
+		loadPNStatus();
 		
 	}
 
-	public static void loadPNStatus(String ppp ) {
+	public static void loadPNStatus( ) {
 		
 		Workbook wb = null;
 		Sheet sheet;
 		try {
-			File file = new File(ppp);
+			File file = new File(fpath);
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring(
 					file.getName().lastIndexOf(".") + 1);

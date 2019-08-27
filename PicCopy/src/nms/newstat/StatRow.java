@@ -1,6 +1,8 @@
 package nms.newstat;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class StatRow {
@@ -20,7 +22,11 @@ public class StatRow {
 	
 	public boolean enableSN ;
 	
-	public Set<String> kwSet = new HashSet<String>();
+	public Map<String,Integer> kwCountMap = new HashMap<String,Integer>();
+	
+	public String storeKwCountStr ;
+	
+	public int u8increase;
 	
 	public void addScan( int addValue){
 		if(  countScan == -1 ){
@@ -33,7 +39,7 @@ public class StatRow {
 		return pn;
 	}
 	public void setPn(String pn) {
-		this.pn = pn;
+		this.pn = pn.toUpperCase().trim();
 	}
 	public int getCountU8() {
 		return countU8;
@@ -62,16 +68,40 @@ public class StatRow {
 		this.enableSN = enableSN;
 	}
 
-	public Set<String> getKwSet() {
-		return kwSet;
-	}
-
-	public void setKwSet(Set<String> kwSet) {
-		this.kwSet = kwSet;
-	}
 	
 	public void addKw(String kw ) {
-		this.kwSet.add(kw);
+		Integer integer = kwCountMap.get(kw);
+		
+		if( integer == null ){
+			kwCountMap.put( kw , 1);
+		}else{
+			kwCountMap.put( kw , 1 + integer );
+		}
+		
+	}
+
+	public Map<String, Integer> getKwCountMap() {
+		return kwCountMap;
+	}
+
+	public void setKwCountMap(Map<String, Integer> kwCountMap) {
+		this.kwCountMap = kwCountMap;
+	}
+
+	public String getStoreKwCountStr() {
+		return storeKwCountStr;
+	}
+
+	public void setStoreKwCountStr(String storeKwCountStr) {
+		this.storeKwCountStr = storeKwCountStr;
+	}
+
+	public int getU8increase() {
+		return u8increase;
+	}
+
+	public void setU8increase(int u8increase) {
+		this.u8increase = u8increase;
 	}
 	
 	

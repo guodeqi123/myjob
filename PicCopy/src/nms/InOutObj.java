@@ -21,12 +21,18 @@ public class InOutObj {
 		return sn;
 	}
 	public void setSn(String sn) {
+		if( sn!=null ){
+			sn = sn.trim().toUpperCase();
+		}
 		this.sn = sn;
 	}
 	public String getPn() {
 		return pn;
 	}
 	public void setPn(String pn) {
+		if( pn!=null ){
+			pn = pn.trim().toUpperCase();
+		}
 		this.pn = pn;
 	}
 	public String getKw() {

@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
+import nms.newstat.Convertor2;
 import nms.seqparser.QrCodeParser;
 
 import org.apache.commons.lang.StringUtils;
@@ -156,6 +160,38 @@ public class InFileParser {
 		
 		System.out.println(    parseIn.size() );
 		
+	}
+
+	public List<InOutObj> parseIn2() {
+		
+		List<InOutObj> retList = new ArrayList<InOutObj>();
+		
+		Convertor2 ccc = new Convertor2(srcFilePath);
+		Map<String, List<KWObj> > ret = ccc.parseExcel2( );
+		List<KWObj> kwErr = ret.get("error");
+		List<KWObj> kwAllSuccess = ret.get("success");
+		
+		int kwCount = kwAllSuccess.size();
+		for(  int kwi = 0 ; kwi<kwCount ; kwi++ ){
+			KWObj kwObj = kwAllSuccess.get(kwi);
+			List<RowData> datas = kwObj.getRowSnList();
+			int size = datas.size();
+			for (int i = 0; i < size; i++) {
+				RowData rowData = datas.get(i);
+				String snsStr = rowData.getSnsStr();
+				String kw = rowData.getPosNum();
+				String pn = rowData.getMaterialNum();
+				InOutObj inOutObj = new InOutObj();
+				inOutObj.setIsIn(true);
+				inOutObj.setSn(snsStr.toUpperCase().trim());
+				inOutObj.setPn(pn.toUpperCase().trim());
+				inOutObj.setKw(kw);
+				retList.add(inOutObj);
+			}
+		}
+		
+		
+		return retList;
 	}
 	
 }

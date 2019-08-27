@@ -34,7 +34,7 @@ public class RowData {
 	public RowData(String posNum, String materialNum, String snsStr ,String count ) {
 		super();
 		this.posNum = posNum;
-		this.materialNum = materialNum;
+		this.materialNum = materialNum.trim().toUpperCase();
 		this.snsStr = snsStr;
 		this.count = count;
 		
@@ -42,7 +42,7 @@ public class RowData {
 
 	public RowData(String cUseKW, String cUsePN, String snStr) {
 		this.posNum = cUseKW;
-		this.materialNum = cUsePN;
+		this.materialNum = cUsePN.trim().toUpperCase();
 		this.snsStr = snStr;
 	}
 
@@ -119,7 +119,7 @@ public class RowData {
 	}
 
 	public void setMaterialNum(String materialNum) {
-		this.materialNum = materialNum;
+		this.materialNum = materialNum.trim().toUpperCase();
 	}
 
 
