@@ -209,6 +209,7 @@ public class GatherAll {
 		writeRes(allRight  ,"allRight.csv"  );
 		writeRes(other , "other.csv");
 		writeRes(errPN , "errPN.csv");
+		writeRes(noScanU8StoreSame , "noScanU8StoreSame.csv");
 		
 	}
 	
@@ -236,6 +237,7 @@ public class GatherAll {
 	public static ArrayList<StatRow> allZero = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> other = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> errPN = new ArrayList<StatRow>();
+	public static ArrayList<StatRow> noScanU8StoreSame = new ArrayList<StatRow>();
 	
 	private static void getMsg(	Map<String, StatRow> map) {
 		
@@ -255,6 +257,8 @@ public class GatherAll {
 			
 			if(  countScan<=0 && countU8<=0 && countStore<=0 ){
 				allZero.add(value);
+			}else if(  countScan<=0  && countU8==countStore ){
+				noScanU8StoreSame.add(value);
 			}else if( countScan == countU8 && countScan == countStore){
 				allRight.add(value);
 			}else if( pnCompareObj!=null && StringUtils.isEmpty(pnCompareObj.getToPn()) ) {
