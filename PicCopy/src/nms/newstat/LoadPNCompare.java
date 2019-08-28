@@ -25,12 +25,11 @@ public class LoadPNCompare {
 	public static Map<String, PNCompareObj> PNCompareMapU8Exist = new HashMap<String, PNCompareObj>();
 	public static Map<String, PNCompareObj> PNCompareMapU8NotExist = new HashMap<String, PNCompareObj>();
 	
-	public static String path = "D:/ForBdcom/0stat1/物料档案比对.xls";
 	
 	public static void load(){
 		
 		try {
-			File file = new File(path);
+			File file = new File(FPath.PNComparePath);
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
 			Workbook wb = null;

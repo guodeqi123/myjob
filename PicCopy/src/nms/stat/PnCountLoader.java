@@ -11,6 +11,7 @@ import java.util.Set;
 
 import nms.RowData;
 import nms.newstat.Convertor2;
+import nms.newstat.FPath;
 import nms.newstat.LoadPnInfos;
 
 import org.apache.commons.lang.StringUtils;
@@ -91,7 +92,7 @@ public class PnCountLoader {
 	}
 
 	
-	public static String storePath  = "D:/ForBdcom/0stat1/store/电子台账0826.xlsx";
+	
 	public static Map<String, StorePNObj> pnToKWCount = new HashMap<String, StorePNObj>();
 	public static void loadStoreData() {
 		int pnCol = 2;
@@ -101,7 +102,7 @@ public class PnCountLoader {
 		
 		Workbook wb = null;
 		try {
-			File file = new File(storePath);
+			File file = new File(FPath.storePath);
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
 			wb = null;
@@ -159,13 +160,12 @@ public class PnCountLoader {
 		System.out.println(  "加载自盘数据共行::" +  cc1);
 	}
 
-	public static String u8PathNew  = "D:/ForBdcom/0stat1/u8/u8.xlsx";
-	public static String u8PathOld  = "D:/ForBdcom/0stat1/u8/u8.xlsx";
+
 	public static Map<String, U8PNObj> pnToU8Obj = new HashMap<String, U8PNObj>();
 	public static void loadU8Data() {
-		loadFile( u8PathNew , 1 );
-		if( !StringUtils.isEmpty(u8PathOld) ){
-			loadFile( u8PathOld  ,2 );
+		loadFile( FPath.u8PathNew , 1 );
+		if( !StringUtils.isEmpty(FPath.u8PathOld) ){
+			loadFile( FPath.u8PathOld  ,2 );
 		}
 	}
 	

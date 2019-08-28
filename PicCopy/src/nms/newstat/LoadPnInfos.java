@@ -23,8 +23,6 @@ public class LoadPnInfos {
 	
 	public static Set<String> pnInSNManage = new HashSet<String>();
 	
-	public static String fpath = "D:/ForBdcom/0stat1/ŒÔ¡œµµ∞∏0823.xlsx";
-	
 	public static void main(String[] args) {
 		
 		loadPNStatus();
@@ -36,7 +34,7 @@ public class LoadPnInfos {
 		Workbook wb = null;
 		Sheet sheet;
 		try {
-			File file = new File(fpath);
+			File file = new File( FPath.PNStatuspath);
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring(
 					file.getName().lastIndexOf(".") + 1);

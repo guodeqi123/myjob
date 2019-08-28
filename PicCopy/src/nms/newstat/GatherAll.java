@@ -27,7 +27,7 @@ import nms.stat.U8PNObj;
 public class GatherAll {
 	
 //	public static String basePath = "D:/ForBdcom/0stat";
-	public static String basePath = "D:/ForBdcom/0stat1/扫描所有库位信息";
+	
 
 	public static List<RowData> srcData = new ArrayList<RowData>();
 	
@@ -332,7 +332,7 @@ public class GatherAll {
 	
 	public  static void doFileParse() {
 		
-		File file = new File(basePath);
+		File file = new File(FPath.scanbasePath);
 
 		File[] listFiles = file.listFiles();
 		for (File ff : listFiles) {
