@@ -1,6 +1,8 @@
 package nms.stat;
 
-public class U8PNObj {
+import java.io.Serializable;
+
+public class U8PNObj implements Serializable  {
 
 	private String pn;
 	private int newValue;

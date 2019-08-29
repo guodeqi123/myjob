@@ -19,7 +19,10 @@ import nms.InOutObj;
 import nms.KWObj;
 import nms.RowData;
 import nms.newstat.inout.LoadInOut;
+import nms.newstat.pnc.LoadPNAmend;
+import nms.newstat.pnc.LoadPNPrice;
 import nms.newstat.pnc.PNCompareObj;
+import nms.newstat.pnc.PNInfoObj;
 import nms.stat.PnCountLoader;
 import nms.stat.StorePNObj;
 import nms.stat.U8PNObj;
@@ -28,7 +31,7 @@ public class GatherAll {
 	
 //	public static String basePath = "D:/ForBdcom/0stat";
 	
-
+	public static Set<String> scanPNS = new HashSet<String>();
 	public static List<RowData> srcData = new ArrayList<RowData>();
 	
 	public static Map<String,  StatRow > pnToCountEnableMap = new HashMap<String, StatRow>();
@@ -40,10 +43,13 @@ public class GatherAll {
 	public static void main(String[] args) {
 		
 		LoadInOut.load();//加载出入库
+		try { Thread.sleep(1000); } catch (InterruptedException e1) { }
+		System.out.println(  "!!!出入库加载完毕!!!" );
 		LoadPNCompare.load();//加载物料对照 
 		LoadPnInfos.loadPNStatus();  //加载物料档案
 		PnCountLoader.loadStoreData();//加载仓库自盘数量
 		PnCountLoader.loadU8Data();//加载U8数量并计算差异
+		LoadPNPrice.load();
 		
 		doFileParse();  //解析所有扫码文件
 		printInfo( fileCountInfo ); //打印扫码单个文件统计信息
@@ -52,7 +58,14 @@ public class GatherAll {
 		
 		gatherInAndOut();//合并出入库
 		System.out.println( "SN总数统计" + srcData.size() );
-		System.out.println(   "去重总数:"+distinctMap.size() );		
+		System.out.println(   "去重总数:"+distinctMap.size() );	
+		Set<Entry<String,RowData>> entrySet = distinctMap.entrySet();
+		for(  Entry<String,RowData> en : entrySet ){
+			RowData value = en.getValue();
+			String materialNum = value.getMaterialNum();
+			scanPNS.add(materialNum);
+		}
+		System.out.println(   "PN总数:"+scanPNS.size() );	
 		
 		doCheckAllPNAndGatherScanPNCount(); //检查所有盘库出库结果物料编码   并汇总个数
 		System.out.println( "doCheckAllPN!!!!!启用SN 扫码物料编码个数:"  + pnToCountEnableMap.size() );
@@ -60,34 +73,41 @@ public class GatherAll {
 		System.out.println( "doCheckAllPN!!!!!扫码物料编码个数:"  + ( pnToCountDisableMap.size()  + pnToCountEnableMap.size()) );
 //		printErrorPN( errorNotManageSN );
 		
-		gatherAllData(  pnToCountEnableMap , pnToCountDisableMap , LoadPnInfos.pnInSNManage ,  PnCountLoader.pnToKWCount , PnCountLoader.pnToU8Obj );
+		try {
+			Map<String, StorePNObj> tmppnToKWCount = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
+			Map<String,U8PNObj > tmppnToU8Obj = PnCountLoader.deepClone( PnCountLoader.pnToU8Obj ) ;
+			gatherAllData(  pnToCountEnableMap , pnToCountDisableMap , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
 		
 	}
 	
 	private static void amendPN() {
 		//待修正
-		Map<String, PNCompareObj> toAmend =  LoadPNCompare.PNCompareMapU8NotExist;
+//		Map<String, PNCompareObj> toAmend =  LoadPNCompare.PNCompareMapU8NotExist;
+		Map<String, String> toAmend =  LoadPNAmend.srcPNToPN;
 		
 		Set<Entry<String, RowData>> entrySet = distinctMap.entrySet();
 		for(  Entry<String, RowData> en : entrySet  ){
 			RowData rd = en.getValue();
 			String srcPn = rd.getMaterialNum();
 			
-			PNCompareObj pnCompareObj = toAmend.get(srcPn);
-			if(   pnCompareObj==null  ||  StringUtils.isEmpty(  pnCompareObj.getToPn() )    ){
+			String toPn = toAmend.get(srcPn);
+			if(    StringUtils.isEmpty(  toPn)    ){
 				continue;
 			}
-			rd.setMaterialNum( pnCompareObj.getToPn() );
+			rd.setMaterialNum( toPn);
 		}
 		
 		List<InOutObj> inList = LoadInOut.inList;
 		for(  InOutObj in :inList  ) {
 			String pn = in.getPn();
-			PNCompareObj pnCompareObj = toAmend.get(pn);
-			if(   pnCompareObj==null  ||  StringUtils.isEmpty(  pnCompareObj.getToPn() )    ){
+			String toPnIn = toAmend.get(pn);
+			if(    StringUtils.isEmpty(   toPnIn  )    ){
 				continue;
 			}
-			in.setPn(  pnCompareObj.getToPn()  );
+			in.setPn(  toPnIn );
 		}
 	}
 
@@ -121,7 +141,7 @@ public class GatherAll {
 		
 	}
 
-	private static void gatherAllData(Map<String, StatRow> scanPNToEnable,
+	private static <E> void gatherAllData(Map<String, StatRow> scanPNToEnable,
 			Map<String, StatRow> scanPNToDisable, Set<String> pnInSNManage,
 			Map<String, StorePNObj> storePnToObjMap,
 			Map<String, U8PNObj> u8Map ) {
@@ -206,16 +226,31 @@ public class GatherAll {
 		getMsg( pnToCountStoreMap );
 		getMsg( pnToCountU8Map );
 		
-		writeRes(allRight  ,"allRight.csv"  );
-		writeRes(other , "other.csv");
-		writeRes(errPN , "errPN.csv");
-		writeRes(noScanU8StoreSame , "noScanU8StoreSame.csv");
+//		writeRes(allRight  ,"allRight.csv"  );
+//		writeRes(other , "other.csv");
+//		writeRes(errPN , "errPN.csv");
+//		writeRes(noScanU8StoreSame , "noScanU8StoreSame.csv");
+		
+		WriteExcel.createExcel(allRight, "allRight_GDQ.xlsx");
+		WriteExcel.createExcel(other, "other_GDQ.xlsx");
+		WriteExcel.createExcel(errPN, "errPN_GDQ.xlsx");
+		WriteExcel.createExcel(noScanU8StoreSame, "noScanU8StoreSame_GDQ.xlsx");
+		
+		WriteExcel.createExcel(vituralPN, "vituralPN_GDQ.xlsx");
+		WriteExcel.createExcel( NotINSNManage , "NotINSNManage_GDQ.xlsx");
+		
+		ArrayList<StatRow> arrayList = new ArrayList<StatRow>();
+		arrayList.addAll(allRight);
+		arrayList.addAll(other);
+		arrayList.addAll(errPN);
+		arrayList.addAll(noScanU8StoreSame);
+		WriteExcel.createExcel( arrayList , "ALL_GDQ.xlsx");
 		
 	}
 	
 	private static void writeRes(ArrayList<StatRow> resList, String fname) {
 		ArrayList<String> msgs = new ArrayList<String>();
-		msgs.add("PN , 扫描数量 ,自盘数量 , U8数量 , U8变动数量 ,  扫码涉及库位, 自盘涉及库位" );
+		msgs.add("PN , 扫描数量 ,自盘数量 , U8数量 , U8变动数量 ,  扫码涉及库位, 自盘涉及库位 , 存货名称 , 单价" );
 		for( StatRow value :  resList  ){
 			String pn = value.getPn();
 			int countStore = value.getCountStore();
@@ -227,6 +262,14 @@ public class GatherAll {
 			}
 			String kwStrs = getKWInfo(value.getKwCountMap());
 			String msg =  pn + " , "+value.getCountScan()+"  ,"+countStore +"  , "  + countU8 + ","  + u8increase +","+kwStrs + "," +kwForStore ;
+			PNInfoObj pnInfoObj = LoadPNPrice.pnToObj.get(pn);
+			String pnName = "";
+			double pnPrice = -1;
+			if( pnInfoObj != null ){
+				pnName = pnInfoObj.getPnName();
+				pnPrice = pnInfoObj.getPrice();
+			}
+			msg = msg + " , " + pnName + " , "  +pnPrice;
 			
 			msgs.add(msg);
 		}
@@ -234,26 +277,43 @@ public class GatherAll {
 	}
 
 	public static ArrayList<StatRow> allRight = new ArrayList<StatRow>();
-	public static ArrayList<StatRow> allZero = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> other = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> errPN = new ArrayList<StatRow>();
+	//没有扫码 ， U8与自盘数量相同
 	public static ArrayList<StatRow> noScanU8StoreSame = new ArrayList<StatRow>();
+	
+	public static ArrayList<StatRow> allZero = new ArrayList<StatRow>();
+	public static ArrayList<StatRow> vituralPN = new ArrayList<StatRow>();
+	
+	public static ArrayList<StatRow> NotINSNManage = new ArrayList<StatRow>();
 	
 	private static void getMsg(	Map<String, StatRow> map) {
 		
 		Set<Entry<String,StatRow>> entrySet = map.entrySet();
 		for(  Entry<String,StatRow> en  : entrySet){ 
-			String key = en.getKey();
+			String keyPN = en.getKey();
 			StatRow value = en.getValue();
 			int countScan = value.getCountScan();
 			int countU8 = value.getCountU8();
 			int countStore = value.getCountStore();
 			int u8increase = value.getU8increase();
 			String kwForStore = value.getStoreKwCountStr();
-			if( "CBSWI-SWI0360A".equals(key) ){
+			if( "CBSWI-SWI0360A".equals(keyPN) ){
 				System.out.println(  );
 			}
-			PNCompareObj pnCompareObj = LoadPNCompare.PNCompareMapU8NotExist.get(key);
+			PNCompareObj pnCompareObj = LoadPNCompare.PNCompareMapU8NotExist.get(keyPN);
+			
+			if(   LoadPNPrice.vitualPN.contains(keyPN) ){
+				vituralPN.add(value);
+				continue;
+			}
+			
+			if( "CBNNN-WAP0060A".equals(keyPN) ) {
+				 System.out.println();
+			}
+			
+			U8PNObj u8pnObj = PnCountLoader.pnToU8Obj.get(keyPN);
+			boolean isExistInU8 = PnCountLoader.pnToU8Obj.containsKey(keyPN);
 			
 			if(  countScan<=0 && countU8<=0 && countStore<=0 ){
 				allZero.add(value);
@@ -261,20 +321,22 @@ public class GatherAll {
 				noScanU8StoreSame.add(value);
 			}else if( countScan == countU8 && countScan == countStore){
 				allRight.add(value);
-			}else if( pnCompareObj!=null && StringUtils.isEmpty(pnCompareObj.getToPn()) ) {
+			}else if( !isExistInU8) {
 				errPN.add(value);
 			}else{
 				other.add(value);
 			}
 			
-			
+			if( !LoadPnInfos.pnInSNManage.contains(keyPN)  && countScan>=0 ){
+				NotINSNManage.add(value);
+			}
 			
 			
 		}
 		
 	}
 
-	private static String getKWInfo(Map<String, Integer> kwCountMap) {
+	public static String getKWInfo(Map<String, Integer> kwCountMap) {
 		StringBuilder sb = new StringBuilder();
 		Set<Entry<String,Integer>> entrySet = kwCountMap.entrySet();
 		for(  Entry<String,Integer> en : entrySet  ){

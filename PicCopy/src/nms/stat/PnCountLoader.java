@@ -1,8 +1,13 @@
 package nms.stat;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -157,7 +162,7 @@ public class PnCountLoader {
 			StorePNObj value = en.getValue();
 //			System.out.println(   "加载自盘数据:" +  key + " , " + value.getSumCount() + " , " + value.getKWCountStr() );
 		}
-		System.out.println(  "加载自盘数据共行::" +  cc1);
+		System.out.println(  "加载自盘数据共行::" +  cc1 + " , 去重："  + pnToKWCount.size() );
 	}
 
 
@@ -225,16 +230,53 @@ public class PnCountLoader {
 			cc1++;
 		}
 		
-		System.out.println( "加载U8数据行："+fPath + " , "+cc1);
+		System.out.println( "加载U8数据行："+fPath + " , "+cc1 + " , 去重:" + pnToU8Obj.size());
 		
 	}
 
-
-	public static void main(String[] args) {
+	
+	public static void main(String[] args) throws  Exception {
 		
 		loadStoreData();
 		loadU8Data();
 		
+		
 	}
+	
+	public static <T> T deepClone(T srcObj) throws IOException, ClassNotFoundException  {
+		if (srcObj == null) {
+			return null;
+		}
+		
+		T newObj = null;
+		ByteArrayOutputStream bo = null;
+		ObjectOutputStream oo = null;
+		ByteArrayInputStream bi = null;
+		ObjectInputStream oi = null;
+		
+		try {
+			bo = new ByteArrayOutputStream();
+			oo = new ObjectOutputStream(bo);
+			oo.writeObject(srcObj);
+			bi = new ByteArrayInputStream(bo.toByteArray());
+			oi = new ObjectInputStream(bi);
+			newObj = (T) oi.readObject();
+		} catch (IOException e) {
+			throw e;
+		} catch (ClassNotFoundException e) {
+			throw e;
+		}finally{
+			try {
+				oo.close();
+				bo.close();
+				bi.close();
+				oi.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return newObj ;
+	}
+	
 	
 }
