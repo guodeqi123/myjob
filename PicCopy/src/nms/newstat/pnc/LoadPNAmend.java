@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import nms.newstat.Convertor2;
 import nms.newstat.FPath;
@@ -39,7 +41,6 @@ public class LoadPNAmend {
 			int toPnCol = Integer.parseInt( oneSheet[4] );
 			doParse(fname ,startrow, sheetNum ,srcPnCol ,toPnCol );
 		}
-		
 	}
 
 	private static void doParse(String fname, int startrow , int sheetNum, int srcPnCol, int toPnCol) {
@@ -78,8 +79,6 @@ public class LoadPNAmend {
 			
 			srcPNToPN.put( srcpn.trim().toUpperCase() ,  topn.trim().toUpperCase()  );
 		}
-		
-		System.out.println(  "仓库反馈修正PN个数："+ srcPNToPN.size() );
 		
 	}
 	

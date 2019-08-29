@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -102,14 +104,27 @@ public class LoadPNCompare {
 		}  
 		
 		System.out.println( "LoadPNCompare已修正物料编码个数:: "+LoadPNAmend.srcPNToPN.size() );
+		int counter = 0;
+		Set<Entry<String, String>> entrySet = LoadPNAmend.srcPNToPN.entrySet();
+		for(Entry<String, String> en : entrySet){
+			String key = en.getKey();
+			String value = en.getValue();
+			if(  key.equals(value) ){
+				
+			}else{
+				System.out.println(  "======"  + key +  " ,  " +value);
+				counter ++;
+			}
+		}
+		System.out.println( "仓库反馈修正PN个数::" + LoadPNAmend.srcPNToPN.size()  + " , " + counter );
 	}
 	
 	public static void main(String[] args) {
 		
 		load();
 		
-		System.out.println(  "不在U8系统的物料编码个数：：" +PNCompareMapU8NotExist.size()  );
-		System.out.println( "在U8系统的物料编码个数：："+ PNCompareMapU8Exist.size()  );
+//		System.out.println(  "不在U8系统的物料编码个数：：" +PNCompareMapU8NotExist.size()  );
+//		System.out.println( "在U8系统的物料编码个数：："+ PNCompareMapU8Exist.size()  );
 		
 	}
 	

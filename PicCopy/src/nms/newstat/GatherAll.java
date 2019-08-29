@@ -233,11 +233,11 @@ public class GatherAll {
 		
 		WriteExcel.createExcel(allRight, "allRight_GDQ.xlsx");
 		WriteExcel.createExcel(other, "other_GDQ.xlsx");
-		WriteExcel.createExcel(errPN, "errPN_GDQ.xlsx");
+		WriteExcel.createExcel(errPN, "errPN_U8NotExist_GDQ.xlsx");
 		WriteExcel.createExcel(noScanU8StoreSame, "noScanU8StoreSame_GDQ.xlsx");
 		
 		WriteExcel.createExcel(vituralPN, "vituralPN_GDQ.xlsx");
-		WriteExcel.createExcel( NotINSNManage , "NotINSNManage_GDQ.xlsx");
+		WriteExcel.createExcel( NotINSNManage , "errPN_NotEnableSN_GDQ.xlsx");
 		
 		ArrayList<StatRow> arrayList = new ArrayList<StatRow>();
 		arrayList.addAll(allRight);
