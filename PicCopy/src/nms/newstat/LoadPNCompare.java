@@ -118,7 +118,7 @@ public class LoadPNCompare {
 			if(  key.equals(value) ){
 				
 			}else{
-				System.out.println(  "======"  + key +  " ,  " +value);
+//				System.out.println(  "======"  + key +  " ,  " +value);
 				counter ++;
 			}
 		}

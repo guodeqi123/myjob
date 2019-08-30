@@ -24,6 +24,7 @@ import nms.newstat.pnc.LoadPNPrice;
 import nms.newstat.pnc.LoadSNUsePN;
 import nms.newstat.pnc.PNCompareObj;
 import nms.newstat.pnc.PNInfoObj;
+import nms.newstat.tonc.ToNCExcel;
 import nms.stat.PnCountLoader;
 import nms.stat.StorePNObj;
 import nms.stat.U8PNObj;
@@ -246,6 +247,7 @@ public class GatherAll {
 		arrayList.addAll(errPN);
 		arrayList.addAll(noScanU8StoreSame);
 		WriteExcel.createExcel( arrayList , "ALL_GDQ.xlsx");
+		ToNCExcel.createToNC(arrayList);
 		
 	}
 	
@@ -299,9 +301,7 @@ public class GatherAll {
 			int countStore = value.getCountStore();
 			int u8increase = value.getU8increase();
 			String kwForStore = value.getStoreKwCountStr();
-			if( "CBSWI-SWI0360A".equals(keyPN) ){
-				System.out.println(  );
-			}
+
 			PNCompareObj pnCompareObj = LoadPNCompare.PNCompareMapU8NotExist.get(keyPN);
 			
 			if(   LoadPNPrice.vitualPN.contains(keyPN) ){
@@ -309,9 +309,7 @@ public class GatherAll {
 				continue;
 			}
 			
-			if( "CBNNN-WAP0060A".equals(keyPN) ) {
-				 System.out.println();
-			}
+
 			
 			U8PNObj u8pnObj = PnCountLoader.pnToU8Obj.get(keyPN);
 			boolean isExistInU8 = PnCountLoader.pnToU8Obj.containsKey(keyPN);
@@ -441,6 +439,14 @@ public class GatherAll {
 		for(  int i=0; i<size ;i++  ){
 			RowData rowData = srcData.get(i);
 			String snsStr = rowData.getSnsStr();
+			String cUsePN = rowData.getMaterialNum();
+			String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
+			if( !StringUtils.isEmpty(toChangePN)  &&  !toChangePN.equals(cUsePN) ){
+				continue;
+			}
+			
+
+			
 			RowData srcRowData = distinctMap.get(snsStr);
 			if( srcRowData!=null  ){
 				String kw1 = srcRowData.getPosNum();
@@ -453,21 +459,20 @@ public class GatherAll {
 					distinctMap.put(snsStr, rowData);
 					String errMsg = " 序列号重复,涉及库位： "+kw1 +"  , SN : "+ snsStr ;
 					errorSamePN1.add(rowData);
+				}else if( pn1.equals(pn2) ){
+					int compareTo = kw1.compareTo(kw2);
+					if( compareTo <=0  ){
+						distinctMap.put(snsStr, srcRowData);
+					}else{
+						distinctMap.put(snsStr, rowData);
+					}
 				}else{
 					String errMsg = " ！！！序列号重复,涉及库位： "+kw1+"&" +kw2 +" , PN: "+pn1+"& " +pn2+"  , SN : "+ snsStr ;
 					errorSamePN2.add(rowData);
 					errorSamePN3.add(kw1+" , "+kw2+" , "+pn1+ " , " +pn2 + " , " + snsStr );
 				}
 			}else{
-				String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
-				String cPn = rowData.getMaterialNum();
-				if( StringUtils.isEmpty(toChangePN)  ){
-					distinctMap.put(snsStr, rowData);
-				}else{
-					if( cPn.equals(toChangePN) ){
-						distinctMap.put(snsStr, rowData);
-					}
-				}
+				distinctMap.put(snsStr, rowData);
 			}
 		}
 		
@@ -480,30 +485,49 @@ public class GatherAll {
 			String snsStr = rowData.getSnsStr();
 			String cpn = rowData.getMaterialNum();
 			
-			if( "".equals(snsStr) ){
-				System.out.println(   );
+//			if( "".equals(snsStr) ){
+//				System.out.println(   );
+//			}
+//			if( "OT-2200-GP".equals(cpn)  || "C".equals(cpn)  ){
+//				System.out.println(   );
+//			}
+			
+			String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
+			if( !StringUtils.isEmpty(toChangePN)  &&  !toChangePN.equals(cpn) ){
+				continue;
 			}
 			
 			if(  !FPath.isSNRight(snsStr) ){
 				continue;
 			}
 			
-			String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
-			if( StringUtils.isEmpty(toChangePN)  ){
-				distinctMap.put(snsStr, rowData);
-			}else{
-				if( cpn.equals(toChangePN) ){
+			RowData existRd = distinctMap.get(snsStr);
+			if( existRd!=null  ){
+				String kw1 = existRd.getPosNum();
+				String pn1 = existRd.getMaterialNum();
+				
+				String kw2 = rowData.getPosNum();
+				String pn2 = rowData.getMaterialNum();
+				if( kw1.equals(kw2)  && pn1.equals(pn2)  ){
+					distinctMap.put(snsStr, rowData);
+				}else if( pn1.equals(pn2) ){
+					int compareTo = kw1.compareTo(kw2);
+					if( compareTo <=0  ){
+						distinctMap.put(snsStr, existRd);
+					}else{
+						distinctMap.put(snsStr, rowData);
+					}
+				}else{
 					distinctMap.put(snsStr, rowData);
 				}
+			} else {
+				distinctMap.put(snsStr, rowData);
 			}
 		}
 		
 		List<InOutObj> outList = LoadInOut.outList;
 		for(  InOutObj out :outList  ) {
 			String sn = out.getSn();
-			if( "".equals(sn) ){
-				System.out.println(   );
-			}
 			distinctMap.remove(sn);
 		}
 	}
@@ -511,6 +535,9 @@ public class GatherAll {
 
 	private static void printInfo(List<String> list) {
 		for(  String sss : list  ){
+			if( StringUtils.isEmpty(sss) ){
+				 continue;
+			}
 			System.out.println( sss  );
 		}
 		System.out.println(  "+------------------------+" );

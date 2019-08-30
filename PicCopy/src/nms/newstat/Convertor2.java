@@ -144,6 +144,10 @@ public class Convertor2 {
 			 String snStr = getCellValue(cellSn);
 			 String countStr = getCellValue( cellCount )  ;
 			 
+//			if( "OT-2200-GP".equals(pnStr)  || "C".equals(pnStr)  ){
+//				System.out.println(   );
+//			}
+			 
 			 boolean isKWEmpty = StringUtils.isEmpty(kwStr);
 			 if(   !isKWEmpty   ){
 //				 System.out.println(  "进入下一个库位" + kwStr  + " ,  行号：" + (i +1 ) );
