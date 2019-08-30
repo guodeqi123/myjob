@@ -21,6 +21,7 @@ import nms.RowData;
 import nms.newstat.inout.LoadInOut;
 import nms.newstat.pnc.LoadPNAmend;
 import nms.newstat.pnc.LoadPNPrice;
+import nms.newstat.pnc.LoadSNUsePN;
 import nms.newstat.pnc.PNCompareObj;
 import nms.newstat.pnc.PNInfoObj;
 import nms.stat.PnCountLoader;
@@ -41,7 +42,7 @@ public class GatherAll {
 	public static Map<String,  StatRow > pnToCountStoreMap = new HashMap<String, StatRow>();
 	
 	public static void main(String[] args) {
-		
+		LoadSNUsePN.load();
 		LoadInOut.load();//加载出入库
 		try { Thread.sleep(1000); } catch (InterruptedException e1) { }
 		System.out.println(  "!!!出入库加载完毕!!!" );
@@ -422,8 +423,10 @@ public class GatherAll {
 					int size = datas.size();
 					for (int i = 0; i < size; i++) {
 						RowData rowData = datas.get(i);
-						srcData.add(rowData);
 						String snsStr = rowData.getSnsStr();
+						String materialNum = rowData.getMaterialNum();
+				
+						srcData.add(rowData);
 						snList1.add(snsStr);
 						snSet1.add(snsStr);
 					}
@@ -454,7 +457,15 @@ public class GatherAll {
 					errorSamePN3.add(kw1+" , "+kw2+" , "+pn1+ " , " +pn2 + " , " + snsStr );
 				}
 			}else{
-				distinctMap.put(snsStr, rowData);
+				String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
+				String cPn = rowData.getMaterialNum();
+				if( StringUtils.isEmpty(toChangePN)  ){
+					distinctMap.put(snsStr, rowData);
+				}else{
+					if( cPn.equals(toChangePN) ){
+						distinctMap.put(snsStr, rowData);
+					}
+				}
 			}
 		}
 		
@@ -464,12 +475,29 @@ public class GatherAll {
 		List<InOutObj> inList = LoadInOut.inList;
 		for(  InOutObj in :inList  ) {
 			RowData rowData = in.toRowData();
-			distinctMap.put(rowData.getSnsStr(), rowData);
+			String snsStr = rowData.getSnsStr();
+			String cpn = rowData.getMaterialNum();
+			
+			if( "".equals(snsStr) ){
+				System.out.println(   );
+			}
+			
+			String toChangePN = LoadSNUsePN.snToPN.get(snsStr);
+			if( StringUtils.isEmpty(toChangePN)  ){
+				distinctMap.put(snsStr, rowData);
+			}else{
+				if( cpn.equals(toChangePN) ){
+					distinctMap.put(snsStr, rowData);
+				}
+			}
 		}
 		
 		List<InOutObj> outList = LoadInOut.outList;
 		for(  InOutObj out :outList  ) {
 			String sn = out.getSn();
+			if( "".equals(sn) ){
+				System.out.println(   );
+			}
 			distinctMap.remove(sn);
 		}
 	}
