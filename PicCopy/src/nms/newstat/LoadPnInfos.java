@@ -3,7 +3,9 @@ package nms.newstat;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 import nms.Convertor;
@@ -21,7 +23,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class LoadPnInfos {
 	
-	public static Set<String> pnInSNManage = new HashSet<String>();
+	public static Map<String ,Boolean> pnInSNManage = new HashMap<String , Boolean>();
 	
 	public static void main(String[] args) {
 		
@@ -61,14 +63,16 @@ public class LoadPnInfos {
 					 continue;
 				 }
 				 Cell cellPn = row.getCell( 1 );
-				 Cell cellStatus = row.getCell( 3 );
+				 Cell cellStatus = row.getCell( 5 );
 				 
 				 String pnStr = Convertor.getCellValue(cellPn);
 				 String status = Convertor.getCellValue(cellStatus);
+				 
+				 String PNtrim = pnStr.toUpperCase().trim();
 				 if(  status!=null && status.toUpperCase().equals("Y")  ){
-					 pnInSNManage.add(pnStr.toUpperCase().trim());
+					 pnInSNManage.put(  PNtrim , true );
 				 }else{
-					 System.out.println(  status );
+					 pnInSNManage.put(  PNtrim , false );
 				 }
 			} catch (Exception e) {
 				e.printStackTrace();

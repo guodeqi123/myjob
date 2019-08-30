@@ -36,9 +36,7 @@ public class GatherAll {
 	public static Set<String> scanPNS = new HashSet<String>();
 	public static List<RowData> srcData = new ArrayList<RowData>();
 	
-	public static Map<String,  StatRow > pnToCountEnableMap = new HashMap<String, StatRow>();
-	public static Map<String,  StatRow > pnToCountDisableMap = new HashMap<String, StatRow>();
-	
+	public static Map<String,  StatRow > scanPNToCountMap = new HashMap<String, StatRow>();
 	public static Map<String,  StatRow > pnToCountU8Map = new HashMap<String, StatRow>();
 	public static Map<String,  StatRow > pnToCountStoreMap = new HashMap<String, StatRow>();
 	
@@ -69,16 +67,13 @@ public class GatherAll {
 		}
 		System.out.println(   "PN总数:"+scanPNS.size() );	
 		
-		doCheckAllPNAndGatherScanPNCount(); //检查所有盘库出库结果物料编码   并汇总个数
-		System.out.println( "doCheckAllPN!!!!!启用SN 扫码物料编码个数:"  + pnToCountEnableMap.size() );
-		System.out.println( "doCheckAllPN!!!!!未启用SN 扫码物料编码个数:"  + pnToCountDisableMap.size() );
-		System.out.println( "doCheckAllPN!!!!!扫码物料编码个数:"  + ( pnToCountDisableMap.size()  + pnToCountEnableMap.size()) );
+		doCheckAllPNAndGatherScanPNCount(); //检查所有盘库出库结果物料编码 并汇总个数
 //		printErrorPN( errorNotManageSN );
 		
 		try {
 			Map<String, StorePNObj> tmppnToKWCount = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
 			Map<String,U8PNObj > tmppnToU8Obj = PnCountLoader.deepClone( PnCountLoader.pnToU8Obj ) ;
-			gatherAllData(  pnToCountEnableMap , pnToCountDisableMap , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
+			gatherAllData(  scanPNToCountMap  , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  
@@ -119,56 +114,23 @@ public class GatherAll {
 			String sn = en.getKey();
 			RowData value = en.getValue();
 			String pn = value.getMaterialNum();
-			if(   !LoadPnInfos.pnInSNManage.contains(pn)  ){
-				String errMsg = "物料编码没有启用SN管理：" + value.getPosNum() + " , "+value.getMaterialNum() +" , "+value.getSnsStr();
-				errorNotManageSN.add(value);
-				
-				StatRow statRow = pnToCountDisableMap.get(pn);
-				if( statRow==null  ){
-					statRow = new StatRow(pn);
-					pnToCountDisableMap.put(pn, statRow);
-				}
-				statRow.addKw(value.getPosNum() );
-				statRow.addScan(1);
-			}else{
-				StatRow statRow = pnToCountEnableMap.get(pn);
-				if( statRow==null  ){
-					statRow = new StatRow(pn);
-					pnToCountEnableMap.put(pn, statRow);
-				}
-				statRow.addKw(value.getPosNum() );
-				statRow.addScan(1);
+			
+			StatRow statRow = scanPNToCountMap.get(pn);
+			if( statRow==null  ){
+				statRow = new StatRow(pn);
+				scanPNToCountMap.put(pn, statRow);
 			}
+			statRow.addKw(value.getPosNum() );
+			statRow.addScan(1);
 		}
 		
 	}
 
-	private static <E> void gatherAllData(Map<String, StatRow> scanPNToEnable,
-			Map<String, StatRow> scanPNToDisable, Set<String> pnInSNManage,
+	private static <E> void gatherAllData(Map<String, StatRow> scanPNToEnable, Map<String,Boolean> pnInSNManage,
 			Map<String, StorePNObj> storePnToObjMap,
 			Map<String, U8PNObj> u8Map ) {
 		
 		Set<Entry<String,StatRow>> entrySet = scanPNToEnable.entrySet();
-		for(  Entry<String,StatRow> en :entrySet   ){
-			String scanPn = en.getKey();
-			StatRow value = en.getValue();
-			StorePNObj storePNObj = storePnToObjMap.remove(scanPn);
-			if(  storePNObj!=null  ){
-				int sumCount = storePNObj.getSumCount();
-				value.setCountStore(sumCount);
-				String kwCountStr = storePNObj.getKWCountStr();
-				value.setStoreKwCountStr(kwCountStr);
-			}
-			U8PNObj u8pnObj = u8Map.remove(scanPn);
-			if( u8pnObj!=null ){
-				int newValue = u8pnObj.getNewValue();
-				int increment = u8pnObj.getIncrement();
-				value.setCountU8(newValue);
-				value.setU8increase(increment);
-			}
-		}
-		
-		entrySet = scanPNToDisable.entrySet();
 		for(  Entry<String,StatRow> en :entrySet   ){
 			String scanPn = en.getKey();
 			StatRow value = en.getValue();
@@ -223,29 +185,23 @@ public class GatherAll {
 		
 		
 		
-		getMsg( pnToCountEnableMap );
-		getMsg( pnToCountDisableMap );
+		getMsg( scanPNToCountMap );
 		getMsg( pnToCountStoreMap );
 		getMsg( pnToCountU8Map );
 		
-//		writeRes(allRight  ,"allRight.csv"  );
-//		writeRes(other , "other.csv");
-//		writeRes(errPN , "errPN.csv");
-//		writeRes(noScanU8StoreSame , "noScanU8StoreSame.csv");
-		
 		WriteExcel.createExcel(allRight, "allRight_GDQ.xlsx");
-		WriteExcel.createExcel(other, "other_GDQ.xlsx");
-		WriteExcel.createExcel(errPN, "errPN_U8NotExist_GDQ.xlsx");
 		WriteExcel.createExcel(noScanU8StoreSame, "noScanU8StoreSame_GDQ.xlsx");
+		WriteExcel.createExcel(other, "other_GDQ.xlsx");
+		WriteExcel.createExcel(InNCNotEnableSN, "InNCNotEnableSN_GDQ.xlsx");
 		
 		WriteExcel.createExcel(vituralPN, "vituralPN_GDQ.xlsx");
-		WriteExcel.createExcel( NotINSNManage , "errPN_NotEnableSN_GDQ.xlsx");
+		WriteExcel.createExcel( NotINNC , "NotINNC_GDQ.xlsx");
 		
 		ArrayList<StatRow> arrayList = new ArrayList<StatRow>();
 		arrayList.addAll(allRight);
-		arrayList.addAll(other);
-		arrayList.addAll(errPN);
 		arrayList.addAll(noScanU8StoreSame);
+		arrayList.addAll(other);
+		arrayList.addAll(InNCNotEnableSN);
 		WriteExcel.createExcel( arrayList , "ALL_GDQ.xlsx");
 		ToNCExcel.createToNC(arrayList);
 		
@@ -281,14 +237,13 @@ public class GatherAll {
 
 	public static ArrayList<StatRow> allRight = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> other = new ArrayList<StatRow>();
-	public static ArrayList<StatRow> errPN = new ArrayList<StatRow>();
-	//没有扫码 ， U8与自盘数量相同
-	public static ArrayList<StatRow> noScanU8StoreSame = new ArrayList<StatRow>();
+	public static ArrayList<StatRow> InNCNotEnableSN = new ArrayList<StatRow>();
+	public static ArrayList<StatRow> noScanU8StoreSame = new ArrayList<StatRow>();	//没有扫码 ， U8与自盘数量相同
 	
 	public static ArrayList<StatRow> allZero = new ArrayList<StatRow>();
 	public static ArrayList<StatRow> vituralPN = new ArrayList<StatRow>();
 	
-	public static ArrayList<StatRow> NotINSNManage = new ArrayList<StatRow>();
+	public static ArrayList<StatRow> NotINNC = new ArrayList<StatRow>();
 	
 	private static void getMsg(	Map<String, StatRow> map) {
 		
@@ -302,34 +257,34 @@ public class GatherAll {
 			int u8increase = value.getU8increase();
 			String kwForStore = value.getStoreKwCountStr();
 
-			PNCompareObj pnCompareObj = LoadPNCompare.PNCompareMapU8NotExist.get(keyPN);
+			if( "CBOEM-PON0152B".equals(keyPN) ){
+				System.out.println(  );
+			}
+			boolean isExistInNC = LoadPnInfos.pnInSNManage.containsKey(keyPN);
+			Boolean isEnableInNC = LoadPnInfos.pnInSNManage.get(keyPN);
+			if(  !isExistInNC  && ( countScan>0 || countU8>0 || countStore>0) ){
+				NotINNC.add(value);
+			}
 			
 			if(   LoadPNPrice.vitualPN.contains(keyPN) ){
 				vituralPN.add(value);
 				continue;
 			}
-			
-
-			
-			U8PNObj u8pnObj = PnCountLoader.pnToU8Obj.get(keyPN);
-			boolean isExistInU8 = PnCountLoader.pnToU8Obj.containsKey(keyPN);
-			
 			if(  countScan<=0 && countU8<=0 && countStore<=0 ){
+				continue;
+			}
+			
+			if (  countScan<=0 && countU8<=0 && countStore<=0 ) {
 				allZero.add(value);
-			}else if(  countScan<=0  && countU8==countStore ){
+			}else if (  countScan<=0  && countU8==countStore ){
 				noScanU8StoreSame.add(value);
-			}else if( countScan == countU8 && countScan == countStore){
+			} else if ( isExistInNC && !isEnableInNC && countScan>0 ){
+				InNCNotEnableSN.add(value);
+			} else if ( countScan == countU8 && countScan == countStore){
 				allRight.add(value);
-			}else if( !isExistInU8) {
-				errPN.add(value);
-			}else{
+			} else {
 				other.add(value);
 			}
-			
-			if( !LoadPnInfos.pnInSNManage.contains(keyPN)  && countScan>=0 ){
-				NotINSNManage.add(value);
-			}
-			
 			
 		}
 		

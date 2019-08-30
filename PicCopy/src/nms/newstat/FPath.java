@@ -19,8 +19,8 @@ public class FPath {
 	public final static 	String indir2 = "D:/ForBdcom/0stat1/入库扫码记录/nf";
 	
 	
-	//0829
-	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0829/物料档案（序列号管理）0829.xlsx";
+	//0830
+	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0830/物料档案0830.xlsx";
 	
 	//0830
 	public final static String storePath  = "D:/ForBdcom/0stat1/Data0830/电子台账0830_rrr.xlsx";

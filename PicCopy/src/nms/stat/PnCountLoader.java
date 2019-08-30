@@ -52,7 +52,7 @@ public class PnCountLoader {
 	public static void main2(String[] args) {
 		//加载启用SN 管理的PN
 		LoadPnInfos.loadPNStatus();
-		Set<String> pns =  LoadPnInfos.pnInSNManage;
+		Map<String , Boolean> pns =  LoadPnInfos.pnInSNManage;
 		PnCountLoader.u8pnToCount = load( PnCountLoader.u8SrcFileInfo );
 		System.out.println( u8pnToCount.size() );
 		

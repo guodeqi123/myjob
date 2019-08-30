@@ -102,7 +102,7 @@ public class KWObj {
 			
 			String tmpPn = rowData.getMaterialNum();
 			if(  StringUtils.isEmpty(tmpPn)  ){
-				msg = "物料编码为空, SN:"+ tmpSn  ;
+				msg = "KWObj:::物料编码为空, SN:"+ tmpSn  ;
 				throw new Exception(msg);
 			}
 			String tmpdbPn = AccessDBParser.getMStrBySN(tmpSn);
