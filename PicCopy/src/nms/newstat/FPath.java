@@ -69,8 +69,10 @@ public class FPath {
 	public static void main(String[] args) {
 		
 		String  aaa = "012¹ý3saµÄdsaxÇëaete13qs";
+		String  aaa2 = "012EXSljS";
 		
 		System.out.println(   isSNRight(aaa) );
+		System.out.println(   isSNRight(aaa2) );
 		
 	}
 	

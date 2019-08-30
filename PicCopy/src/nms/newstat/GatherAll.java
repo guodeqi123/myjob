@@ -53,7 +53,7 @@ public class GatherAll {
 		LoadPNPrice.load();
 		
 		doFileParse();  //解析所有扫码文件
-		printInfo( fileCountInfo ); //打印扫码单个文件统计信息
+//		printInfo( fileCountInfo ); //打印扫码单个文件统计信息
 		printInfo( parseErrorInfo );//打印解析异常信息
 		amendPN();//修正物料编码
 		
@@ -343,10 +343,10 @@ public class GatherAll {
 		for(  Entry<String,Integer> en : entrySet  ){
 			String key = en.getKey();
 			Integer value = en.getValue();
-			sb.append(key+"="+ value + "  ");
+			sb.append(key+"="+ value + " ");
 		}
 		
-		return sb.toString();
+		return sb.toString().trim();
 	}
 
 	public static void writeResult( List<String>  msg  , String fname){
@@ -425,7 +425,9 @@ public class GatherAll {
 						RowData rowData = datas.get(i);
 						String snsStr = rowData.getSnsStr();
 						String materialNum = rowData.getMaterialNum();
-				
+						if(  !FPath.isSNRight(snsStr) ){
+							continue;
+						}
 						srcData.add(rowData);
 						snList1.add(snsStr);
 						snSet1.add(snsStr);
@@ -480,6 +482,10 @@ public class GatherAll {
 			
 			if( "".equals(snsStr) ){
 				System.out.println(   );
+			}
+			
+			if(  !FPath.isSNRight(snsStr) ){
+				continue;
 			}
 			
 			String toChangePN = LoadSNUsePN.snToPN.get(snsStr);

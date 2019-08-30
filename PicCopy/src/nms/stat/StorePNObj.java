@@ -41,9 +41,9 @@ public class StorePNObj  implements Serializable  {
 		for(  Entry<String,Integer> en : entrySet  ){
 			String key = en.getKey();
 			Integer value = en.getValue();
-			sb.append(key+"="+ value + "  ");
+			sb.append(key+"="+ value + " ");
 		}
-		return sb.toString();
+		return sb.toString().trim();
 	}
 	
 	public int getSumCount(){

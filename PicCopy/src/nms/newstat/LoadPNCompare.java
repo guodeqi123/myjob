@@ -54,7 +54,13 @@ public class LoadPNCompare {
 			Row row = null;
 			int rownum = sheet.getLastRowNum();
 			for (int i = 1; i <= rownum; i++) {
+				if(  i==250 ){
+					System.out.println();
+				}
 				row = sheet.getRow(i);
+				if( row == null ){
+					continue;
+				}
 				Cell cellSrcPn = row.getCell(1);
 				Cell cellEnable = row.getCell(2);
 				Cell celltoPn = row.getCell(5);
@@ -100,7 +106,7 @@ public class LoadPNCompare {
 			}
 			
 		} catch (Exception e) {
-			System.err.println(   "LoadPNCompare:::" + e.getMessage()    );
+			e.printStackTrace();
 		}  
 		
 		System.out.println( "LoadPNCompare已修正物料编码个数:: "+LoadPNAmend.srcPNToPN.size() );
@@ -112,7 +118,7 @@ public class LoadPNCompare {
 			if(  key.equals(value) ){
 				
 			}else{
-//				System.out.println(  "======"  + key +  " ,  " +value);
+				System.out.println(  "======"  + key +  " ,  " +value);
 				counter ++;
 			}
 		}
