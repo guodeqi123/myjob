@@ -24,6 +24,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class LoadPnInfos {
 	
 	public static Map<String ,Boolean> pnInSNManage = new HashMap<String , Boolean>();
+	public static Map<String ,String> pnToUnit = new HashMap<String , String>();
 	
 	public static void main(String[] args) {
 		
@@ -63,10 +64,17 @@ public class LoadPnInfos {
 					 continue;
 				 }
 				 Cell cellPn = row.getCell( 1 );
-				 Cell cellStatus = row.getCell( 5 );
+				 Cell cellUnitNum = row.getCell( 5 );
+				 Cell cellUnit = row.getCell( 6 );
+				 Cell cellStatus = row.getCell( 7 );
+				 
 				 
 				 String pnStr = Convertor.getCellValue(cellPn);
 				 String status = Convertor.getCellValue(cellStatus);
+				 
+				 String unitNum = Convertor.getCellValue(cellUnitNum);
+				 String unitStr = Convertor.getCellValue(cellUnit);
+				 pnToUnit.put(pnStr, unitStr );
 				 
 				 String PNtrim = pnStr.toUpperCase().trim();
 				 if(  status!=null && status.toUpperCase().equals("Y")  ){
@@ -79,7 +87,7 @@ public class LoadPnInfos {
 			}
 		}
 		
-		System.out.println(  "  启用SN管理的 物料编码个数  :"+pnInSNManage.size() );
+		System.out.println(  "  启用NC管理的 物料编码个数  :"+pnInSNManage.size() );
 		
 	}
 	

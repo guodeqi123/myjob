@@ -200,7 +200,8 @@ public class PnCountLoader {
 		
 		int startrow = 3;
 		int pncol = 1;
-		int countcol = 4;
+//		int countcol = 4;//可用数量
+		int countcol = 3;//现存数量
 		int cc1 = 0 ;
 		for(  int i=startrow ; i<lastRowNum ; i++  ){
 			oneRow = sheet0.getRow(i);

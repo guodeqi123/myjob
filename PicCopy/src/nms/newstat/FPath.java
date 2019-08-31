@@ -11,19 +11,19 @@ public class FPath {
 	
 	public final static String scanbasePath = "D:/ForBdcom/0stat1/扫描所有库位信息";
 	
-	//0830
+	//0831
 	public final static String outDir = "D:/ForBdcom/0stat1/出库扫码记录";
 	
-	//0830
+	//0831
 	public final static 	String indir1 = "D:/ForBdcom/0stat1/入库扫码记录";
 	public final static 	String indir2 = "D:/ForBdcom/0stat1/入库扫码记录/nf";
 	
 	
-	//0830
-	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0830/物料档案0830.xlsx";
+	//0831
+	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0831/物料档案20190831.xlsx";
 	
-	//0830
-	public final static String storePath  = "D:/ForBdcom/0stat1/Data0830/电子台账0830_rrr.xlsx";
+	//0831
+	public final static String storePath  = "D:/ForBdcom/0stat1/Data0831/电子台账0831（关账汇总）(1).xlsx";
 	
 	//0830
 	public final static String u8PathNew  = "D:/ForBdcom/0stat1/Data0830/u8data.xlsx";
@@ -47,6 +47,16 @@ public class FPath {
 	};
 	
 	
+	public static String u8DataDir = "D:/ForBdcom/0stat1/u8/0830/";
+	public static String[][] u8DataPath = new String[][]{
+		// fname ,  sheet num ,   startrow ,							仓库编码col ,   pn col ,  现存数量 col  ,   可用数量 col   , 
+		{u8DataDir+"博达通信科技现存量查询.xlsx" , "0", "1",       "0", "1" , "2" ,"10" } , 
+		{u8DataDir+"博达通信现存量查询.xlsx" , "0", "1",             "0", "1" , "3" ,"4" } , 
+		{u8DataDir+"博达信息科技现存量查询.xlsx" , "0", "2",      "0", "1" , "2" ,"10" } , 
+		{u8DataDir+"泰砚通讯现存量.xlsx" , "0",  "1",                 "0", "1" , "2" ,"10" }, 
+		{u8DataDir+"迅坤现存量查询.xlsx" , "0", "1",                 "0", "1" , "2" ,"10" } ,
+	};
+	
 	
 	public static boolean isSNRight(String sn){
 		
@@ -68,11 +78,6 @@ public class FPath {
 	
 	public static void main(String[] args) {
 		
-		String  aaa = "012过3sa的dsax请aete13qs";
-		String  aaa2 = "012EXSljS";
-		
-		System.out.println(   isSNRight(aaa) );
-		System.out.println(   isSNRight(aaa2) );
 		
 	}
 	
