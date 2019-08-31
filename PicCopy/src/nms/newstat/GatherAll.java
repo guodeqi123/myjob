@@ -203,7 +203,8 @@ public class GatherAll {
 		arrayList.addAll(other);
 		arrayList.addAll(InNCNotEnableSN);
 		WriteExcel.createExcel( arrayList , "ALL_GDQ.xlsx");
-		ToNCExcel.createToNC(arrayList);
+		
+		ToNCExcel.createToNC( distinctMap );
 		
 	}
 	

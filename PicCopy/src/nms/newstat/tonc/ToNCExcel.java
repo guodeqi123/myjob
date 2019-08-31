@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.ss.usermodel.Cell;
@@ -12,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import nms.RowData;
 import nms.newstat.StatRow;
 
 public class ToNCExcel {
@@ -20,7 +22,7 @@ public class ToNCExcel {
 	 * 生成NC数据
 	 * @param srcDatas
 	 */
-	public static void createToNC(   ArrayList<StatRow> srcDatas ){
+	public static void createToNC(   Map<String , RowData> distinctMap ){
 		//加载 NC 库位对照
 		//1 启用SN管理的   生成 SN序列号导入文件
 		

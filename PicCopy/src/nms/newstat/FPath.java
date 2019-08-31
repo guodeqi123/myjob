@@ -1,13 +1,21 @@
 package nms.newstat;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class FPath {
-	
+	public static final String sep1= "_";
+	public static final String KW = "KW";
 	
 	public final static String scanbasePath = "D:/ForBdcom/0stat1/扫描所有库位信息";
 	
@@ -74,6 +82,24 @@ public class FPath {
 			System.out.println( "SN存在汉字：：：" +  str );
 			return false;
 		}
+	}
+	
+	
+	public static Workbook getWB(String fpath){
+		Workbook wb = null;
+		try {
+			File file = new File( fpath );
+			InputStream input = new FileInputStream(file);
+			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
+			if ("xls".equals(fileExt)) {
+				wb = (HSSFWorkbook) WorkbookFactory.create(input);
+			} else {
+				wb = new XSSFWorkbook(input);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return wb;
 	}
 	
 	public static void main(String[] args) {
