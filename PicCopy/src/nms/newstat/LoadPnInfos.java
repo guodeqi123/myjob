@@ -74,7 +74,7 @@ public class LoadPnInfos {
 				 
 				 String unitNum = Convertor.getCellValue(cellUnitNum);
 				 String unitStr = Convertor.getCellValue(cellUnit);
-				 pnToUnit.put(pnStr, unitStr );
+				 pnToUnit.put(pnStr, unitNum );
 				 
 				 String PNtrim = pnStr.toUpperCase().trim();
 				 if(  status!=null && status.toUpperCase().equals("Y")  ){
