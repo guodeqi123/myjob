@@ -26,10 +26,10 @@ public class InventedSerialNumberUtil {
         kuCunZuZhi2KuDaiMa.put("010102", "D");
         kuCunZuZhi2KuDaiMa.put("0102", "E");
 
-        for (int i = 1; i < 100000; i++) {
+        for (int i = 1; i < 1000000; i++) {
             StringBuilder stringBuilder = new StringBuilder();
             String str = String.valueOf(i);
-            for (int j = 0; j < 5-str.length(); j++) {
+            for (int j = 0; j < 6-str.length(); j++) {
                 stringBuilder.append("0");
             }
             stringBuilder.append(str);
@@ -70,7 +70,7 @@ public class InventedSerialNumberUtil {
      * @return
      */
     public static String getInventedSerialNumber(String kuWeiZuZhi, String kuBie, String kuWei, int startIndex){
-        if( index==0 && startIndex>0 ){
+        if(startIndex>0 && index==0){
             index = startIndex;
         }
         StringBuilder retSerialNumberBuilder = new StringBuilder();
@@ -78,6 +78,15 @@ public class InventedSerialNumberUtil {
         retSerialNumberBuilder.append(getDateStr());
         retSerialNumberBuilder.append(get5RandomNumber());
         return retSerialNumberBuilder.toString();
+    }
+
+
+    /**
+     * 获取当前所以的值
+     * @return
+     */
+    public static int getCurrentIndex(){
+        return index+1;
     }
 
     private static String getKuDaiMa(String kuWeiZuZhi, String kuBie, String kuWei){
@@ -126,14 +135,22 @@ public class InventedSerialNumberUtil {
     }
 
 
+
+
+
     public static void main(String[] args) {
         String kuCunZuZhi = "010102";
         String kuBie = "66";
         String kuWei = "01";
         String inventedSerialNumber = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
-        String inventedSerialNumber1 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei);
+        String inventedSerialNumber1 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+        String inventedSerialNumber2 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+        String inventedSerialNumber3 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
         System.out.println(inventedSerialNumber);
         System.out.println(inventedSerialNumber1);
+        System.out.println(inventedSerialNumber2);
+        System.out.println(inventedSerialNumber3);
+        System.out.println(getCurrentIndex());
 
     }
 

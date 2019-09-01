@@ -22,8 +22,10 @@ public class ImportNC1 {
 	public static final String importdir1 = "D:/ForBdcom/0stat1/Data0831/import/";
 	public static String[][] importSrcFile = new String[][]{
 		// fname                                  sheenum ,startrow , pncol ,countcol,  
-		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
-		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
+//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
+//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
+		
+		{ "D:/ForBdcom/0stat1/Data0901/2_未开票海外0901.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
 		
 //		{ importdir1+ "借测_MY.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
 //		{ importdir1+ "借测_MY.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
@@ -34,8 +36,10 @@ public class ImportNC1 {
 	};
 	
 	public static String[][] useNCKW = new String[][]{
-		{ "01" ,"66" , "02" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
-		{ "01" ,"66" , "02"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+//		{ "01" ,"66" , "02" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
+//		{ "01" ,"66" , "02"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+		
+		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票海外3.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw   
 		
 //		{ "01" ,"66" , "01"  ,"import_借测1.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
 //		{ "01" ,"66" , "01"  ,"import_借测2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
@@ -114,16 +118,16 @@ public class ImportNC1 {
 		
 		Set<Entry<String, Double>> entrySet = pnToCountNotInNC.entrySet();
 		for( Entry<String, Double> en : entrySet  ){
-			System.out.println(  "###物料编码不在NC中 :: , "  + en.getKey() /*+ " , "  +en.getValue()*/ );
+			System.out.println(  "ImportNC1.doParse ###物料编码不在NC中 :: , "  + en.getKey() /*+ " , "  +en.getValue()*/ );
 		}
-		System.out.println( " 物料编码不在NC中个：：" +  pnToCountNotInNC.size() );
-		System.out.println( " 物料编码启用++++++++++++++++++SN个：：" +  pnToCountSN.size() );
-		System.out.println( " 物料编码未启用SN个：：" +  pnToCountNotSN.size() );
+		System.out.println( "ImportNC1.doParse 物料编码不在NC中个：：" +  pnToCountNotInNC.size() );
+		System.out.println( "ImportNC1.doParse 物料编码启用++++++++++++++++++SN个：：" +  pnToCountSN.size() );
+		System.out.println( "ImportNC1.doParse 物料编码未启用SN个：：" +  pnToCountNotSN.size() );
 		
 		createExcel(  pnToCountSN , pnToCountNotSN  , kwInfo);
 	}
 
-	public static String dataStr = "2019-08-31";
+	public static String dataStr = "2019-09-01";
 	private static void createExcel(Map<String, Double> pnToCountSN, Map<String, Double> pnToCountNotSN, String[] kwInfo) {
 		
 		ImportSheetObject sheetObj = new ImportSheetObject();
@@ -166,7 +170,7 @@ public class ImportNC1 {
 
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		
-		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , 2000 );
+		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , 0 );
 		return vsn ;
 	}
 
@@ -174,7 +178,8 @@ public class ImportNC1 {
 		
 		LoadPnInfos.loadPNStatus();
 		load();
-		
+		int currentIndex = InventedSerialNumberUtil.getCurrentIndex();
+		System.out.println( "ImportNC1.main()  INDEX已用到 :: " +currentIndex   );
 		
 	}
 	

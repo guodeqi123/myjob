@@ -41,7 +41,8 @@ public class LoadNCKWInfo {
 		loadKczzInfo();
 	}
 	
-	public final static String kwInfoFile = "D:/ForBdcom/0stat1/Data0831/货位导入-0830.xlsx";
+	// "D:/ForBdcom/0stat1/Data0831/货位导入-0830.xlsx";
+	public final static String kwInfoFile = "D:/ForBdcom/0stat1/Data0901/huowei_090120.xlsx";
 
 	public static Map<String, NCKczzObj> ncKczzMap = new HashMap<String, NCKczzObj>(); 
 	public static List<NCKwObj> ncKwList = new ArrayList<NCKwObj>();
@@ -56,32 +57,40 @@ public class LoadNCKWInfo {
 		int lastRowNum = sheet.getLastRowNum();
 		Row oneRow = null;
 		int cc1 = 0;
-		for(  int i=2 ; i<=lastRowNum ; i++ ){
+		for(  int i=1 ; i<=lastRowNum ; i++ ){
 			oneRow = sheet.getRow(i);
 			if(  oneRow == null ){
 			 	continue;
 			}
-			Cell ncKczzCell = oneRow.getCell(1);
-			Cell ncKbCell = oneRow.getCell(2);
-			Cell ncKwCell = oneRow.getCell(3);
-			Cell u8KwCell = oneRow.getCell(4);
+			Cell ncKczzCell = oneRow.getCell( 5 );
+			Cell ncKbCell = oneRow.getCell( 3 );
+			Cell ncKwCell = oneRow.getCell( 1 );
+			Cell u8KwCell = oneRow.getCell( 2 );
+			
+			Cell u8KbCell = oneRow.getCell( 4 );
+			Cell u8KczzCell = oneRow.getCell( 6 );
 			
 			String ncKczzStr = Convertor2.getCellValue(ncKczzCell);
 			String ncKbStr = Convertor2.getCellValue(ncKbCell);
 			String ncKwStr = Convertor2.getCellValue(ncKwCell);
 			String u8KwStr = Convertor2.getCellValue(u8KwCell);
+			String u8KbStr = Convertor2.getCellValue(u8KwCell);
+			String u8KczzStr = Convertor2.getCellValue(u8KwCell);
 			
 			ncKczzStr = ncKczzStr.toUpperCase().trim();
 			ncKbStr = ncKbStr.toUpperCase().trim();
 			ncKwStr = ncKwStr.toUpperCase().trim();
 			u8KwStr = u8KwStr.toUpperCase().trim();
+			u8KbStr = u8KbStr.toUpperCase().trim();
+			u8KczzStr = u8KczzStr.toUpperCase().trim();
 			
 			NCKwObj ncKwObj = new NCKwObj();
 			ncKwObj.setNcKczz(ncKczzStr);
 			ncKwObj.setNcKb(ncKbStr);
 			ncKwObj.setNcKw(ncKwStr);
 			ncKwObj.setU8Kw(u8KwStr);
-			
+			ncKwObj.setU8Kb(u8KbStr);
+			ncKwObj.setU8Kczz( u8KczzStr );
 			
 			NCKczzObj ncKczzObj = ncKczzMap.get(ncKczzStr);
 			if( ncKczzObj == null  ){
@@ -98,9 +107,9 @@ public class LoadNCKWInfo {
 			u8kwToObj.put(u8KwStr, ncKwObj);
 			
 			String key =ncKczzStr + FPath.sep1 + ncKbStr + FPath.sep1 + u8KwStr;
-//			if( ncKwSet.contains(key) ){
-//				System.out.println(  key  );
-//			}
+			if( ncKwSet.contains(key) ){
+//				System.out.println(  "loadNCKWInfo.loadKwInfo() NC库位重复" + key  );
+			}
 			ncKwSet.add( key);
 			
 			ncKwList.add( ncKwObj );
@@ -108,15 +117,7 @@ public class LoadNCKWInfo {
 		
 		System.out.println( "loadNCKWInfo.loadKwInfo() :: NC库位数量" + ncKwList.size() + " ,去重： "  + ncKwSet.size() );
 		
-		NCKczzObj value = ncKczzMap.entrySet().iterator().next().getValue();
-		Map<String, NCKbObj> nckbToObj = value.getNckbToObj();
-		System.out.println( "loadNCKWInfo.loadKwInfo() :: NC KCZZ数量"   + ncKczzMap.size() +  " , NC库别个数"  + nckbToObj.size() );
-		Set<Entry<String,NCKbObj>> entrySet = nckbToObj.entrySet();
-		for(   Entry<String,NCKbObj> en :  entrySet){
-			String ncTmpKb = en.getKey();
-			NCKbObj ncTmpKbObj = en.getValue();
-//			System.out.println(    "loadNCKWInfo.loadKwInfo() NC库别含库位数量: "+ ncTmpKb  +  "=" +  ncTmpKbObj.getU8kwToObj().size());
-		}
+		
 	}
 
 	public final static String kczzInfoFile = "D:/ForBdcom/0stat1/Data0831/仓库对照YCW.xlsx";
@@ -162,6 +163,20 @@ public class LoadNCKWInfo {
 		Map<String, NCKwObj> u8kwToObj = ncKbObj.getU8kwToObj();
 		NCKwObj ncKwObj = u8kwToObj.get(u8kw);
 		
+		if( ncKwObj ==null &&  !u8kw.startsWith( FPath.KW ) ){
+			ncKwObj = u8kwToObj.get( FPath.KW + u8kw);
+		}
+		return ncKwObj;
+	}
+	
+	public static NCKwObj getNCKw( String nckczz , String u8kb , String u8kw ){
+		
+		String ncKB = kbU8ToNC.get(u8kb);
+		NCKczzObj ncKczzObj = ncKczzMap.get(nckczz);
+		Map<String, NCKbObj> nckbToObj = ncKczzObj.getNckbToObj();
+		NCKbObj ncKbObj = nckbToObj.get(ncKB);
+		Map<String, NCKwObj> u8kwToObj = ncKbObj.getU8kwToObj();
+		NCKwObj ncKwObj = u8kwToObj.get(u8kw);
 		if( ncKwObj ==null &&  !u8kw.startsWith( FPath.KW ) ){
 			ncKwObj = u8kwToObj.get( FPath.KW + u8kw);
 		}

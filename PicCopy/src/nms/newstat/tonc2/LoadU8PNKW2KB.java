@@ -21,7 +21,6 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class LoadU8PNKW2KB {
 	
-	public final static String U8KWMappingFile = "D:/ForBdcom/0stat1/Data0831/onlyWuWeiLeiBie.xlsx";
 	
 	public static Map<String , String> kwpnTOkb = new HashMap<String, String>();
 	
@@ -29,7 +28,7 @@ public class LoadU8PNKW2KB {
 		
 		Workbook wb = null;
 		try {
-			File file = new File( U8KWMappingFile );
+			File file = new File( FPath.U8KWMappingFile );
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
 			wb = null;

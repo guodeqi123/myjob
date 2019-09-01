@@ -87,7 +87,7 @@ public class LoadPnInfos {
 			}
 		}
 		
-		System.out.println(  "  启用NC管理的 物料编码个数  :"+pnInSNManage.size() );
+		System.out.println(  "LoadPnInfos.loadPNStatus() 启用NC管理的 物料编码个数  :"+pnInSNManage.size() );
 		
 	}
 	

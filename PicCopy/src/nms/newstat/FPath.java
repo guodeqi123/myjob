@@ -14,6 +14,10 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class FPath {
+	
+	//  XKSWI-SWI2021C           	CBNNN-JHJ0151A
+
+	
 	public static final String sep1= "_";
 	public static final String KW = "KW";
 	
@@ -43,6 +47,8 @@ public class FPath {
 	//0830
 	public final static String SNUSEPN  = "D:/ForBdcom/0stat1/Data0830/重复的SN对应的物料编码(2).xlsx";
 	
+	//0901 张毅龙提供的 u8kw_pn => u8kb 
+	public final static String U8KWMappingFile = "D:/ForBdcom/0stat1/Data0831/onlyWuWeiLeiBie.xlsx";
 	
 	//0830 每日PN修正
 	public final static String PNComparePath = "D:/ForBdcom/0stat1/物料档案比对.xls";
