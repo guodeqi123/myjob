@@ -90,6 +90,9 @@ public class ToNCExcel {
 			}
 		}
 		
+		//ø’“ª––
+		row = sheet.createRow( rowCounter++ );
+		
 		row = sheet.createRow( rowCounter++ );
 		for( int i=0; i<title2.length  ; i++ ){
 			Cell cell = row.createCell((short) i);

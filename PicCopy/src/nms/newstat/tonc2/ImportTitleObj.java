@@ -9,7 +9,7 @@ public class ImportTitleObj implements Serializable{
 	private String ncKczz;
 	private String dateStr = "2019-08-31" ;
 	private String nckb;
-	private String inoutType = "ÆÚ³õÓà¶î";
+	private String inoutType = "40-01";
 	
 	public ImportTitleObj(){
 		

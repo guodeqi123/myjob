@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -24,16 +25,22 @@ public class ImportNC1 {
 		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
 		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
 		
+//		{ importdir1+ "借测_MY.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
+//		{ importdir1+ "借测_MY.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
+		
 //		{ importdir1+ "1_生产工单待出物料汇总20190831.xls" ,      "0" , "4"     ,"0" , "2"   } , 
 		
 		
 	};
 	
 	public static String[][] useNCKW = new String[][]{
-		{ "01" ,"66" , "02" , "博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
-		{ "01" ,"66" , "02"  ,"科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+		{ "01" ,"66" , "02" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
+		{ "01" ,"66" , "02"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
 		
-//		{ "01" ,"66" , "03"  ,"在线1.xlsx" } , 
+//		{ "01" ,"66" , "01"  ,"import_借测1.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+//		{ "01" ,"66" , "01"  ,"import_借测2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+		
+//		{ "01" ,"66" , "03"  ,"import_在线1.xlsx" } , 
 		
 	};
 	
@@ -79,10 +86,11 @@ public class ImportNC1 {
 			String pnStr = Convertor2.getCellValue(pnCell);
 			String countStr = Convertor2.getCellValue(countCell);
 			Double dCnt = Double.parseDouble(countStr);
-			if( dCnt<=0 ){
+			if( dCnt<=0 || StringUtils.isEmpty(pnStr) ){
 				continue;
 			}
 //			System.out.println( (i+1) +"!!!!"+  pnStr + " , " +  countStr );
+			pnStr = pnStr.trim().toUpperCase();
 			
 			Boolean pnEnable = LoadPnInfos.pnInSNManage.get(pnStr);
 			if( pnEnable==null  ){
@@ -109,7 +117,7 @@ public class ImportNC1 {
 			System.out.println(  "###物料编码不在NC中 :: , "  + en.getKey() /*+ " , "  +en.getValue()*/ );
 		}
 		System.out.println( " 物料编码不在NC中个：：" +  pnToCountNotInNC.size() );
-		System.out.println( " 物料编码启用SN个：：" +  pnToCountSN.size() );
+		System.out.println( " 物料编码启用++++++++++++++++++SN个：：" +  pnToCountSN.size() );
 		System.out.println( " 物料编码未启用SN个：：" +  pnToCountNotSN.size() );
 		
 		createExcel(  pnToCountSN , pnToCountNotSN  , kwInfo);
@@ -158,7 +166,7 @@ public class ImportNC1 {
 
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		
-		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , 100 );
+		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , 2000 );
 		return vsn ;
 	}
 

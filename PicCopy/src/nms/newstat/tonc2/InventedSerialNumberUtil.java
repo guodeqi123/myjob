@@ -70,7 +70,7 @@ public class InventedSerialNumberUtil {
      * @return
      */
     public static String getInventedSerialNumber(String kuWeiZuZhi, String kuBie, String kuWei, int startIndex){
-        if(startIndex>0){
+        if( index==0 && startIndex>0 ){
             index = startIndex;
         }
         StringBuilder retSerialNumberBuilder = new StringBuilder();
