@@ -15,6 +15,8 @@ import nms.newstat.tonc2.ImportTitleObj;
 import nms.newstat.tonc2.InventedSerialNumberUtil;
 import nms.newstat.tonc2.LoadNCKWInfo;
 import nms.newstat.tonc2.NCKwObj;
+import nms.stat.PnCountLoader;
+import nms.stat.StorePNObj;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -96,6 +98,10 @@ public class BdcomOhter {
 		printInfo(u8kbToObj);
 		writeExcel(u8kbToObj);
 		System.out.println( "BdcomOhter.load() 博达库别总个数 :: "  + u8kbToObj.size() );
+		
+		
+		U8KbObj u8KbObj = u8kbToObj.get("16");
+		createCompare( u8KbObj );
 		
 	}
 	
@@ -202,6 +208,43 @@ public class BdcomOhter {
 		}
 		
 		return ret ;
+	}
+	
+	private static void createCompare(U8KbObj u8KbObj) {
+		
+		Map<String, Double> pnToCountSN = u8KbObj.getPnToCountSN();
+		Map<String, Double> pnToCountNotSN = u8KbObj.getPnToCountNotSN();
+		Map<String, Double> pnToCountNotInNC = u8KbObj.getPnToCountNotInNC();
+		
+		PnCountLoader.loadStoreData();
+		Map<String, StorePNObj> pnToKWCount = PnCountLoader.pnToKWCount;
+		
+//		System.out.println( "BdcomOhter.createCompare######################" );
+//		String msg = "##, PN , U8 数,自盘数,自盘涉及库位";
+//		System.out.println(   msg  );
+//		writeCsv( pnToCountSN ,   pnToKWCount );
+//		writeCsv( pnToCountNotSN ,   pnToKWCount );
+//		writeCsv( pnToCountNotInNC ,   pnToKWCount );
+//		System.out.println( "BdcomOhter.createCompare######################" );
+	}
+
+	private static void writeCsv(Map<String, Double> u8pnToCount, Map<String, StorePNObj> storePNToKWCount) {
+		
+		Set<Entry<String,Double>> entrySet = u8pnToCount.entrySet();
+		for(   Entry<String,Double> en :  entrySet){
+			String u8pn = en.getKey();
+			Double u8count = en.getValue();
+			int storeCnt = -1;
+			String kwCountStr = "";
+			StorePNObj storePNObj = storePNToKWCount.get(u8pn);
+			if( storePNObj != null ){
+				storeCnt = storePNObj.getSumCount();
+				kwCountStr = storePNObj.getKWCountStr();
+			}
+			
+			String msg = "##," + u8pn+","+u8count+","+storeCnt+","+kwCountStr;
+			System.out.println(   msg  );
+		}
 	}
 
 	public static void main(String[] args) {

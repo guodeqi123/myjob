@@ -64,8 +64,8 @@ public class LoadPnInfos {
 					 continue;
 				 }
 				 Cell cellPn = row.getCell( 1 );
-				 Cell cellUnitNum = row.getCell( 5 );
-				 Cell cellUnit = row.getCell( 6 );
+				 Cell cellUnitNum = row.getCell( 6 );
+				 Cell cellUnit = row.getCell( 5 );
 				 Cell cellStatus = row.getCell( 7 );
 				 
 				 

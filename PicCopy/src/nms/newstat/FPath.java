@@ -32,7 +32,7 @@ public class FPath {
 	
 	
 	//0831
-	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0901/物料档案20190901_1.xlsx";
+	public final static String PNStatuspath = "D:/ForBdcom/0stat1/Data0901/物料档案22(1).xlsx";
 	
 	//0831
 	public final static String storePath  = "D:/ForBdcom/0stat1/Data0831/电子台账0831（关账汇总）(1).xlsx";
