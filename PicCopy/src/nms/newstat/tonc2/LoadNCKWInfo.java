@@ -42,7 +42,7 @@ public class LoadNCKWInfo {
 	}
 	
 	// "D:/ForBdcom/0stat1/Data0831/货位导入-0830.xlsx";
-	public final static String kwInfoFile = "D:/ForBdcom/0stat1/Data0901/huowei_090120.xlsx";
+	public final static String kwInfoFile = "D:/ForBdcom/0stat1/Data0902/huowei_20.xlsx";
 
 	public static Map<String, NCKczzObj> ncKczzMap = new HashMap<String, NCKczzObj>(); 
 	public static List<NCKwObj> ncKwList = new ArrayList<NCKwObj>();

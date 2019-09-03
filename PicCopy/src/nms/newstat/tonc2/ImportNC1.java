@@ -22,29 +22,34 @@ public class ImportNC1 {
 	public static final String importdir1 = "D:/ForBdcom/0stat1/Data0831/import/";
 	public static String[][] importSrcFile = new String[][]{
 		// fname                                  sheenum ,startrow , pncol ,countcol,  
-//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
-//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
+		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
+		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
+		{ "D:/ForBdcom/0stat1/Data0901/2_未开票海外0901.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
 		
-//		{ "D:/ForBdcom/0stat1/Data0901/2_未开票海外0901.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
+		{ "D:/ForBdcom/0stat1/Data0902/2_未开票0902.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
+		{ "D:/ForBdcom/0stat1/Data0902/2_未开票0902.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
 		
 //		{ importdir1+ "借测_MY.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
 //		{ importdir1+ "借测_MY.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
 		
-		{  "D:/ForBdcom/0stat1/Data0901/生产工单待出物料汇总20190901.xls" ,      "0" , "4"     ,"0" , "2"   } , 
+//		{  "D:/ForBdcom/0stat1/Data0901/生产工单待出物料汇总20190901.xls" ,      "0" , "4"     ,"0" , "2"   } , 
 		
 		
 	};
 	
 	public static String[][] useNCKW = new String[][]{
-//		{ "01" ,"66" , "02" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
-//		{ "01" ,"66" , "02"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+		{ "01" ,"66" , "销售发货期初" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
+		{ "0101" ,"66" , "销售发货期初"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
+		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票海外3.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw   
 		
-//		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票海外3.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw   
+		{ "010102" ,"66" , "销售发货期初"  ,"import_泰砚已发货未开票4.xlsx" } ,  //  66 02   ==  66 01  销售发货期初
+		{ "0102" ,"66" , "销售发货期初"  ,"import_讯坤已发货未开票5.xlsx" } ,  // 
+		
 		
 //		{ "01" ,"66" , "01"  ,"import_借测1.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
 //		{ "01" ,"66" , "01"  ,"import_借测2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
 		
-		{ "01" ,"66" , "03"  ,"import_在线11.xlsx" } , 
+//		{ "01" ,"66" , "03"  ,"import_在线11.xlsx" } , 
 		
 	};
 	
@@ -167,10 +172,11 @@ public class ImportNC1 {
 		sheetObj.writeToFile(  kwInfo[3] );
 	}
 
-
+	
+	public static final String vsnDateStr = "19930";
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		
-		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , 89000 );
+		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , vsnDateStr );
 		return vsn ;
 	}
 

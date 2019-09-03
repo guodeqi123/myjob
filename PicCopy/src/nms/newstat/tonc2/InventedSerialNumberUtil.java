@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
+
 /**
  * @author Declan
  * @date 2019/08/31 17:36
@@ -49,11 +51,15 @@ public class InventedSerialNumberUtil {
      * @param kuWei ø‚Œª
      * @return
      */
-    public static String getInventedSerialNumber(String kuWeiZuZhi, String kuBie, String kuWei){
+    public static String getInventedSerialNumber(String kuWeiZuZhi, String kuBie, String kuWei , String dateStr ){
 
         StringBuilder retSerialNumberBuilder = new StringBuilder();
         retSerialNumberBuilder.append(getKuDaiMa(kuWeiZuZhi, kuBie, kuWei));
-        retSerialNumberBuilder.append(getDateStr());
+        if( StringUtils.isEmpty(dateStr) ){
+        	retSerialNumberBuilder.append(getDateStr());
+        }else{
+        	retSerialNumberBuilder.append( dateStr );
+        }
         retSerialNumberBuilder.append(get5RandomNumber());
         return retSerialNumberBuilder.toString();
     }
@@ -139,18 +145,19 @@ public class InventedSerialNumberUtil {
 
 
     public static void main(String[] args) {
-        String kuCunZuZhi = "010102";
-        String kuBie = "66";
-        String kuWei = "01";
-        String inventedSerialNumber = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
-        String inventedSerialNumber1 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
-        String inventedSerialNumber2 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
-        String inventedSerialNumber3 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
-        System.out.println(inventedSerialNumber);
-        System.out.println(inventedSerialNumber1);
-        System.out.println(inventedSerialNumber2);
-        System.out.println(inventedSerialNumber3);
-        System.out.println(getCurrentIndex());
+//        String kuCunZuZhi = "010102";
+//        String kuBie = "66";
+//        String kuWei = "01";
+//        String inventedSerialNumber = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+//        String inventedSerialNumber1 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+//        String inventedSerialNumber2 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+//        String inventedSerialNumber3 = getInventedSerialNumber(kuCunZuZhi, kuBie, kuWei, 2);
+//        System.out.println(inventedSerialNumber);
+//        System.out.println(inventedSerialNumber1);
+//        System.out.println(inventedSerialNumber2);
+//        System.out.println(inventedSerialNumber3);
+//        System.out.println(getCurrentIndex());
+    	System.out.println( getDateStr() );
 
     }
 

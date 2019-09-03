@@ -131,9 +131,13 @@ public class PnCountLoader {
 			Cell pncell = oneRow.getCell(pnCol);
 			Cell kwcell = oneRow.getCell(kwCol);
 			Cell countcell = oneRow.getCell(countCol);
+			Cell kbcell = oneRow.getCell(1);
+			
 			String pnStr = Convertor2.getCellValue(pncell);
 			String kwStr = Convertor2.getCellValue(kwcell);
 			String countStr = Convertor2.getCellValue(countcell);
+			String kbStr = Convertor2.getCellValue(kbcell);
+			
 			if( StringUtils.isEmpty(pnStr) ){
 				continue;
 			}
@@ -145,14 +149,14 @@ public class PnCountLoader {
 			}else if( StringUtils.isEmpty(countStr) ){
 				countStr = "0";
 			}
-			int iCount = Integer.parseInt(countStr);
+			double iCount = Double.parseDouble(countStr);
 			StorePNObj storePNObj = pnToKWCount.get(pnStr);
 			if(  storePNObj==null ){
 				storePNObj = new StorePNObj(pnStr);
 				pnToKWCount.put(pnStr , storePNObj ) ;
 			}
 			cc1++;
-			storePNObj.addKwCount(kwStr, iCount);;
+			storePNObj.addKwCount(kwStr, iCount , kbStr);
 		}
 		
 		int rows = 0;
@@ -163,19 +167,40 @@ public class PnCountLoader {
 //			System.out.println(   "加载自盘数据:" +  key + " , " + value.getSumCount() + " , " + value.getKWCountStr() );
 		}
 		System.out.println(  "加载自盘数据共行::" +  cc1 + " , 去重："  + pnToKWCount.size() );
+		
+		//check
+		Set<Entry<String,StorePNObj>> entrySet2 = pnToKWCount.entrySet();
+		for(    Entry<String,StorePNObj> en2 :  entrySet2){
+			String key = en2.getKey();
+			StorePNObj value = en2.getValue();
+			double sumCount = value.getSumCount();
+			double calcSum = value.calcSum();
+			if(  sumCount != calcSum  ){
+				System.out.println( "自盘数据加载异常 ::" +  value.getPn() + ", " + sumCount + " , " + calcSum + ""   );
+			}
+		}
 	}
 
 
 	public static Map<String, U8PNObj> pnToU8Obj = new HashMap<String, U8PNObj>();
 	public static void loadU8Data() {
-		loadFile( FPath.u8PathNew , 1 );
-		if( !StringUtils.isEmpty(FPath.u8PathOld) ){
-			loadFile( FPath.u8PathOld  ,2 );
+		loadU8File( FPath.u8PathNew , 1 );
+//		if( !StringUtils.isEmpty(FPath.u8PathOld) ){
+//			loadFile( FPath.u8PathOld  ,2 );
+//		}
+		
+		Set<Entry<String,U8PNObj>> entrySet = pnToU8Obj.entrySet();
+		for( Entry<String,U8PNObj> en :  entrySet   ){
+			U8PNObj value = en.getValue();
+			double newValue = value.getNewValue();
+			Double calcSum = value.calcSum();
+			if( newValue != calcSum  ){
+				System.out.println( "U8数据加载异常 ::" +  value.getPn() + ", " + newValue + " , " + calcSum + ""   );
+			}
 		}
 	}
 	
-	
-	private static void loadFile(String fPath , int isnew) {
+	private static void loadU8File(String fPath , int isnew) {
 		
 		Workbook wb = null;
 		try {
@@ -198,6 +223,7 @@ public class PnCountLoader {
 		int lastRowNum = sheet0.getLastRowNum();
 		Row oneRow = null;
 		
+		int u8kbCol = 0;
 		int startrow = 3;
 		int pncol = 1;
 //		int countcol = 4;//可用数量
@@ -207,28 +233,43 @@ public class PnCountLoader {
 			oneRow = sheet0.getRow(i);
 			Cell pncell = oneRow.getCell(pncol);
 			Cell countcell = oneRow.getCell(countcol);
+			Cell u8kbcell = oneRow.getCell(u8kbCol);
+			
 			String pnStr = Convertor2.getCellValue(pncell);
 			String countStr = Convertor2.getCellValue(countcell);
-			if(  StringUtils.isEmpty(pnStr) ){
+			String u8kbStr = Convertor2.getCellValue(u8kbcell);
+			if(  StringUtils.isEmpty(pnStr)  || StringUtils.isEmpty(u8kbStr) /*||StringUtils.isEmpty(countStr)*/   ){
 				continue;
 			}
 			pnStr = pnStr.trim().toUpperCase();
 			if( StringUtils.isEmpty(countStr) ){
 				countStr = "0";
 			}
+			double parseInt = Double.parseDouble( countStr );
+			if( parseInt <=0 ){
+				continue;
+			}
+			
 			U8PNObj u8pnObj = pnToU8Obj.get(pnStr);
 			if( u8pnObj ==null){
 				u8pnObj = new U8PNObj(pnStr);
 				pnToU8Obj.put( pnStr , u8pnObj);
 			}
-			
-			int parseInt = Integer.parseInt(countStr);
+		
 			if( 1==isnew ){
 				u8pnObj.addNewValue(parseInt);
 			}else{
 				u8pnObj.addOldValue(parseInt);
 			}
 			cc1++;
+			
+			Map<String, Double> kbToCount = u8pnObj.getKbToCount();
+			Double ccc = kbToCount.get(u8kbStr);
+			if(  ccc == null ) {
+				kbToCount.put( u8kbStr , parseInt );
+			} else {
+				kbToCount.put( u8kbStr , parseInt + ccc ); 
+			}
 		}
 		
 		System.out.println( "加载U8数据行："+fPath + " , "+cc1 + " , 去重:" + pnToU8Obj.size());
@@ -239,9 +280,9 @@ public class PnCountLoader {
 	public static void main(String[] args) throws  Exception {
 		
 		loadStoreData();
+		
+		
 		loadU8Data();
-		
-		
 	}
 	
 	public static <T> T deepClone(T srcObj) throws IOException, ClassNotFoundException  {

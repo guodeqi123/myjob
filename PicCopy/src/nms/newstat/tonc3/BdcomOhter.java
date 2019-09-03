@@ -100,9 +100,6 @@ public class BdcomOhter {
 		System.out.println( "BdcomOhter.load() 博达库别总个数 :: "  + u8kbToObj.size() );
 		
 		
-		U8KbObj u8KbObj = u8kbToObj.get("16");
-		createCompare( u8KbObj );
-		
 	}
 	
 	public static Set<String> kwpn = new HashSet<String>();
@@ -126,7 +123,7 @@ public class BdcomOhter {
 		System.out.println(  "BdcomOhter.printInfo ========================================" + counter  + " , " + kwpn.size() );
 	}
 	
-	public static final String dateStr = "2019-09-01";
+	public static final String dateStr = "2019-09-02";
 	
 	private static void writeExcel(Map<String, U8KbObj> u8kbToObj) {
 		
@@ -147,8 +144,7 @@ public class BdcomOhter {
 			for(  Entry<String,Double> pnCnt :    entrySet2 ){
 				String tmpPn = pnCnt.getKey();
 				Double tmpCnt = pnCnt.getValue();
-				String[] nckw = getNCKW( nckczz , u8kb , nckb ,tmpPn );
-				String nckwStr = nckw[0];
+				String nckwStr = getNCKW( nckczz , u8kb , nckb ,tmpPn );
 				
 				int size = tmpCnt.intValue();
 				String unitStr = LoadPnInfos.pnToUnit.get(tmpPn);
@@ -167,8 +163,7 @@ public class BdcomOhter {
 				String tmpPn = pnCnt.getKey();
 				Double tmpCnt = pnCnt.getValue();
 				String unitStr = LoadPnInfos.pnToUnit.get(tmpPn);
-				String[] nckw = getNCKW( nckczz , u8kb , nckb ,tmpPn );
-				String nckwStr = nckw[0];
+				String nckwStr = getNCKW( nckczz , u8kb , nckb ,tmpPn );
 				ImportRowObj row = new ImportRowObj(  titleObj.getTitleNum() , counter1++ ,  tmpPn , unitStr, tmpCnt, dateStr, nckwStr);
 				sheetObj.addRow( row );
 			}
@@ -178,74 +173,34 @@ public class BdcomOhter {
 		}
 	}
 	
+	public static final String  snDateStr = "19904";
+	
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		
-		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw );
+		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw ,snDateStr);
 		return vsn ;
 	}
 
 	public static Set<String> pnNoKWList = new HashSet<String>();
 	
-	private static String[] getNCKW(String nckczz, String u8kb, String nckb , String pn ) {
+	private static String getNCKW(String nckczz, String u8kb, String nckb , String pn ) {
 		String[] ret = new String[]{  "" , ""  };
 		
 		if(  "16".equals(u8kb) ){
-			
+			NCKwObj ncKw = null;
 			String u8kw = Load16KbPNInfo.pnToU8KW.get(pn);
-			if(  StringUtils.isEmpty( u8kw )  ){
-				pnNoKWList.add( u8kb +" , " +pn);
-				return ret;
-			}
-			NCKwObj ncKw;
-			try {
+			if(  !StringUtils.isEmpty( u8kw )  ){
 				ncKw = LoadNCKWInfo.getNCKw(nckczz, u8kb, u8kw);
 				ret = new String[]{  ncKw.getNcKw() , ncKw.getU8Kw()  };
-			} catch (RuntimeException e) {
-//				System.err.println( "PN:::" + pn + " ,  " + nckczz +  " , "  + u8kb + " , "+ u8kw);
-//				e.printStackTrace();
-				return ret;
+			}else{
+				pnNoKWList.add( u8kb +" , " +pn);
+				ret = new String[]{  "66" , "期初-差异"  };
 			}
 		}
 		
-		return ret ;
+		return ret[1] ;//取 kw name
 	}
 	
-	private static void createCompare(U8KbObj u8KbObj) {
-		
-		Map<String, Double> pnToCountSN = u8KbObj.getPnToCountSN();
-		Map<String, Double> pnToCountNotSN = u8KbObj.getPnToCountNotSN();
-		Map<String, Double> pnToCountNotInNC = u8KbObj.getPnToCountNotInNC();
-		
-		PnCountLoader.loadStoreData();
-		Map<String, StorePNObj> pnToKWCount = PnCountLoader.pnToKWCount;
-		
-//		System.out.println( "BdcomOhter.createCompare######################" );
-//		String msg = "##, PN , U8 数,自盘数,自盘涉及库位";
-//		System.out.println(   msg  );
-//		writeCsv( pnToCountSN ,   pnToKWCount );
-//		writeCsv( pnToCountNotSN ,   pnToKWCount );
-//		writeCsv( pnToCountNotInNC ,   pnToKWCount );
-//		System.out.println( "BdcomOhter.createCompare######################" );
-	}
-
-	private static void writeCsv(Map<String, Double> u8pnToCount, Map<String, StorePNObj> storePNToKWCount) {
-		
-		Set<Entry<String,Double>> entrySet = u8pnToCount.entrySet();
-		for(   Entry<String,Double> en :  entrySet){
-			String u8pn = en.getKey();
-			Double u8count = en.getValue();
-			int storeCnt = -1;
-			String kwCountStr = "";
-			StorePNObj storePNObj = storePNToKWCount.get(u8pn);
-			if( storePNObj != null ){
-				storeCnt = storePNObj.getSumCount();
-				kwCountStr = storePNObj.getKWCountStr();
-			}
-			
-			String msg = "##," + u8pn+","+u8count+","+storeCnt+","+kwCountStr;
-			System.out.println(   msg  );
-		}
-	}
 
 	public static void main(String[] args) {
 		// 加载NC库位与U8库位 映射
@@ -257,10 +212,10 @@ public class BdcomOhter {
 		
 		load();
 		
-		System.out.println(  "BdcomOhter.main  PN 无法找到库位总个数SUM ::" + pnNoKWList.size() );
-		for(String  str :   pnNoKWList ){
-			System.out.println(  "BdcomOhter.main  PN 无法找到库位 ::" + str );
-		}
+//		System.out.println(  "BdcomOhter.main  PN 无法找到库位总个数SUM ::" + pnNoKWList.size() );
+//		for(String  str :   pnNoKWList ){
+//			System.out.println(  "BdcomOhter.main  PN 无法找到库位 ::" + str );
+//		}
 		
 	}
 	

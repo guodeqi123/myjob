@@ -13,8 +13,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import org.apache.commons.lang.StringUtils;
-
 import nms.InOutObj;
 import nms.KWObj;
 import nms.RowData;
@@ -22,12 +20,16 @@ import nms.newstat.inout.LoadInOut;
 import nms.newstat.pnc.LoadPNAmend;
 import nms.newstat.pnc.LoadPNPrice;
 import nms.newstat.pnc.LoadSNUsePN;
-import nms.newstat.pnc.PNCompareObj;
 import nms.newstat.pnc.PNInfoObj;
 import nms.newstat.tonc.ToNCExcel;
+import nms.newstat.tonc2.LoadNCKWInfo;
+import nms.newstat.tonc34.ImportBdcom30;
+import nms.newstat.tonc34.SpecialHandle;
 import nms.stat.PnCountLoader;
 import nms.stat.StorePNObj;
 import nms.stat.U8PNObj;
+
+import org.apache.commons.lang.StringUtils;
 
 public class GatherAll {
 	
@@ -41,6 +43,9 @@ public class GatherAll {
 	public static Map<String,  StatRow > pnToCountStoreMap = new HashMap<String, StatRow>();
 	
 	public static void main(String[] args) {
+		// 加载NC库位与U8库位 映射
+		LoadNCKWInfo.load();
+		
 		LoadSNUsePN.load();
 		LoadInOut.load();//加载出入库
 		try { Thread.sleep(1000); } catch (InterruptedException e1) { }
@@ -67,13 +72,17 @@ public class GatherAll {
 		}
 		System.out.println(   "PN总数:"+scanPNS.size() );	
 		
+		
 		doCheckAllPNAndGatherScanPNCount(); //检查所有盘库出库结果物料编码 并汇总个数
 //		printErrorPN( errorNotManageSN );
 		
 		try {
-			Map<String, StorePNObj> tmppnToKWCount = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
+			Map<String, StorePNObj> tmppnToStoreObj = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
 			Map<String,U8PNObj > tmppnToU8Obj = PnCountLoader.deepClone( PnCountLoader.pnToU8Obj ) ;
-			gatherAllData(  scanPNToCountMap  , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
+//			gatherAllData(  scanPNToCountMap  , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
+			
+			ImportBdcom30.doExport(  distinctMap ,   tmppnToStoreObj    , tmppnToU8Obj );
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}  
@@ -136,15 +145,15 @@ public class GatherAll {
 			StatRow value = en.getValue();
 			StorePNObj storePNObj = storePnToObjMap.remove(scanPn);
 			if(  storePNObj!=null  ){
-				int sumCount = storePNObj.getSumCount();
+				double sumCount = storePNObj.getSumCount();
 				value.setCountStore(sumCount);
 				String kwCountStr = storePNObj.getKWCountStr();
 				value.setStoreKwCountStr(kwCountStr);
 			}
 			U8PNObj u8pnObj = u8Map.remove(scanPn);
 			if( u8pnObj!=null ){
-				int newValue = u8pnObj.getNewValue();
-				int increment = u8pnObj.getIncrement();
+				double newValue = u8pnObj.getNewValue();
+				double increment = u8pnObj.getIncrement();
 				value.setCountU8(newValue);
 				value.setU8increase(increment);
 			}
@@ -156,15 +165,15 @@ public class GatherAll {
 			StorePNObj value = en.getValue();
 			StatRow statRow = new StatRow(cPn);
 			String kwCountStr = value.getKWCountStr();
-			int sumCount = value.getSumCount();
+			double sumCount = value.getSumCount();
 			statRow.setStoreKwCountStr(kwCountStr);
 			statRow.setCountStore(sumCount);
 			pnToCountStoreMap.put(cPn, statRow);
 			
 			U8PNObj u8pnObj = u8Map.remove(cPn);
 			if( u8pnObj!=null ){
-				int newValue = u8pnObj.getNewValue();
-				int increment = u8pnObj.getIncrement();
+				double newValue = u8pnObj.getNewValue();
+				double increment = u8pnObj.getIncrement();
 				statRow.setCountU8(newValue);
 				statRow.setU8increase(increment);
 			}
@@ -175,8 +184,8 @@ public class GatherAll {
 			String cPn = en.getKey();
 			U8PNObj value = en.getValue();
 			StatRow statRow = new StatRow(cPn);
-			int newValue = value.getNewValue();
-			int increment = value.getIncrement();
+			double newValue = value.getNewValue();
+			double increment = value.getIncrement();
 			statRow.setCountU8(newValue);
 			statRow.setU8increase(increment);
 			
@@ -204,8 +213,6 @@ public class GatherAll {
 		arrayList.addAll(InNCNotEnableSN);
 		WriteExcel.createExcel( arrayList , "ALL_GDQ.xlsx");
 		
-		ToNCExcel.createToNC( distinctMap );
-		
 	}
 	
 	private static void writeRes(ArrayList<StatRow> resList, String fname) {
@@ -213,9 +220,9 @@ public class GatherAll {
 		msgs.add("PN , 扫描数量 ,自盘数量 , U8数量 , U8变动数量 ,  扫码涉及库位, 自盘涉及库位 , 存货名称 , 单价" );
 		for( StatRow value :  resList  ){
 			String pn = value.getPn();
-			int countStore = value.getCountStore();
-			int countU8 = value.getCountU8();
-			int u8increase = value.getU8increase();
+			double countStore = value.getCountStore();
+			double countU8 = value.getCountU8();
+			double u8increase = value.getU8increase();
 			String kwForStore = value.getStoreKwCountStr();
 			if( kwForStore ==null ){
 				kwForStore = "";
@@ -252,10 +259,10 @@ public class GatherAll {
 		for(  Entry<String,StatRow> en  : entrySet){ 
 			String keyPN = en.getKey();
 			StatRow value = en.getValue();
-			int countScan = value.getCountScan();
-			int countU8 = value.getCountU8();
-			int countStore = value.getCountStore();
-			int u8increase = value.getU8increase();
+			double countScan = value.getCountScan();
+			double countU8 = value.getCountU8();
+			double countStore = value.getCountStore();
+			double u8increase = value.getU8increase();
 			String kwForStore = value.getStoreKwCountStr();
 
 			if( "CBOEM-PON0152B".equals(keyPN) ){

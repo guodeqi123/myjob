@@ -16,9 +16,9 @@ public class StatRow {
 	
 	public String pn;
 	
-	public int countU8 = -1;
-	public int countStore = -1;
-	public int countScan = -1;
+	public double countU8 = -1;
+	public double countStore = -1;
+	public double countScan = -1;
 	
 	public boolean enableSN ;
 	
@@ -26,7 +26,7 @@ public class StatRow {
 	
 	public String storeKwCountStr ;
 	
-	public int u8increase;
+	public double u8increase;
 	
 	public void addScan( int addValue){
 		if(  countScan == -1 ){
@@ -41,22 +41,22 @@ public class StatRow {
 	public void setPn(String pn) {
 		this.pn = pn.toUpperCase().trim();
 	}
-	public int getCountU8() {
+	public double getCountU8() {
 		return countU8;
 	}
-	public void setCountU8(int countU8) {
+	public void setCountU8(double countU8) {
 		this.countU8 = countU8;
 	}
-	public int getCountStore() {
+	public double getCountStore() {
 		return countStore;
 	}
-	public void setCountStore(int countStore) {
+	public void setCountStore(double countStore) {
 		this.countStore = countStore;
 	}
-	public int getCountScan() {
+	public double getCountScan() {
 		return countScan;
 	}
-	public void setCountScan(int countScan) {
+	public void setCountScan(double countScan) {
 		this.countScan = countScan;
 	}
 
@@ -96,11 +96,11 @@ public class StatRow {
 		this.storeKwCountStr = storeKwCountStr;
 	}
 
-	public int getU8increase() {
+	public double getU8increase() {
 		return u8increase;
 	}
 
-	public void setU8increase(int u8increase) {
+	public void setU8increase(double u8increase) {
 		this.u8increase = u8increase;
 	}
 	
