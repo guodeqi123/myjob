@@ -106,7 +106,7 @@ public class QrCodeParser {
 //						System.out.print(  sss + "===" );
 						
 						// 以SN:开头的  
-						if(  sss.startsWith( "SN" + colon1) ||  sss.startsWith( "SN"  + colon2 ) ){
+						if(  sss.startsWith( "SN" + colon1) ||  sss.startsWith( "SN"  + colon2 )  ||  sss.startsWith( "SN;" )   ){
 							String tmpSn = null;
 							tmpSn = sss.substring(3);
 							int macIndex = tmpSn.indexOf("MAC");
@@ -116,6 +116,11 @@ public class QrCodeParser {
 							if( tmpSn!=null && tmpSn.length()>2 ){
 								snList.add(tmpSn.trim());
 							}
+						}else if(  sss.startsWith( "S/N:") ){
+							String tmpSn = null;
+							tmpSn = sss.substring(4);
+							snList.add(tmpSn.trim());
+							
 						}else if( sss.startsWith( "MAC" + colon1) || sss.startsWith( "MAC"  + colon2 )  ) {
 							
 						} else if( sss.startsWith( "H/W" + colon1) || sss.startsWith( "H/W"  + colon2 )   ){
@@ -126,6 +131,9 @@ public class QrCodeParser {
 						
 						}else{
 							int length = sss.length();
+							if(  sss.contains(colon1) || sss.contains(colon2) ){
+								continue;
+							}
 							if( length>=5 && length<=35 ){ 
 								snList.add( sss.trim() );
 							} else {
