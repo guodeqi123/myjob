@@ -97,6 +97,7 @@ public class InFileParser {
 				String snStr = Convertor.getCellValue(cellSn);
 				String kwStr = Convertor.getCellValue(cellkw);
 				
+				
 				if(  !StringUtils.isEmpty(pnStr) ){
 					cUsePn = pnStr;
 				}
@@ -181,6 +182,8 @@ public class InFileParser {
 				String snsStr = rowData.getSnsStr();
 				String kw = rowData.getPosNum();
 				String pn = rowData.getMaterialNum();
+				
+				
 				InOutObj inOutObj = new InOutObj();
 				inOutObj.setIsIn(true);
 				inOutObj.setSn(snsStr.toUpperCase().trim());

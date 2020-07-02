@@ -1,11 +1,17 @@
-package nms.newstat.tonc2;
+package nms.newstat.tonc34;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import nms.newstat.Convertor2;
+import nms.newstat.FPath;
+import nms.newstat.LoadPnInfos;
+import nms.newstat.tonc2.ImportRowObj;
+import nms.newstat.tonc2.ImportSheetObject;
+import nms.newstat.tonc2.ImportTitleObj;
+import nms.newstat.tonc2.InventedSerialNumberUtil;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
@@ -13,54 +19,18 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
-import nms.newstat.Convertor2;
-import nms.newstat.FPath;
-import nms.newstat.LoadPnInfos;
-
-public class ImportNC1 {
+public class ImportNC2 {
 	
-	public static final String importdir1 = "D:/ForBdcom/0stat1/Data0831/import/";
 	public static String[][] importSrcFile = new String[][]{
 		// fname                                  sheenum ,startrow , pncol ,countcol,  
-//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "2"   } , 
-//		{ importdir1+ "2_MY已发货未开票.xlsx" ,      "0" , "1"     ,"0" , "3"   } , 
-//		{ "D:/ForBdcom/0stat1/Data0901/2_未开票海外0901.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
-//		
-//		{ "D:/ForBdcom/0stat1/Data0902/2_未开票0902.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
-//		{ "D:/ForBdcom/0stat1/Data0902/2_未开票0902.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
-		
-//		{ importdir1+ "借测_MY.xlsx" ,      "0" , "1"     ,"0" , "1"   } , 
-//		{ importdir1+ "借测_MY.xlsx" ,      "1" , "1"     ,"0" , "1"   } , 
-		
-//		{  "D:/ForBdcom/0stat1/Data0901/生产工单待出物料汇总20190901.xls" ,      "0" , "4"     ,"0" , "2"   } , 
-		
-//		{ "D:/ForBdcom/0stat1/Date0904/博达已发货未开票_0904.xls" ,      "0" , "1"     ,"0" , "1"   } , 
-		
-//		{ "D:/ForBdcom/0stat1/Data0905/0905未开票.xls" ,      "0" , "1"     ,"0" , "1"   } , 
-		
-		{ "D:/ForBdcom/0stat1/Data0905/信息科技公司增加库存Src.xls" ,      "0" , "1"     ,"4" , "8"   } , 
+		{ "D:/ForBdcom/0stat1/Date0904/0科技真实库存.XLSX" ,      "1" , "1"     ,"4" , "8"   } , 
+		{ "D:/ForBdcom/0stat1/Date0904/0迅坤真实库存.XLSX" ,      "1" , "1"     ,"4" , "8"   } , 
 		
 	};
 	
 	public static String[][] useNCKW = new String[][]{
-//		{ "01" ,"66" , "销售发货期初" , "import_博达已发货未开票1.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
-//		{ "0101" ,"66" , "销售发货期初"  ,"import_科技已发货未开票2.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
-//		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票海外3.xlsx" } ,  //    nc kczz ,  nc kb ,  nc kw   
-//		
-//		{ "010102" ,"66" , "销售发货期初"  ,"import_泰砚已发货未开票4.xlsx" } ,  //  66 02   ==  66 01  销售发货期初
-//		{ "0102" ,"66" , "销售发货期初"  ,"import_讯坤已发货未开票5.xlsx" } ,  // 
-		
-		
-//		{ "01" ,"66" , "01"  ,"import_借测1.xlsx" } ,  //  nc kczz ,  nc kb ,  nc kw 
-//		{ "01" ,"66" , "01"  ,"import_借测2.xlsx" } ,  //   nc kczz ,  nc kb ,  nc kw 
-		
-//		{ "01" ,"66" , "03"  ,"import_在线11.xlsx" } , 
-		
-//		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票0904.xlsx" } , 
-		
-//		{ "01" ,"66" , "销售发货期初"  ,"import_博达已发货未开票0905.xlsx" } , 
-		
-		{ "0101" ,"66" , "销售发货期初"  ,"import_信息科技公司增加库存0905.xlsx" } , 
+		{ "0101" ,"10" , "成品" , "import_科技30.xlsx"  } ,  //nc kczz ,  nc kb ,  nc kw 
+		{ "0102" ,"10" , "成品"  ,"import_迅坤30.xlsx" } ,  //科技    nc kczz ,  nc kb ,  nc kw 
 		
 	};
 	
@@ -184,8 +154,7 @@ public class ImportNC1 {
 	}
 
 	
-//	public static final String vsnDateStr = "19906";
-	public static final String vsnDateStr = "19909";
+	public static final String vsnDateStr = "19908";
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		
 		String vsn = InventedSerialNumberUtil.getInventedSerialNumber(nckczz, nckb, nckw , vsnDateStr );

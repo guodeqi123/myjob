@@ -304,6 +304,7 @@ public class PnCountLoader {
 			oi = new ObjectInputStream(bi);
 			newObj = (T) oi.readObject();
 		} catch (IOException e) {
+			e.printStackTrace();
 			throw e;
 		} catch (ClassNotFoundException e) {
 			throw e;

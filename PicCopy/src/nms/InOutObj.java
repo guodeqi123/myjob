@@ -59,6 +59,13 @@ public class InOutObj {
 		rd.setSnsStr(sn);
 		rd.setPosNum(kw);
 		rd.setMaterialNum(pn);
+		
+		String snsStr = sn; 
+		if( "84:79:73:1A:27:60".equals(snsStr)  || "3205I00436£º45:62:64:59:01".equals(snsStr) ||
+				"20025000247£º53:85:46".equals(snsStr)  || "84:79:73:1A:27:60".equals( snsStr)  ){
+			System.err.println( snsStr + " , " +kw +" , "+ pn +" ,  XXXXXXXXXXXXXX " );
+		}
+		
 		return rd;
 	}
 	

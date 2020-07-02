@@ -123,7 +123,7 @@ public class BdcomOhter {
 		System.out.println(  "BdcomOhter.printInfo ========================================" + counter  + " , " + kwpn.size() );
 	}
 	
-	public static final String dateStr = "2019-09-02";
+	public static final String dateStr = "2019-08-31";
 	
 	private static void writeExcel(Map<String, U8KbObj> u8kbToObj) {
 		
@@ -173,7 +173,7 @@ public class BdcomOhter {
 		}
 	}
 	
-	public static final String  snDateStr = "19904";
+	public static final String  snDateStr = "19907";
 	
 	private static String getVSN(String nckczz, String nckb, String nckw) {
 		

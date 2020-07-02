@@ -213,6 +213,7 @@ public class Convertor2 {
 			 RowData rowData = new RowData( );
 			 rowData.setMaterialNum(cUsePN);
 			 rowData.setSnsStr(snStr);
+			 rowData.setfName(srcFilePath);
 			 try {
 				 if( ckwObj == null ){
 					 continue;

@@ -79,9 +79,11 @@ public class GatherAll {
 		try {
 			Map<String, StorePNObj> tmppnToStoreObj = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
 			Map<String,U8PNObj > tmppnToU8Obj = PnCountLoader.deepClone( PnCountLoader.pnToU8Obj ) ;
-//			gatherAllData(  scanPNToCountMap  , LoadPnInfos.pnInSNManage ,  tmppnToKWCount,  tmppnToU8Obj);
+			gatherAllData(  scanPNToCountMap  , LoadPnInfos.pnInSNManage ,  tmppnToStoreObj,  tmppnToU8Obj);
 			
-			ImportBdcom30.doExport(  distinctMap ,   tmppnToStoreObj    , tmppnToU8Obj );
+			Map<String, StorePNObj> tmppnToStoreObj2 = PnCountLoader.deepClone( PnCountLoader.pnToKWCount ) ;
+			Map<String,U8PNObj > tmppnToU8Obj2 = PnCountLoader.deepClone( PnCountLoader.pnToU8Obj ) ;
+			ImportBdcom30.doExport(  distinctMap ,   tmppnToStoreObj2    , tmppnToU8Obj2 );
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -408,7 +410,13 @@ public class GatherAll {
 				continue;
 			}
 			
-
+//			84:79:73:1A:27:60 , KWA3001 , CBNNN-PON0258B
+//			3205I00436£º45:62:64:59:01 , KWB10003 , CBNNN-WAP0094A
+//			20025000247£º53:85:46 , KWB12008 , CBSWI-SWI1703A
+			if( "84:79:73:1A:27:60".equals(snsStr)  || "3205I00436£º45:62:64:59:01".equals(snsStr) ||
+					"20025000247£º53:85:46".equals(snsStr)  || "84:79:73:1A:27:60".equals( snsStr)  ){
+				System.err.println( snsStr + " , " + rowData.getPosNum() +" , "+ rowData.getMaterialNum() +" , "+ rowData.getfName() );
+			}
 			
 			RowData srcRowData = distinctMap.get(snsStr);
 			if( srcRowData!=null  ){

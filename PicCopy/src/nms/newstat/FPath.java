@@ -97,7 +97,7 @@ public class FPath {
 			File file = new File( fpath );
 			InputStream input = new FileInputStream(file);
 			String fileExt = file.getName().substring( file.getName().lastIndexOf(".") + 1);
-			if ("xls".equals(fileExt)) {
+			if ("xls".equalsIgnoreCase(fileExt)) {
 				wb = (HSSFWorkbook) WorkbookFactory.create(input);
 			} else {
 				wb = new XSSFWorkbook(input);

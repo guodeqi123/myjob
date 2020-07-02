@@ -78,6 +78,7 @@ public class KWObj {
 		List<String> parseSns = QrCodeParser.parse(snsStr);
 		for(  String tmpSN : parseSns ){
 			RowData rowData = new RowData(kwNum, pn, tmpSN);
+			rowData.setfName(srcRow.getfName());
 			rowSnList.add(rowData);
 		}
 		
