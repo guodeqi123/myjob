@@ -33,6 +33,7 @@ public class FUtil {
                 wb = new XSSFWorkbook(input);
             }
         } catch (Exception e) {
+        	System.out.println("æ‰“å¼€æ–‡ä»¶å¼‚å¸¸ " + fpath ) ;
             e.printStackTrace();
         }
         return wb;
@@ -49,6 +50,7 @@ public class FUtil {
                 wb = new XSSFWorkbook(input);
             }
         } catch (Exception e) {
+        	System.out.println("æ‰“å¼€æ–‡ä»¶å¼‚å¸¸ " + fff.getAbsolutePath() ) ;
             e.printStackTrace();
         }
         return wb;
@@ -56,7 +58,7 @@ public class FUtil {
 
 
     public static String getCellValueByCell(Cell cell) {
-        //ÅÐ¶ÏÊÇ·ñÎªnull»ò¿Õ´®
+        //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Îªnullï¿½ï¿½Õ´ï¿½
         if (cell==null || cell.toString().trim().equals("")) {
             return "";
         }
@@ -64,24 +66,24 @@ public class FUtil {
         String cellValue = "";
         int cellType=cell.getCellType();
         switch (cellType) {
-            case Cell.CELL_TYPE_NUMERIC: // Êý×Ö
+            case Cell.CELL_TYPE_NUMERIC: // ï¿½ï¿½ï¿½ï¿½
                 if (DateUtil.isCellDateFormatted(cell)) {
                     SimpleDateFormat sdf = null;
                     //System.out.println("cell.getCellStyle().getDataFormat()="+cell.getCellStyle().getDataFormat());
                     if (format == 20 || format == 32) {
                         sdf = new SimpleDateFormat("HH:mm");
                     } else if (format == 14 || format == 31 || format == 57 || format == 58  ) {
-                        // ´¦Àí×Ô¶¨ÒåÈÕÆÚ¸ñÊ½£ºmÔÂdÈÕ(Í¨¹ýÅÐ¶Ïµ¥Ôª¸ñµÄ¸ñÊ½id½â¾ö£¬idµÄÖµÊÇ58)
+                        // ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½Ê½ï¿½ï¿½mï¿½ï¿½dï¿½ï¿½(Í¨ï¿½ï¿½ï¿½Ð¶Ïµï¿½Ôªï¿½ï¿½Ä¸ï¿½Ê½idï¿½ï¿½ï¿½ï¿½ï¿½idï¿½ï¿½Öµï¿½ï¿½58)
                         sdf = new SimpleDateFormat("yyyy-MM-dd");
                         double value = cell.getNumericCellValue();
                         Date date = org.apache.poi.ss.usermodel.DateUtil
                                 .getJavaDate(value);
                         cellValue = sdf.format(date);
-                    }else {// ÈÕÆÚ
+                    }else {// ï¿½ï¿½ï¿½ï¿½
                         sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                     }
                     try {
-                        cellValue = sdf.format(cell.getDateCellValue());// ÈÕÆÚ
+                        cellValue = sdf.format(cell.getDateCellValue());// ï¿½ï¿½ï¿½ï¿½
                     } catch (Exception e) {
                         try {
                             throw new Exception("exception on get date data !".concat(e.toString()));
@@ -93,22 +95,22 @@ public class FUtil {
                     }
                 }  else {
                     BigDecimal bd = new BigDecimal(cell.getNumericCellValue());
-                    cellValue = bd.toPlainString();// ÊýÖµ ÕâÖÖÓÃBigDecimal°ü×°ÔÙ»ñÈ¡plainString£¬¿ÉÒÔ·ÀÖ¹»ñÈ¡µ½¿ÆÑ§¼ÆÊýÖµ
+                    cellValue = bd.toPlainString();// ï¿½ï¿½Öµ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BigDecimalï¿½ï¿½×°ï¿½Ù»ï¿½È¡plainStringï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½Ö¹ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½Öµ
                 }
                 break;
-            case Cell.CELL_TYPE_STRING: // ×Ö·û´®
+            case Cell.CELL_TYPE_STRING: // ï¿½Ö·ï¿½ï¿½ï¿½
                 cellValue = cell.getStringCellValue();
                 break;
             case Cell.CELL_TYPE_BOOLEAN: // Boolean
                 cellValue = cell.getBooleanCellValue()+"";;
                 break;
-            case Cell.CELL_TYPE_FORMULA: // ¹«Ê½
+            case Cell.CELL_TYPE_FORMULA: // ï¿½ï¿½Ê½
                 cellValue = cell.getCellFormula();
                 break;
-            case Cell.CELL_TYPE_BLANK: // ¿ÕÖµ
+            case Cell.CELL_TYPE_BLANK: // ï¿½ï¿½Öµ
                 cellValue = "";
                 break;
-            case Cell.CELL_TYPE_ERROR: // ¹ÊÕÏ
+            case Cell.CELL_TYPE_ERROR: // ï¿½ï¿½ï¿½ï¿½
                 cellValue = "ERROR VALUE";
                 break;
             default:
@@ -254,7 +256,7 @@ public class FUtil {
         XSSFWorkbook wb = (XSSFWorkbook) getWB( "tmpPath" );
         Sheet wsheet = wb.getSheetAt(0);
         CellStyle style = wb.createCellStyle();
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // ´´½¨Ò»¸ö¾ÓÖÐ¸ñÊ½
+        style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸ï¿½Ê½
 
         for(   int i=0;  i<list.size()  ; i++ ){
 
@@ -295,4 +297,10 @@ public class FUtil {
         }
     }
 
+    public static boolean isDigit( char a ){
+    	boolean digit = Character.isDigit(a);
+    	return digit;
+    }
+    
+    
 }
