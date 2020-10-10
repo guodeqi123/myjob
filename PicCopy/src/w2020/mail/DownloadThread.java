@@ -57,7 +57,7 @@ public class DownloadThread extends Thread{
 	//				saveAttachment(  msg,  dstDir ); 
 					List<MailAttachment> attas = new ArrayList<MailAttachment>();
 					MailUtil.getAttachment(msg,attas );
-					MTest.saveAttachment( attas , POP3ReceiveMail.dstDir + "/" +key + "/" + subject.trim() , key );  //   + "/"   + (i+1) 
+					MTest.saveAttachment( attas , POP3ReceiveMail.dstDir + "/" +key  , key );  //   + "/"   + (i+1) 
 				} 
 				
 	//			StringBuffer content = new StringBuffer(30);

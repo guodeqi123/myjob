@@ -47,9 +47,9 @@ public class POP3ReceiveMail {
 	}
 	
 	
-	public final static String mail = "henanyouchu2020@163.com";
-	public final static String mailPass = "DNOLVZONKNRXDTGT";
-	public final static String dstDir = "D:/GG/t4/zips";
+	public final static String mail = "youchuchunzhao@163.com";
+	public final static String mailPass = "TGBMPCNQJECYZQIQ";//"henanyouchu2020@163.com / DNOLVZONKNRXDTGT";
+	public final static String dstDir = "D:/GG/t4/resume3";
 	
 	/**
 	 * 接收邮件
@@ -90,7 +90,7 @@ public class POP3ReceiveMail {
 		List<Message > arr2 = new ArrayList<Message>();
 		List<Message > arr3 = new ArrayList<Message>();
 		
-		int max = 400; // messages.length
+		int max = messages.length;
 		int a = max / 3;
 		int a2 = a + a ;
 		for( int i=0;  i< max  ; i++    ){

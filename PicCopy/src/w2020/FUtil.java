@@ -15,11 +15,61 @@ import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class FUtil {
+	
+	/**
+	 * 计算周岁
+	 * @param birthStr   1991-01-01
+	 * @return
+	 */
+	public static  int calcAge( String birthStr ) {
+		String[] split = birthStr.split("-");
+		int year = Integer.parseInt( split[0] ) ;
+		int mon = Integer.parseInt( split[1] ) ;
+		int day = Integer.parseInt( split[2] ) ;
+		
+		Calendar instance = Calendar.getInstance();
+		int cYear = instance.get(Calendar.YEAR);
+		int cMonty = instance.get(Calendar.MONTH) + 1 ;
+		int cDay = instance.get(Calendar.DAY_OF_MONTH) ;
+		
+		int tage = cYear - year;
+		if(  (cMonty < mon) || (  cMonty == mon && cDay<day )  ){
+			tage= tage-1;
+		} 
+		return tage;
+	}
+	
+	
+	public static <T> T createBean(T toCreate , Row row){
+		
+		if( toCreate instanceof IRowToBean ){
+			IRowToBean tinterf = (IRowToBean) toCreate;
+			Map<String, Integer> proToCol = tinterf.getProToCol();
+			
+			Set<Entry<String,Integer>> entrySet = proToCol.entrySet();
+			for(  Entry<String,Integer> en :   entrySet){
+				String key = en.getKey();
+				Integer col = en.getValue();
+				
+				Cell tCell = row.getCell( col ) ;
+				String tVaule = FUtil.getCellValueByCell(tCell);
+				
+				setStrValue(toCreate, tVaule, key);
+			}
+		}
+		
+		return toCreate ;
+	}
+	
 
     public static Workbook getWB(String fpath){
         Workbook wb = null;
@@ -158,7 +208,7 @@ public class FUtil {
     }
 
 
-    public static void setStrValue(T bean , String tValue , String proName){
+    public static<T> void setStrValue(T bean , String tValue , String proName){
 
         try {
             Field tmpField = getFieldByAliase(bean.getClass() , proName);
@@ -205,7 +255,7 @@ public class FUtil {
         }
     }
 
-    private static List<String> loadTxt(String txtpath ) {
+    public static List<String> loadTxt(String txtpath ) {
         List<String> ret = new ArrayList<String>();
 
         try {
