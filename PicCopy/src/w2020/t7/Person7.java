@@ -13,10 +13,11 @@ import w2020.IRowToBean;
 
 public class Person7 implements IRowToBean{
 	
-	public static final String degree1 = "高中";
+	public static final String degree0 = "高中";
+	public static final String degree1 = "专科";
 	public static final String degree2 = "本科";
 	public static final String degree3 = "硕士";
-	public static final String degree4= "博士";
+	public static final String degree4 = "博士";
 	
 	private int row ;
 	private String idCard ;  //I   8 
@@ -26,8 +27,7 @@ public class Person7 implements IRowToBean{
 	private String collage; //最高学历院校  V  21
 	private String degree;//最高学历学位 X  23    (本科  硕士  博士)
 	//1.社会统一招聘考生须具有国家教育行政机关承认的普通高等院校大学本科及以上学历，并取得相应学位
-	//2 其中，报考郑州农商银行（上街支行除外）的，
-	//须具有国家教育行政机关认可的“双一流”建设高校大学本科及以上学
+	//2 其中，报考郑州农商银行（上街支行除外）的， 须具有国家教育行政机关认可的“双一流”建设高校大学本科及以上学
 	//历或国家教育行政机关认可的普通高等院校硕士研究生及以上学历，并取得相应学位
 	
 	private String name;  //F 5
@@ -46,7 +46,9 @@ public class Person7 implements IRowToBean{
 	//4社会统一招聘中具有普通高等院校硕士研究生及以上学历的考生，不受上述第3条中招聘专业限制。但如报考信息科技专业，需符合第2条专业限制
 	
 	private int age ;  //calc
-	//社会统一招聘中，大学本科学历年龄在26周岁以下（1994年1月1日后出生）；硕士研究生及以上学历年龄在28周岁以下（1992年1月1日后出生）。
+	//1贫困家庭大学生专项招聘中，大专、本科学历年龄在27周岁以下（1993年1月1日后出生）；硕士研究生及以上学历年龄在30周岁以下（1990年1月1日后出生）。
+	//2.社会统一招聘中，本科学历年龄在26周岁以下（1994年1月1日后出生）；硕士研究生及以上学历年龄在28周岁以下（1992年1月1日后出生）
+	
 	private int seqNum;  //calc
 	private String passFlag;  //calc
 	public  static final String yes = "是";
@@ -59,12 +61,23 @@ public class Person7 implements IRowToBean{
 		passFlag = yes;
 		
 		//校验年龄
-		if(  degree2.equals(degree) && age > 26 ){
-			passFlag = no;
+		if( getType1.equals(getType)  ){
+			if(  degree2.equals(degree) && age > 27 ){
+				passFlag = no;
+			}
+			if(  (degree3.equals(degree) || degree4.equals(degree)  ) && age > 30 ){
+				passFlag = no;
+			}
+		}else{
+			if(  degree2.equals(degree) && age > 26 ){
+				passFlag = no;
+			}
+			if(  (degree3.equals(degree) || degree4.equals(degree) ) && age > 28 ){
+				passFlag = no;
+			}
 		}
-		if(  (degree3.equals(degree) || degree3.equals(degree) ) && age > 28 ){
-			passFlag = no;
-		}
+		
+		
 		if( no.equals(passFlag  )  ){
 			reason = "年龄不符";
 			return ;
@@ -75,8 +88,10 @@ public class Person7 implements IRowToBean{
 			passFlag = no;
 		}
 		if( postCompany.contains("郑州农商银行") && !postCompany.contains("上街")  ){
-			if(  !InitData7.coll1.contains(collage) && !InitData7.coll2.contains(collage) ){
-				passFlag = no;
+			if(  !degree3.equals(degree) && !degree4.equals(degree)  ){
+				if(  !InitData7.coll1.contains(collage) && !InitData7.coll2.contains(collage) ) {
+					passFlag = no;
+				}
 			}
 		}
 		if( no.equals(passFlag  )  ){

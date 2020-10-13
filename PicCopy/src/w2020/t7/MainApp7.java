@@ -18,14 +18,11 @@ public class MainApp7 {
 	public static String srcPath = "/temp.xlsx";
 	
 	public static void main(String[] args) {
-		
 		InitData7.init();
 		
 		loadSrcData();
 		
 		writeRes();
-		
-		
 	}
 	
 	
@@ -135,9 +132,6 @@ public class MainApp7 {
 		pp.setRow( rn );
 		return pp;
 	}
-	
-	
-	
 	
 	
 
